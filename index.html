@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Sequencing Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Job Sequencing Simulator</h1>
+    <div class="controls">
+      <label>Job Count: <input type="number" id="jobCount" value="5" min="1"></label>
+      <label>Max Deadline: <input type="number" id="maxDeadline" value="5" min="1"></label>
+      <label>Max Profit: <input type="number" id="maxProfit" value="100" min="1"></label>
+      <button onclick="generateJobs()">Generate Jobs</button>
+    </div>
+    
+    <div class="buttons">
+      <button onclick="stepSequenceJobs()">Step Through Job Scheduling</button>
+      <button onclick="exportResults('csv')">Export as CSV</button>
+      <button onclick="exportResults('json')">Export as JSON</button>
+      <button onclick="clearSimulation()">Clear</button>
+    </div>
 
+    <div id="jobs">
+      <h2>Jobs</h2>
+      <ul id="jobList"></ul>
+    </div>
+
+    <div id="scheduledJobs">
+      <h2>Scheduled Jobs</h2>
+      <ul id="scheduledJobList"></ul>
+      <p id="totalProfit">Total Profit: $0</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
