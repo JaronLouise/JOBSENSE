@@ -1,4 +1,4 @@
-/*REGISTER CSS*/
+/* REGISTER CSS */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -81,58 +81,24 @@ p a:hover {
     text-decoration: underline;
 }
 
+/*LOGIN CSS*/
 
+input[type="email"],
+input[type="password"] {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
 
-/* SIMULATOR CSS 
-
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f5f5f5;
-  } 
-  
-  .container {
-    text-align: center;
-    max-width: 600px;
-  }
-  
-  .controls, .buttons {
-    margin: 10px 0;
-  }
-  
-  label {
-    margin: 0 5px;
-  }
-  
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+button {
+    padding: 10px;
+    background-color: #5a67d8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-  }
-  
-  #jobs, #scheduledJobs {
-    margin-top: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    padding: 5px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  p#totalProfit {
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 10px;
-  }
-
-*/
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
