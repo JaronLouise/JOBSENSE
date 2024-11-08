@@ -4,7 +4,7 @@
 **JOBSENSE (Job Ordering and Scheduling Educational Simulator)**
 
 ## Team Name
-*Your Team Name Here*
+*Iisip pa ng team name*
 
 ## Team Members
 - **Frontend Developer**: Nerine Rosette Recto
