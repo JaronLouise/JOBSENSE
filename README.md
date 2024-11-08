@@ -104,8 +104,6 @@ To use **JOBSENSE** effectively, follow these instructions:
 
 5. **Responsive Design**: The application is designed to work across different devices and browsers for a seamless experience.
 
-6. **Map-Based Navigation**: Access map-based navigation to see key locations or landmarks relevant to job scheduling tasks, enhancing usability and learning engagement.
-
 ---
 
 ## License
