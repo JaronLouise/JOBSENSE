@@ -73,10 +73,20 @@ Follow these steps to install and set up **JOBSENSE**:
    git clone https://github.com/yourusername/JOBSENSE.git
    cd JOBSENSE
 
-   ## Usage
+  2. **Install the dependencies**
 
-  2. **Install the necessary packages**
-  3. **Run the web application**
+     Navigate to the backend directory and install the necessary packages:
+
+     ```bash
+     cd backend
+     npm install
+     
+      
+  4. **Run the web application**
+     
+     ```bash
+     cd backend
+     npm start
      
 ---
 
