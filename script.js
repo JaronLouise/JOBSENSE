@@ -1,3 +1,21 @@
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (name && email && username && password) {
+      alert("Registration successful!");
+  } else {
+      alert("Please fill in all fields.");
+  }
+});
+
+
+/* JOB SEQUENCING LOGIC
+
 class Job {
   constructor(id, deadline, profit) {
     this.id = id;
@@ -100,3 +118,4 @@ function clearSimulation() {
   document.getElementById("scheduledJobList").innerHTML = "";
   document.getElementById("totalProfit").textContent = "Total Profit: $0";
 }
+*/
