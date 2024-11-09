@@ -5,14 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
   <link rel="stylesheet" href="/css/home.css">
+  <!--sample font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Home Page</h1>
-    <div class="container">
-        <div class="box" onclick="location.href='simulation.html'">Simulation</div>
-        <div class="box" onclick="location.href='education.html'">Education</div>
-        <div class="box" onclick="location.href='quiz.html'">Quiz</div>
+  <div class="content-grid">
+    <div class="content-list">
+      <div class="top-row">
+        <div class="main-header">
+          <h1>Welcome @username! </h1> <!--lalagyan pa ng backend ito para ang makita ay username-->
+        </div>
+      </div>
+      <div class="menu">
+        <b>Menu</b>
+      </div>
+      <div class="list-item" onclick="location.href='education.html'">
+        <p>Learn</p>
+        <div class="list-item-button"></div>
+      </div>
+      <div class="list-item" onclick="location.href='simulation.html'">
+        <p>Simulator</p>
+        <div class="list-item-button"></div>
+      </div>
+      <div class="list-item" onclick="location.href='quiz.html'">
+        <p>Game</p>
+        <div class="list-item-button"></div>
+      </div>
     </div>
-    <script src="/js/home.js" type="module"></script>
+    <div class="content-cards">
+      <div class="row">
+        <div class="top-square"></div>
+        <div class="top-square"></div>
+      </div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+  </div>
+  <script src="/js/home.js" type="module"></script>
 </body>
 </html>
