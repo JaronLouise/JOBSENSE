@@ -28,6 +28,7 @@
 <p align="justify">
 &nbsp;&nbsp;&nbsp; The objective of this project is to develop a web application that simulates and visualizes the job sequencing algorithm used in scheduling and optimization. <strong>JOBSENSE</strong> serves as an interactive educational platform, helping users understand how the job sequencing algorithm prioritizes tasks, optimizes scheduling, and demonstrates real-world applications of efficient job allocation.
 <p>
+
 ---
 
 ## Features
