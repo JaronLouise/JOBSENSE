@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Sequencing Quiz</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <h1>Job Sequencing Quiz (Greedy Method)</h1>
+    <div id="level-selection">
+        <h2>Select a Level:</h2>
+        <button onclick="loadQuiz('easy')">Easy</button>
+        <button onclick="loadQuiz('medium')">Medium</button>
+        <button onclick="loadQuiz('hard')">Hard</button>
+    </div>
+
+    <div id="quiz-container" style="display: none;">
+        <h2 id="quiz-title"></h2>
+        <div id="job-list" class="job-list"></div>
+
+        <h3>Arrange the jobs in the correct order below:</h3>
+        <div id="answer-container" class="answer-container"></div>
+
+        <button onclick="checkAnswer()">Check Answer</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>
