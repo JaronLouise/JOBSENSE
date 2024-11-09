@@ -15,15 +15,48 @@ body {
 }
 
 .container {
-    width: 300px;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    width: 100%;
 }
 
 h1 {
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.simulation-box {
+    background-color: #3498db; /* Blue */
+}
+
+.education-box {
+    background-color: #2ecc71; /* Green */
+}
+
+.quiz-box {
+    background-color: #e74c3c; /* Red */
 }
