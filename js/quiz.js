@@ -98,10 +98,12 @@ const quizData = {
 };
 
 let currentQuestion = null;
+let currentScore = 0;
 
 function loadQuiz(level) {
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
+    currentScore = 0; // Reset score
     currentQuestion = quizData[level][0]; // Start with the first question
     document.getElementById('quiz-title').innerText = currentQuestion.question;
     createJobList(currentQuestion.jobs);
@@ -182,5 +184,36 @@ function checkAnswer() {
 
     const isCorrect = JSON.stringify(selectedSequence) === JSON.stringify(currentQuestion.correctSequence);
     const resultMessage = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
+
+    if (isCorrect) {
+        currentScore += 1; // Increment score for correct answer
+    }
+
     document.getElementById('result').innerText = resultMessage;
+
+    // Move to the next question
+    setTimeout(() => {
+        nextQuestion();
+    }, 1000); // Delay before showing the next question
+}
+
+function nextQuestion() {
+    const currentLevel = document.querySelector('button[onclick*="loadQuiz"]').innerText.toLowerCase();
+    const currentLevelData = quizData[currentLevel];
+    const currentQuestionIndex = currentLevelData.indexOf(currentQuestion);
+
+    // Check if there are more questions in this level
+    if (currentQuestionIndex + 1 < currentLevelData.length) {
+        currentQuestion = currentLevelData[currentQuestionIndex + 1];
+        document.getElementById('quiz-title').innerText = currentQuestion.question;
+        createJobList(currentQuestion.jobs);
+        createAnswerContainer();
+    } else {
+        // All questions completed, show total score
+        document.getElementById('result').innerText = `Your total score for this level: ${currentScore}`;
+        setTimeout(() => {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('level-selection').style.display = 'block';
+        }, 2000); // Wait 2 seconds before going back to level selection
+    }
 }
