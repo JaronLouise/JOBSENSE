@@ -1,6 +1,6 @@
 // Import the necessary functions from Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Your Firebase configuration
@@ -92,4 +92,27 @@ window.onload = function () {
                 showMessage('Invalid email or password', 'signInMessage');
             });
     });
+
+    // Reset Password
+    const reset = document.getElementById("reset");
+    reset?.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+
+        if (!email) {
+            alert("Please input your email first");
+            return;
+        }
+
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert("Password reset email sent!");
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+
 };
