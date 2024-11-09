@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Sequencing Problem (Greedy Method)</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Sequencing Problem (Greedy Method)</h1>
+        
+        <div class="input-section">
+            <label for="numJobs">Enter the number of jobs:</label>
+            <input type="number" id="numJobs" min="1">
+            <button onclick="generateJobInputs()">Generate Job Inputs</button>
+        </div>
+
+        <div id="jobInputs" class="job-inputs-section" style="display: none;">
+            <h3>Enter Job Details</h3>
+            <table id="jobTable">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Profit</th>
+                        <th>Deadline</th>
+                    </tr>
+                </thead>
+                <tbody id="jobDetails"></tbody>
+            </table>
+            <button id="calculateSequenceBtn" onclick="calculateJobSequence()">Calculate Job Sequence</button>
+        </div>
+
+        <div id="result" class="result-section"></div>
+    </div>
+
+    <script src="js/simulation.js"></script>
+</body>
+</html>
