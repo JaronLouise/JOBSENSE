@@ -39,6 +39,12 @@ document.getElementById("registerForm")?.addEventListener("submit", function (ev
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
+    // Validate password length
+    if (password.length < 8) {
+        showMessage('Password should be at least 8 characters long', 'signUpMessage');
+        return;
+    }
+
     // Register the user in Firebase Authentication
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -83,20 +89,10 @@ document.getElementById("loginForm")?.addEventListener("submit", function (event
     // Authenticate the user with Firebase Authentication
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Login successful
-            showMessage('Login successful!', 'signInMessage');
-            window.location.href = "home.html"; // Redirect to home.html on successful login
+            // Redirect to home page upon successful login
+            window.location.href = "home.html";
         })
         .catch((error) => {
-            const errorCode = error.code;
-            console.error('Error during login:', error);
-
-            if (errorCode === 'auth/wrong-password') {
-                showMessage('Incorrect password. Please try again.', 'signInMessage');
-            } else if (errorCode === 'auth/user-not-found') {
-                showMessage('No account found with this email. Please register.', 'signInMessage');
-            } else {
-                showMessage('Login failed. Please try again.', 'signInMessage');
-            }
+            showMessage('Invalid email or password', 'signInMessage');
         });
 });
