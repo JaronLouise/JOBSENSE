@@ -97,14 +97,15 @@ const quizData = {
     ]
 };
 
+
 let currentQuestion = null;
 let currentScore = 0;
 
 function loadQuiz(level) {
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
-    currentScore = 0; // Reset score
-    currentQuestion = quizData[level][0]; // Start with the first question
+    currentScore = 0;
+    currentQuestion = quizData[level][0];
     document.getElementById('quiz-title').innerText = currentQuestion.question;
     createJobList(currentQuestion.jobs);
     createAnswerContainer();
@@ -119,6 +120,7 @@ function createJobList(jobs) {
         jobElement.classList.add('job');
         jobElement.draggable = true;
         jobElement.innerText = `${job.name} ${job.details}`;
+        jobElement.dataset.name = job.name; // Use data attribute for easier access
 
         jobElement.addEventListener('dragstart', () => {
             jobElement.classList.add('dragging');
@@ -179,22 +181,29 @@ function getDragAfterElement(container, x) {
 }
 
 function checkAnswer() {
-    const jobElements = document.querySelectorAll('.job');
-    const selectedSequence = [...jobElements].map(job => job.innerText.split(' ')[0]);
+    const answerContainer = document.getElementById('answer-container');
+    const selectedSequence = [...answerContainer.querySelectorAll('.job')].map(job => job.dataset.name);
 
-    const isCorrect = JSON.stringify(selectedSequence) === JSON.stringify(currentQuestion.correctSequence);
-    const resultMessage = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
+    console.log("User selected sequence:", selectedSequence);
+    console.log("Correct sequence:", currentQuestion.correctSequence);
 
-    if (isCorrect) {
-        currentScore += 1; // Increment score for correct answer
+    if (selectedSequence.length === currentQuestion.correctSequence.length) {
+        const isCorrect = JSON.stringify(selectedSequence) === JSON.stringify(currentQuestion.correctSequence);
+        const resultMessage = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
+
+        if (isCorrect) {
+            currentScore += 1;
+        }
+
+        document.getElementById('result').innerText = resultMessage;
+
+        // Move to the next question after a brief delay
+        setTimeout(() => {
+            nextQuestion();
+        }, 2000);
+    } else {
+        document.getElementById('result').innerText = "Please arrange all jobs.";
     }
-
-    document.getElementById('result').innerText = resultMessage;
-
-    // Move to the next question
-    setTimeout(() => {
-        nextQuestion();
-    }, 1000); // Delay before showing the next question
 }
 
 function nextQuestion() {
@@ -202,18 +211,16 @@ function nextQuestion() {
     const currentLevelData = quizData[currentLevel];
     const currentQuestionIndex = currentLevelData.indexOf(currentQuestion);
 
-    // Check if there are more questions in this level
     if (currentQuestionIndex + 1 < currentLevelData.length) {
         currentQuestion = currentLevelData[currentQuestionIndex + 1];
         document.getElementById('quiz-title').innerText = currentQuestion.question;
         createJobList(currentQuestion.jobs);
         createAnswerContainer();
     } else {
-        // All questions completed, show total score
         document.getElementById('result').innerText = `Your total score for this level: ${currentScore}`;
         setTimeout(() => {
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('level-selection').style.display = 'block';
-        }, 2000); // Wait 2 seconds before going back to level selection
+        }, 2000);
     }
 }
