@@ -102,3 +102,14 @@ button {
     font-size: 1rem;
     transition: background-color 0.3s ease;
 }
+
+.messageDiv{
+    background-color:hsl(327,90%,28%);
+    color:white;
+    padding:10px 20px;
+    margin:10px;
+    border-radius: 5px;
+    font-size:1rem;
+    opacity:0;
+    animation:fadeOut 7s forwards;
+}
