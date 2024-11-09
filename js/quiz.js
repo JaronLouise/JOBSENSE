@@ -98,14 +98,21 @@ const quizData = {
 };
 
 
-let currentQuestion = null;
+let currentQuestionIndex = 0;
 let currentScore = 0;
+let selectedDifficulty = 'easy';
 
 function loadQuiz(level) {
+    selectedDifficulty = level;
+    currentQuestionIndex = 0;
+    currentScore = 0;
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
-    currentScore = 0;
-    currentQuestion = quizData[level][0];
+    loadQuestion();
+}
+
+function loadQuestion() {
+    const currentQuestion = quizData[selectedDifficulty][currentQuestionIndex];
     document.getElementById('quiz-title').innerText = currentQuestion.question;
     createJobList(currentQuestion.jobs);
     createAnswerContainer();
@@ -120,7 +127,7 @@ function createJobList(jobs) {
         jobElement.classList.add('job');
         jobElement.draggable = true;
         jobElement.innerText = `${job.name} ${job.details}`;
-        jobElement.dataset.name = job.name; // Use data attribute for easier access
+        jobElement.dataset.name = job.name;
 
         jobElement.addEventListener('dragstart', () => {
             jobElement.classList.add('dragging');
@@ -142,8 +149,8 @@ function createAnswerContainer() {
 }
 
 function enableDragAndDrop() {
-    const jobList = document.querySelector('.job-list');
-    const answerContainer = document.querySelector('.answer-container');
+    const jobList = document.getElementById('job-list');
+    const answerContainer = document.getElementById('answer-container');
 
     jobList.addEventListener('dragover', e => {
         e.preventDefault();
@@ -165,7 +172,6 @@ function enableDragAndDrop() {
 
 function getDragAfterElement(container, x) {
     const elements = [...container.querySelectorAll('.job:not(.dragging)')];
-
     return elements.reduce(
         (closest, child) => {
             const box = child.getBoundingClientRect();
@@ -184,20 +190,12 @@ function checkAnswer() {
     const answerContainer = document.getElementById('answer-container');
     const selectedSequence = [...answerContainer.querySelectorAll('.job')].map(job => job.dataset.name);
 
-    console.log("User selected sequence:", selectedSequence);
-    console.log("Correct sequence:", currentQuestion.correctSequence);
-
+    const currentQuestion = quizData[selectedDifficulty][currentQuestionIndex];
     if (selectedSequence.length === currentQuestion.correctSequence.length) {
         const isCorrect = JSON.stringify(selectedSequence) === JSON.stringify(currentQuestion.correctSequence);
-        const resultMessage = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
+        document.getElementById('result').innerText = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
+        if (isCorrect) currentScore++;
 
-        if (isCorrect) {
-            currentScore += 1;
-        }
-
-        document.getElementById('result').innerText = resultMessage;
-
-        // Move to the next question after a brief delay
         setTimeout(() => {
             nextQuestion();
         }, 2000);
@@ -207,20 +205,15 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
-    const currentLevel = document.querySelector('button[onclick*="loadQuiz"]').innerText.toLowerCase();
-    const currentLevelData = quizData[currentLevel];
-    const currentQuestionIndex = currentLevelData.indexOf(currentQuestion);
-
-    if (currentQuestionIndex + 1 < currentLevelData.length) {
-        currentQuestion = currentLevelData[currentQuestionIndex + 1];
-        document.getElementById('quiz-title').innerText = currentQuestion.question;
-        createJobList(currentQuestion.jobs);
-        createAnswerContainer();
+    currentQuestionIndex++;
+    const currentLevelData = quizData[selectedDifficulty];
+    if (currentQuestionIndex < currentLevelData.length) {
+        loadQuestion();
     } else {
-        document.getElementById('result').innerText = `Your total score for this level: ${currentScore}`;
+        document.getElementById('result').innerText = `Your total score: ${currentScore}`;
         setTimeout(() => {
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('level-selection').style.display = 'block';
-        }, 2000);
+        }, 3000);
     }
 }
