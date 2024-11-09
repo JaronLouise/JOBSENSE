@@ -12,7 +12,7 @@ const quizData = {
         {
             question: 'Easy - Question 2',
             jobs: [
-                { name: 'Job A', details: '(Profit: $30, Deadline: 3)' },
+                { name: 'Job A', details: '(Profit: $30, Deadline: 2)' },
                 { name: 'Job B', details: '(Profit: $25, Deadline: 1)' },
                 { name: 'Job C', details: '(Profit: $5, Deadline: 2)' }
             ],
