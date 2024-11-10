@@ -1,5 +1,5 @@
 body {
-    margin: 20px;
+    margin: 30px;
     padding: 16px;
     font-family: "Poppins", sans-serif;
 }
@@ -11,15 +11,17 @@ body {
 
 .main-header {
     background: #eee;
-    height: 120px;
+    height: 130px;
     flex-grow: 1;
-    border-radius: 4px;
     padding-left: 30px;
 }
 
 h1 {
-    align-items: center;
     font-size: 40px;
+}
+
+#welcome-message{
+    padding-top: 15px;
 }
 
 .top-square {
@@ -32,13 +34,11 @@ h1 {
 .secondary-header {
     background: #eee; 
     height: 60px;
-    border-radius: 4px;
 }
 
 .list-item {
     background: #eee;
-    height: 100px;
-    border-radius: 4px;
+    height: 105px;
     display: flex;
     padding: 16px;
     box-sizing: border-box;
@@ -57,21 +57,20 @@ h1 {
 .content-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
     flex-grow: 1;
 }
 
 .content-cards {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
     width: 450px;
 }
 
 .card {
     background: #eee;
     height: 200px;
-    border-radius: 4px;
 }
 
 .menu {
@@ -79,7 +78,7 @@ h1 {
 }
 
 .menu b{
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 p {
@@ -89,4 +88,12 @@ p {
 .row {
     display: flex;
     gap: 16px;
+}
+
+.main-header, .list-item, .top-square, .card {
+    border-radius: 20px;
+}
+
+.label {
+    padding-left: 20px;
 }
