@@ -1,3 +1,7 @@
+:root {
+    --box-color: #eee;
+}
+
 body {
     margin: 30px;
     padding: 16px;
@@ -10,7 +14,7 @@ body {
 }
 
 .main-header {
-    background: #eee;
+    background: var(--box-color);
     height: 130px;
     flex-grow: 1;
     padding-left: 30px;
@@ -25,19 +29,19 @@ h1 {
 }
 
 .top-square {
-    background: #eee;
+    background: var(--box-color);
     width: 225px;
     height: 130px;
     border-radius: 4px;
 }
 
 .secondary-header {
-    background: #eee; 
+    background: var(--box-color); 
     height: 60px;
 }
 
 .list-item {
-    background: #eee;
+    background: var(--box-color);
     height: 105px;
     display: flex;
     padding: 16px;
@@ -69,7 +73,7 @@ h1 {
 }
 
 .card {
-    background: #eee;
+    background: var(--box-color);
     height: 200px;
 }
 
