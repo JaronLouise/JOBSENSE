@@ -1,0 +1,129 @@
+:root {
+    --btn-color: #1C1678;
+    --dark-blue-color-2: #074173;
+    --btn-hover: #1679AB;
+    --input-field-color: #eee;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+table, th, td {
+    border: none;
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+
+#jobTable {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#jobTable th, #jobTable td {
+    width: 33.33%; /* Adjust if you add more columns */
+    text-align: center; /* Center-aligns content in each cell */
+}
+
+thead {
+    color: var(--dark-blue-color-2);
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    background-color: var(--input-field-color);
+    font-size: 20px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--dark-blue-color-2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+}
+
+.col {
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--dark-blue-color-2);
+}
+
+.num-job-field {
+    width: 480px;
+}
+
+.num-jobs{
+    align-self: center;
+    margin: 0;
+}
+
+.num-job-field, .num-jobs, .job-seq-btn {
+    height: 47.5px;
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+}
+
+h3 {
+    padding-left: 10px;
+    font-size: 23px;
+}
+
+input, .num-jobs,.job-seq-btn{
+    border-radius: 10px;
+}
+
+.result-section {
+    width: 600px;
+    padding-left: 20px;
+}
+
+label {
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.job-inputs-section {
+    text-align: center;
+}
+
+.num-jobs, .job-seq-btn {
+    width: 120px;
+    font-size: 18px;
+    font-weight: 700;
+}
