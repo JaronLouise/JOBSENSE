@@ -1,3 +1,58 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+import { getFirestore, collection, doc, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDW4YaKyRsrxYn6u-744MKAqALajS_BJeU",
+    authDomain: "login-form-dd694.firebaseapp.com",
+    projectId: "login-form-dd694",
+    storageBucket: "login-form-dd694.firebasestorage.app",
+    messagingSenderId: "600112311901",
+    appId: "1:600112311901:web:f9c87eead4ff40584be7b4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let currentQuestionIndex = 0;
+let currentScore = 0;
+let selectedDifficulty = 'easy';
+
+// Load quiz based on selected difficulty
+function loadQuiz(level) {
+    selectedDifficulty = level;
+    currentQuestionIndex = 0;
+    currentScore = 0;
+    document.getElementById('level-selection').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    loadQuestion();
+}
+
+window.loadQuiz = loadQuiz;
+window.checkAnswer = checkAnswer;
+
+
+// Firebase function to save score to Firestore
+function saveScoreToFirebase(score, level) {
+    const userId = "USER_ID"; // Replace this with actual user ID (from Firebase Authentication or a placeholder)
+    const userRef = doc(db, "users", userId);
+
+    // Add quiz score to a new subcollection "quizScores" under the user
+    addDoc(collection(userRef, "quizScores"), {
+        level: level,
+        score: score,
+        timestamp: serverTimestamp()
+    })
+    .then(() => {
+        console.log("Score saved successfully!");
+    })
+    .catch((error) => {
+        console.error("Error saving score: ", error);
+    });
+}
+
+// Quiz data structure (easy, medium, hard)
 const quizData = {
     easy: [
         {
@@ -97,20 +152,7 @@ const quizData = {
     ]
 };
 
-
-let currentQuestionIndex = 0;
-let currentScore = 0;
-let selectedDifficulty = 'easy';
-
-function loadQuiz(level) {
-    selectedDifficulty = level;
-    currentQuestionIndex = 0;
-    currentScore = 0;
-    document.getElementById('level-selection').style.display = 'none';
-    document.getElementById('quiz-container').style.display = 'block';
-    loadQuestion();
-}
-
+// Load the current question and jobs
 function loadQuestion() {
     const currentQuestion = quizData[selectedDifficulty][currentQuestionIndex];
     document.getElementById('quiz-title').innerText = currentQuestion.question;
@@ -118,6 +160,7 @@ function loadQuestion() {
     createAnswerContainer();
 }
 
+// Create the list of jobs dynamically
 function createJobList(jobs) {
     const jobListContainer = document.getElementById('job-list');
     jobListContainer.innerHTML = '';
@@ -143,6 +186,7 @@ function createJobList(jobs) {
     enableDragAndDrop();
 }
 
+// Create answer container for drag-and-drop
 function createAnswerContainer() {
     const answerContainer = document.getElementById('answer-container');
     answerContainer.innerHTML = '';
@@ -186,6 +230,7 @@ function getDragAfterElement(container, x) {
     ).element;
 }
 
+// Check the answer after the user arranges jobs
 function checkAnswer() {
     const answerContainer = document.getElementById('answer-container');
     const selectedSequence = [...answerContainer.querySelectorAll('.job')].map(job => job.dataset.name);
@@ -204,6 +249,7 @@ function checkAnswer() {
     }
 }
 
+// Proceed to the next question or show final result
 function nextQuestion() {
     currentQuestionIndex++;
     const currentLevelData = quizData[selectedDifficulty];
@@ -211,6 +257,8 @@ function nextQuestion() {
         loadQuestion();
     } else {
         document.getElementById('result').innerText = `Your total score: ${currentScore}`;
+        // Save the score to Firebase after quiz completion
+        saveScoreToFirebase(currentScore, selectedDifficulty);
         setTimeout(() => {
             document.getElementById('quiz-container').style.display = 'none';
             document.getElementById('level-selection').style.display = 'block';
