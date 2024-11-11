@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
 import { getFirestore, collection, doc, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
-
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDW4YaKyRsrxYn6u-744MKAqALajS_BJeU",
@@ -14,10 +14,23 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
+let currentUserId = null;
 let currentQuestionIndex = 0;
 let currentScore = 0;
 let selectedDifficulty = 'easy';
+
+// Monitor auth state to get the current user's ID
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUserId = user.uid;
+        console.log("User logged in:", currentUserId);
+    } else {
+        console.log("No user logged in");
+        // Handle cases where the user is not logged in (redirect or show login prompt)
+    }
+});
 
 // Load quiz based on selected difficulty
 function loadQuiz(level) {
@@ -33,12 +46,16 @@ window.loadQuiz = loadQuiz;
 window.checkAnswer = checkAnswer;
 
 
-// Firebase function to save score to Firestore
+// Function to save quiz score to Firestore
 function saveScoreToFirebase(score, level) {
-    const userId = "USER_ID"; // Replace this with actual user ID (from Firebase Authentication or a placeholder)
-    const userRef = doc(db, "users", userId);
+    if (!currentUserId) {
+        console.error("User not logged in. Cannot save score.");
+        return;
+    }
 
-    // Add quiz score to a new subcollection "quizScores" under the user
+    const userRef = doc(db, "users", currentUserId);
+
+    // Add quiz score to a new subcollection "quizScores" under the user document
     addDoc(collection(userRef, "quizScores"), {
         level: level,
         score: score,
@@ -51,7 +68,6 @@ function saveScoreToFirebase(score, level) {
         console.error("Error saving score: ", error);
     });
 }
-
 // Quiz data structure (easy, medium, hard)
 const quizData = {
     easy: [
