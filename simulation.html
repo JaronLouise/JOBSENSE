@@ -4,76 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Sequencing Problem (Greedy Method)</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
+    <link rel="stylesheet" href="\css\simulation.css">
+    <!--sample font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Job Sequencing Problem (Greedy Method)</h1>
-        
-        <div class="input-section">
-            <label for="numJobs">Enter the number of jobs:</label>
-            <input type="number" id="numJobs" min="1">
-            <button onclick="generateJobInputs()">Generate Job Inputs</button>
+        <div class="col col-1">
+            <h1>Job Sequencing Simulator<br>(Greedy Method)</h1>
+            <div class="input-section">
+                <label for="numJobs">Enter the number of jobs:</label> 
+                <div class="row">
+                    <input type="number" class="num-job-field" id="numJobs" min="1">
+                    <button class="num-jobs" onclick="generateJobInputs()">Enter</button>
+                </div>
+            </div>
+            <div id="jobInputs" class="job-inputs-section">
+                <h3>Enter Job Details:</h3>
+                <table id="jobTable">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Profit</th>
+                            <th>Deadline</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobDetails">
+                        <tr>
+                            <td><input type="text" placeholder="Job 1 ID"></td>
+                            <td><input type="number" placeholder="Profit"></td>
+                            <td><input type="number" placeholder="Deadline"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="Job 2 ID"></td>
+                            <td><input type="number" placeholder="Profit"></td>
+                            <td><input type="number" placeholder="Deadline"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="job-seq-btn" id="calculateSequenceBtn" onclick="calculateJobSequence()">Simulate</button>
+            </div>
         </div>
-
-        <div id="jobInputs" class="job-inputs-section" style="display: none;">
-            <h3>Enter Job Details</h3>
-            <table id="jobTable">
-                <thead>
-                    <tr>
-                        <th>Job ID</th>
-                        <th>Profit</th>
-                        <th>Deadline</th>
-                    </tr>
-                </thead>
-                <tbody id="jobDetails"></tbody>
-            </table>
-            <button id="calculateSequenceBtn" onclick="calculateJobSequence()">Calculate Job Sequence</button>
+        <div class="col col-2">
+            <div id="result" class="result-section"></div>
         </div>
-
-        <div id="result" class="result-section"></div>
     </div>
-
     <script src="js/simulation.js"></script>
 </body>
 </html>
