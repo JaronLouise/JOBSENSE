@@ -153,3 +153,32 @@ img {
     height: 100%;
 }
 
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%; /* Ensures full width for all input types */
+    padding: 8px;
+    padding-right: 40px; /* Space for the icon */
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--input-field-color);
+    font-size: 1em; /* Ensures consistent text size */
+    box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2em; /* Fixed size */
+    color: var(--label-color);
+}
