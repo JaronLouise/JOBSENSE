@@ -284,3 +284,15 @@ function nextQuestion() {
         }, 3000);
     }
 }
+
+// Assuming the quiz.js has the following setup
+document.getElementById('reset-button').addEventListener('click', function() {
+    // Get the answer container and job list container
+    const answerContainer = document.getElementById('answer-container');
+    const jobList = document.getElementById('job-list');
+
+    // Move all jobs from answer-container back to job-list
+    while (answerContainer.firstChild) {
+        jobList.appendChild(answerContainer.firstChild);
+    }
+});
