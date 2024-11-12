@@ -37,6 +37,7 @@ function loadQuiz(level) {
     selectedDifficulty = level;
     currentQuestionIndex = 0;
     currentScore = 0;
+    document.getElementById('result').innerText = '';  // Clear previous result
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
     loadQuestion();
@@ -252,12 +253,14 @@ function checkAnswer() {
     const selectedSequence = [...answerContainer.querySelectorAll('.job')].map(job => job.dataset.name);
 
     const currentQuestion = quizData[selectedDifficulty][currentQuestionIndex];
+    const resultElement = document.getElementById('result');
     if (selectedSequence.length === currentQuestion.correctSequence.length) {
         const isCorrect = JSON.stringify(selectedSequence) === JSON.stringify(currentQuestion.correctSequence);
         document.getElementById('result').innerText = isCorrect ? 'Correct!' : 'Incorrect. Try again!';
         if (isCorrect) currentScore++;
 
         setTimeout(() => {
+            resultElement.innerText = '';
             nextQuestion();
         }, 2000);
     } else {
