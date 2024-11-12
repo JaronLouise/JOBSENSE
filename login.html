@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,10 @@
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="input-with-icon">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i id="togglePassword" class="eye-icon">&#128065;</i> <!-- Unicode eye icon -->
+                </div>
                 <small><a href="#" id="reset">Forgot Password</a></small>
 
                 <button type="submit" class="submit-btn-log">Login</button>
