@@ -1,11 +1,32 @@
+:root {
+    --box-color: #eee;
+    --dark-blue-color-2: #074173;
+    --btn-hover: #1679AB;
+    --bg-color: #ffffff;
+    --body-color: #f4f4f9;
+    --label-color: #555;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
 body {
+    margin-top: 50px;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
 }
 
 #quiz-container {
-    margin-top: 20px;
+    margin: 0 auto;
+    width: 1200px;
+    border: solid 3px var(--label-color);
+    border-radius: 20px;
+    background-color: var(--box-color);
+}
+
+.job {
+    background-color: var(--dark-blue-color-2);
 }
 
 .job-list, .answer-container {
@@ -29,13 +50,16 @@ body {
 }
 
 .answer-container {
+    width: 1000px;
     height: 120px;
-    border: 2px dashed #000;
+    border: 3px dashed var(--label-color);
+    border-radius: 10px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .answer-job {
@@ -43,14 +67,73 @@ body {
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 5px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: var(--dark-blue-color-2);
     color: white;
+    font-size: 18px;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: var(--btn-hover);
+}
+
+#level-selection {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+.row-1{
+    margin-top: 50px;
+    width: 1190px;
+    background-color: var(--box-color);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.row-2 {
+    box-sizing: border-box;
+    width: 1200px;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    background-color: var(--box-color) ;
+    width: 380px;
+    height: 360px;
+    border-radius: 20px;
+}
+
+h1, h2 {
+    color: var(--dark-blue-color-2);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3); 
+}
+
+.btn {
+    width: 350px;
+    border-radius: 50px;
+}
+
+img {
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 360px;
+    height: 280px;
+}
+
+.row-1, .box{
+    box-shadow: 0 2px 4px rgba(0, 0, 0.2, 0.2);
+}
+
+.quiz-btn {
+    gap: 10px;
+    margin: 0 auto;
 }
