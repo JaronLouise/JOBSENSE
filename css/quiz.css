@@ -1,3 +1,4 @@
+/*LILINISIN KO PA TO HAHAHAHA, PATI YUNG IBA*/
 :root {
     --box-color: #eee;
     --dark-blue-color-2: #074173;
@@ -13,15 +14,20 @@
 
 body {
     margin-top: 50px;
-    font-family: Arial, sans-serif;
     text-align: center;
+}
+
+#quiz-container, #level-selection, .row-2 {
+    width: 1200px;
+}
+
+#quiz-container, #level-selection {
+    flex-direction: column;
 }
 
 #quiz-container {
     margin: 0 auto;
-    width: 1200px;
     display: flex;
-    flex-direction: column;
 }
 
 .job {
@@ -31,7 +37,7 @@ body {
 .job-list, .answer-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     flex-wrap: wrap;
 }
 
@@ -86,8 +92,6 @@ button:hover {
 
 #level-selection {
     display: flex;
-    flex-direction: column;
-    width: 1200px;
     height: 500px;
     margin: 0 auto;
     gap: 15px;
@@ -103,7 +107,6 @@ button:hover {
 
 .row-2 {
     box-sizing: border-box;
-    width: 1200px;
     height: 400px;
     display: flex;
     justify-content: space-around;
@@ -171,6 +174,13 @@ img {
 
 .list {
     height: 150px;
+    display: flex;
+    align-items: center; /* Centers the job-list vertically */
+    justify-content: center; /* Centers the job-list horizontally */
+    background-color: var(--box-color);
+    width: 1025px;
+    margin: 0 auto;
+    border-radius: 20px;
 }
 
 /* Slot styling for answer container */
@@ -205,3 +215,4 @@ img {
     color: var(--dark-blue-color-2);
     margin: 0 10px;
 }
+
