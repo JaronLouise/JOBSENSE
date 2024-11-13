@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
                 const username = userData.username || "User"; // Fallback if username is missing
 
                 // Replace @username in the welcome message
-                document.querySelector('.main-header h1').textContent = `Welcome ${username}!`;
+                document.querySelector('.main-header h1').innerHTML = `Welcome <span class="username">${username}!</span>`;
             } else {
                 console.warn("User document not found in Firestore.");
                 document.querySelector('.main-header h1').textContent = "Welcome!";
