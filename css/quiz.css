@@ -20,9 +20,8 @@ body {
 #quiz-container {
     margin: 0 auto;
     width: 1200px;
-    border: solid 3px var(--label-color);
-    border-radius: 20px;
-    background-color: var(--box-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .job {
@@ -152,4 +151,57 @@ img {
 
 .reset:hover, .check:hover {
     background-color: var(--dark-blue-color-2);
+}
+
+.problem, .list, .answer-container {
+    background-color: var(--box-color);
+}
+
+.problem, .list {
+    width: 1025px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.problem {
+    padding-top: 5px;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.list {
+    height: 150px;
+}
+
+/* Slot styling for answer container */
+.slot {
+    width: 180px;
+    height: 80px;
+    margin: 0 10px;
+    border: 2px dashed var(--label-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slot .job {
+    position: absolute;
+    top: -40px; /* Adjust to position jobs above the slot */
+}
+
+/* Numbering row styling */
+.numbering-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.number-label {
+    width: 180px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--dark-blue-color-2);
+    margin: 0 10px;
 }
