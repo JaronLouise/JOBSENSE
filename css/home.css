@@ -1,23 +1,33 @@
 :root {
-    --box-color: #eee;
+    --dark-blue-color-2: #074173;
+    --blue-color: #1679AB;
+    --bg-color: #ffffff;
+    --box-color: #f4f4f4;
+    --label-color: #555;
+    --border-color: #ddd;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     margin: 30px;
     padding: 16px;
-    font-family: "Poppins", sans-serif;
 }
 
-.top-row {
+.main-header, .list-item, .container, .col-1, .col-2, .row {
     display: flex;
-    gap: 16px;
 }
 
 .main-header {
-    background: var(--box-color);
     height: 130px;
-    flex-grow: 1;
     padding-left: 30px;
+    gap: 16px;
+}
+
+.main-header, .container, .col-1 {
+    flex-grow: 1;
 }
 
 h1 {
@@ -29,56 +39,41 @@ h1 {
 }
 
 .top-square {
-    background: var(--box-color);
     width: 225px;
     height: 130px;
     border-radius: 4px;
 }
 
-.secondary-header {
-    background: var(--box-color); 
-    height: 60px;
-}
-
 .list-item {
-    background: var(--box-color);
     height: 105px;
-    display: flex;
     padding: 16px;
     box-sizing: border-box;
     align-items: center;
 }
 
-.content-grid {
+.container {
     margin-left: 150px;
     width: 1200px;
-    display: flex;
     gap: 16px;
-    flex-grow: 1;
     gap: 16px;
 }
 
-.content-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex-grow: 1;
-}
-
-.content-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.col-2 {  
     width: 450px;
 }
 
+.col-1, .col-2 {
+    gap: 15px;
+    flex-direction: column;
+}
+
 .card {
-    background: var(--box-color);
     height: 200px;
 }
 
 .menu {
-    font-size: 35px;
+    font-size: 30px;
+    color: var(--label-color);
 }
 
 .menu b{
@@ -90,14 +85,19 @@ p {
 }
 
 .row {
-    display: flex;
     gap: 16px;
 }
 
 .main-header, .list-item, .top-square, .card {
     border-radius: 20px;
+    background-color: var(--box-color);
+    border: 1px solid var(--border-color); 
 }
 
 .label {
     padding-left: 20px;
+}
+
+span {
+    color: var(--blue-color);
 }
