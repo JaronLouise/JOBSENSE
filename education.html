@@ -7,62 +7,77 @@
     <link rel="stylesheet" href="css/education.css">
 </head>
 <body>
-    <div class="content">
-        <h1>Job Sequencing with Deadlines</h1>
-        <p>Job sequencing with deadlines is a problem that involves scheduling a set of jobs to maximize profit while adhering to their respective deadlines. This approach assumes that each job can be completed in exactly one unit of time. If jobs have different durations, a more advanced scheduling algorithm might be necessary. Also, if the deadlines are represented as relative time (e.g., time units after job release), the algorithm would require adjustments accordingly.</p>
-        <h2>What is Job Sequencing with Deadlines?</h2>
-        <p>The prime objective of the Job Sequencing with Deadlines algorithm is to complete the given order of jobs within respective deadlines, resulting in the highest possible profit. To achieve this, we are given a number of jobs, each associated with a specific deadline, and completing a job before its deadline earns us a profit. The challenge is to arrange these jobs in a way that maximizes our total profit.</p>
-        <p>It is not always possible to complete all of the assigned jobs within the deadlines. For each job, denoted as Ji, we have a deadline di and a profit pi associated with completing it on time. Our objective is to find the best solution that maximizes profit while still ensuring that the jobs are completed within their deadlines.</p>
-        <h3>Problem Setup</h3>
-        <p>You’re given a list of jobs, where each job has a unique identifier (job_id), a deadline (by which the job should be completed), and a profit value (the benefit you gain by completing the job).</p>
-        <h3>Sort the Jobs by Profit</h3>
-        <p>To ensure we consider jobs with higher profits first, sort the jobs in non-increasing order based on their profit values.</p>
-        <h3>Initialize the Schedule and Available Time Slots</h3>
-        <p>Set up an array to represent the schedule. Initialize all elements to -1, indicating that no job has been assigned to any time slot. Also, create a boolean array to represent the availability of time slots, with all elements set to true initially.</p>
-        <h3>Assign Jobs to Time Slots</h3>
-        <p>Go through the sorted jobs one by one. For each job, find the latest available time slot just before its deadline. If such a time slot is available, assign the job to that slot. If not, skip the job.</p>
-        <h3>Calculate Total Profit and Scheduled Jobs</h3>
-        <p>Sum up the profits of all the scheduled jobs to get the total profit. Additionally, keep track of which job is assigned to each time slot.</p>
-        <h3>Output the Results</h3>
-        <p>Finally, display the total profit achieved and the list of jobs that have been scheduled.</p>
-        <h3>Job Sequencing with Deadlines algorithm</h3>
-        <p>Given jobs J(i) with deadline D(i) and profit P(i) for 0≤i≤1, these jobs are arranged in descending order of profit p1⩾p2⩾p3⩾…⩾pn.</p>
-        <h2>Examples of Job Sequencing with Deadlines</h2>
-        <p>In the given job sequencing problem, we need to determine the optimal job sequence within their deadlines to achieve maximum profit. Each job is characterized by a deadline and a profit. Our goal is to find the most profitable combination of jobs that meet their respective deadlines.</p>
-        <!--Insert Image Example-->
-        <p>We want to find the optimal sequence of jobs to perform, considering their deadlines, in order to maximize the total profit. So, we’ll arrange the profits in descending order:</p>
-        <!--Insert Image Example-->
-        <p>Job 1 (100) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
-        <p>Job 5 (90) can be assigned to the deadline 3 (at index 2) since it’s the highest possible deadline available.</p>
-        <p>Job 3 (75) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
-        <p>Job 4 (80) can’t be assigned as the only available slots have deadlines 2 and 3, both occupied.</p>
-        <p>Job 2 (50) can’t be assigned as all slots with deadlines 2 and 3 are occupie</p>
-        <p>The total profit obtained by scheduling the selected jobs is <strong>100 + 90 + 75 = 265.</strong></p>
-        <p>The sequence of jobs that are scheduled: Job 1, Job 5, and Job 3.</p>
-        <p>The optimal sequence of jobs, considering their deadlines, that maximizes the total profit is Job 1, Job 5, and Job 3, with a total profit of 265.</p>
-        <!--Insert implementation-->
-        
-        <h2>Frequently Asked Questions on Job Sequencing with Deadlines</h2>
-        <h3>Q1 What is the Job Sequencing with Deadlines problem?</h3>
-        <p>The Job Sequencing with Deadlines problem involves scheduling a set of jobs to maximize profit while adhering to their respective deadlines. Each job has a deadline and a profit, and the goal is to find the best arrangement of jobs that yields the highest total profit within the given time constraints.</p>
-        <h3>Q2 How is the Job Sequencing with Deadlines algorithm structured?</h3>
-        <p>The algorithm can be broken down into the following steps:</p>
-        <ul>
-            <li>Sort the jobs in non-increasing order based on their profits.</li>
-            <li>Initialize the schedule and available time slots.</li>
-            <li>Assign jobs to time slots based on their deadlines and availability.</li>
-            <li>Calculate the total profit and track the scheduled jobs.</li>
-            <li>Output the final results, including the total profit and the list of scheduled jobs.</li>
-        </ul>
-        <h3>Q3 What if some jobs cannot be completed within their deadlines?</h3>
-        <p>The Job Sequencing with Deadlines algorithm aims to maximize profit while respecting deadlines. If some jobs cannot be completed within their deadlines, they are skipped during the scheduling process to meet the time constraints of higher-priority jobs.</p>
-        <h3>Q4 How does the Greedy method apply to Job Sequencing with Deadlines?</h3>
-        <p>The Greedy method is often used to solve the Job Sequencing with Deadlines problem. It involves selecting jobs based on their profitability and deadline constraints. By arranging the jobs in descending order of profit, the Greedy method can achieve an optimal sequence of jobs that maximizes the total profit while considering deadline limitations.</p>
-        <h3>Q5 Can the Job Sequencing with Deadlines algorithm handle jobs with different durations?</h3>
-        <p>The basic Job Sequencing with Deadlines algorithm assumes that each job requires exactly one unit of time to complete. If jobs have different durations, a more advanced scheduling algorithm would be necessary to accommodate varying processing times</p>
-    </div>
-    <div class="progress-bar">
-        <span id="progress-text">0%</span>
+    <div class="container">
+        <div class="row">
+            <div class="col col-1">
+                <div class="content">
+                    <h1>Job Sequencing with Deadlines</h1>
+                    <p>Job sequencing with deadlines is a problem that involves scheduling a set of jobs to maximize profit while adhering to their respective deadlines. This approach assumes that each job can be completed in exactly one unit of time. If jobs have different durations, a more advanced scheduling algorithm might be necessary. Also, if the deadlines are represented as relative time (e.g., time units after job release), the algorithm would require adjustments accordingly.</p>
+                    <h2>What is Job Sequencing with Deadlines?</h2>
+                    <p>The prime objective of the Job Sequencing with Deadlines algorithm is to complete the given order of jobs within respective deadlines, resulting in the highest possible profit. To achieve this, we are given a number of jobs, each associated with a specific deadline, and completing a job before its deadline earns us a profit. The challenge is to arrange these jobs in a way that maximizes our total profit.</p>
+                    <p>It is not always possible to complete all of the assigned jobs within the deadlines. For each job, denoted as Ji, we have a deadline di and a profit pi associated with completing it on time. Our objective is to find the best solution that maximizes profit while still ensuring that the jobs are completed within their deadlines.</p>
+                    <h3>Problem Setup</h3>
+                    <p>You’re given a list of jobs, where each job has a unique identifier (job_id), a deadline (by which the job should be completed), and a profit value (the benefit you gain by completing the job).</p>
+                    <h3>Sort the Jobs by Profit</h3>
+                    <p>To ensure we consider jobs with higher profits first, sort the jobs in non-increasing order based on their profit values.</p>
+                    <h3>Initialize the Schedule and Available Time Slots</h3>
+                    <p>Set up an array to represent the schedule. Initialize all elements to -1, indicating that no job has been assigned to any time slot. Also, create a boolean array to represent the availability of time slots, with all elements set to true initially.</p>
+                    <h3>Assign Jobs to Time Slots</h3>
+                    <p>Go through the sorted jobs one by one. For each job, find the latest available time slot just before its deadline. If such a time slot is available, assign the job to that slot. If not, skip the job.</p>
+                    <h3>Calculate Total Profit and Scheduled Jobs</h3>
+                    <p>Sum up the profits of all the scheduled jobs to get the total profit. Additionally, keep track of which job is assigned to each time slot.</p>
+                    <h3>Output the Results</h3>
+                    <p>Finally, display the total profit achieved and the list of jobs that have been scheduled.</p>
+                    <h3>Job Sequencing with Deadlines algorithm</h3>
+                    <p>Given jobs J(i) with deadline D(i) and profit P(i) for 0≤i≤1, these jobs are arranged in descending order of profit p1⩾p2⩾p3⩾…⩾pn.</p>
+                    <h2>Examples of Job Sequencing with Deadlines</h2>
+                    <p>In the given job sequencing problem, we need to determine the optimal job sequence within their deadlines to achieve maximum profit. Each job is characterized by a deadline and a profit. Our goal is to find the most profitable combination of jobs that meet their respective deadlines.</p>
+                    <!--Insert Image Example-->
+                    <p>We want to find the optimal sequence of jobs to perform, considering their deadlines, in order to maximize the total profit. So, we’ll arrange the profits in descending order:</p>
+                    <!--Insert Image Example-->
+                    <p>Job 1 (100) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
+                    <p>Job 5 (90) can be assigned to the deadline 3 (at index 2) since it’s the highest possible deadline available.</p>
+                    <p>Job 3 (75) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
+                    <p>Job 4 (80) can’t be assigned as the only available slots have deadlines 2 and 3, both occupied.</p>
+                    <p>Job 2 (50) can’t be assigned as all slots with deadlines 2 and 3 are occupie</p>
+                    <p>The total profit obtained by scheduling the selected jobs is <strong>100 + 90 + 75 = 265.</strong></p>
+                    <p>The sequence of jobs that are scheduled: Job 1, Job 5, and Job 3.</p>
+                    <p>The optimal sequence of jobs, considering their deadlines, that maximizes the total profit is Job 1, Job 5, and Job 3, with a total profit of 265.</p>
+                    <!--Insert implementation-->
+                    
+                    <h2>Frequently Asked Questions on Job Sequencing with Deadlines</h2>
+                    <h3>Q1 What is the Job Sequencing with Deadlines problem?</h3>
+                    <p>The Job Sequencing with Deadlines problem involves scheduling a set of jobs to maximize profit while adhering to their respective deadlines. Each job has a deadline and a profit, and the goal is to find the best arrangement of jobs that yields the highest total profit within the given time constraints.</p>
+                    <h3>Q2 How is the Job Sequencing with Deadlines algorithm structured?</h3>
+                    <p>The algorithm can be broken down into the following steps:</p>
+                    <ul>
+                        <li>Sort the jobs in non-increasing order based on their profits.</li>
+                        <li>Initialize the schedule and available time slots.</li>
+                        <li>Assign jobs to time slots based on their deadlines and availability.</li>
+                        <li>Calculate the total profit and track the scheduled jobs.</li>
+                        <li>Output the final results, including the total profit and the list of scheduled jobs.</li>
+                    </ul>
+                    <h3>Q3 What if some jobs cannot be completed within their deadlines?</h3>
+                    <p>The Job Sequencing with Deadlines algorithm aims to maximize profit while respecting deadlines. If some jobs cannot be completed within their deadlines, they are skipped during the scheduling process to meet the time constraints of higher-priority jobs.</p>
+                    <h3>Q4 How does the Greedy method apply to Job Sequencing with Deadlines?</h3>
+                    <p>The Greedy method is often used to solve the Job Sequencing with Deadlines problem. It involves selecting jobs based on their profitability and deadline constraints. By arranging the jobs in descending order of profit, the Greedy method can achieve an optimal sequence of jobs that maximizes the total profit while considering deadline limitations.</p>
+                    <h3>Q5 Can the Job Sequencing with Deadlines algorithm handle jobs with different durations?</h3>
+                    <p>The basic Job Sequencing with Deadlines algorithm assumes that each job requires exactly one unit of time to complete. If jobs have different durations, a more advanced scheduling algorithm would be necessary to accommodate varying processing times</p>
+                </div>
+                <div class="progress-bar">
+                    <span id="progress-text">0%</span>
+                </div>
+            </div>
+            <div class="col col-2">
+                <div class="card card-1">
+                    <iframe width="480" height="300" src="https://www.youtube.com/embed/zPtI8q9gvX8?si=WnJwULrTwETsDrfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="card card-2">
+                    <h3>More About Job Sequencing Problems</h3>
+                    <!--articles-->
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/education.js"></script>
 </body>
