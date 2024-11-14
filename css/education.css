@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: "PT Sans", sans-serif;
 }
 
 body {
@@ -78,7 +78,7 @@ h1, h2, h3, #progress-text{
 }
 
 .col-2 {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .progress-bar {
@@ -88,20 +88,21 @@ h1, h2, h3, #progress-text{
 
 .card {
     height: 330px;
-    margin-bottom: 20px; 
+    margin-bottom: 5px; 
 }
 
-.col-1, .card-1, .card-2 {
+.col-1, .card-1, article {
     background-color: var(--box-color);
     border: 1px solid var(--border-color); 
 }
 
-.card-1, .card-2 {
+.card-1, article {
     border-radius: 20px;
 }
 
 .card-2 {
-    padding-left: 20px;
+    width: 495px;
+    flex-direction: column;
 }
 
 .card-1 {
@@ -117,5 +118,21 @@ h1, h2, h3, #progress-text{
 }
 
 .card-2 h3 {
+    padding-left: 15px;
     color: var(--label-color);
+}
+
+article {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color:var(--label-color);
+}
+
+a:hover {
+    text-decoration: underline;
 }
