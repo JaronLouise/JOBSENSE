@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Sequencing Quiz</title>
     <link rel="stylesheet" href="css/quiz.css">
-    <!--sample font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Level Selection -->
     <div id="level-selection">
         <div class="row row-1">
             <h1>Job Sequencing Quiz (Greedy Method)</h1>
@@ -32,21 +31,19 @@
             </div>
         </div>
     </div>
-
+    <!-- Quiz Container -->
     <div id="quiz-container" style="display: none;">
         <div class="header">
-            <h2 id="quiz-title"></h2>
+            <h2 id="quiz-title">Question Title Here</h2>
         </div>
         <div class="problem">
-            <h3>Arrange the jobs in the correct order below: <br>
-                Arrange the jobs in the correct order below: <br>
-                Arrange the jobs in the correct order below: <br>
-            </h3>
+            <h3 id="problem-window"></h3>
         </div>
         <div class="list">
+            <!-- List of job elements to drag -->
             <div id="job-list" class="job-list"></div>
         </div>
-        <h3>Arrange the jobs in the correct order below:</h3>
+        <!-- Container for user's answer sequence -->
         <div id="answer-container" class="answer-container"></div>
         <div class="quiz-btn">
             <button class="reset" id="reset-button">Reset</button>
@@ -54,9 +51,19 @@
         </div>
         <p id="result"></p>
     </div>
-    <script type="module" src="/js/quiz.js" ></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+
+    <!-- Display final score -->
+    <div id="final-score" style="display: none;">
+        <h2>Your Score: <span id="total-score"></span></h2>
+        <button onclick="window.location.reload()">Restart Quiz</button>
+    </div>
+
+    <!-- Firebase and JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <!-- Quiz logic -->
+    <script src="/js/quiz.js" type="text/javascript"tpe="module"></script>
 </body>
 </html>
