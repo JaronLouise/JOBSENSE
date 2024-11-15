@@ -1,16 +1,22 @@
-document.addEventListener('scroll', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.content');
     const progressText = document.getElementById('progress-text');
 
-    // Calculate the scroll percentage
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    content.addEventListener('scroll', () => {
+        // Calculate the scroll percentage within the .content element
+        const scrollTop = content.scrollTop;
+        const scrollHeight = content.scrollHeight - content.clientHeight;
+        
+        // Ensure scrollHeight doesn't become 0 (which can happen if the content is too short)
+        if (scrollHeight <= 0) return;
 
-    // Update the progress text
-    if (scrollPercent >= 100) {
-        progressText.textContent = 'Lesson Completed!';
-    } else {
-        progressText.textContent = `${Math.floor(scrollPercent)}%`;
-    }
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+        // Update the progress text
+        if (scrollPercent >= 100) {
+            progressText.textContent = 'Lesson Completed!';
+        } else {
+            progressText.textContent = `${Math.floor(scrollPercent)}%`;
+        }
+    });
 });
