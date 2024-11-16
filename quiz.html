@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="navbar-container"  style="margin-left: 100px;"></div>
     <!-- Level Selection -->
     <div id="level-selection">
         <div class="row row-1">
@@ -63,6 +64,25 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
+    <script>
+        // Load navbar.html content
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbarContainer = document.getElementById('navbar-container');
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    navbarContainer.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading navbar:', error);
+                });
+        });
+    </script>
     <!-- Quiz logic -->
     <script src="/js/quiz.js" type="text/javascript"tpe="module"></script>
 </body>
