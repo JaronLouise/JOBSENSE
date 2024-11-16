@@ -182,6 +182,13 @@ async function checkAnswer() {
     const selectedSequence = [...answerContainer.querySelectorAll('.job')].map(job => job.dataset.name);
     const currentQuestion = questions[currentQuestionIndex];
 
+        // Check if the answer container is empty (no jobs inside)
+    if (answerContainer.children.length === 0) {
+        // If the container is empty, display an alert or message
+        alert("Please place your answer in the container before checking!");
+        return;  // Exit the function without checking the answer
+    }
+    
     console.log('Selected Sequence:', selectedSequence);
     console.log('Correct Sequence:', currentQuestion.correctSequence);
 
