@@ -13,33 +13,68 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// Get elements for displaying user profile
+// Get elements for displaying and editing user profile
+const nameElement = document.getElementById('name');
 const usernameElement = document.getElementById('username');
+const editUsernameInput = document.getElementById('edit-username');
+const editButton = document.getElementById('edit-button');
+const saveButton = document.getElementById('save-button');
 const emailElement = document.getElementById('email');
 const logoutButton = document.getElementById('logout-button');
 
 // Listen for authentication state changes
 auth.onAuthStateChanged(async (user) => {
     if (user) {
-        // User is signed in, retrieve their profile info from Firestore
         try {
             const userDoc = await db.collection('users').doc(user.uid).get();
             if (userDoc.exists) {
                 const userData = userDoc.data();
+                nameElement.textContent = userData.name || 'Not provided';
                 usernameElement.textContent = userData.username || 'Not provided';
+                editUsernameInput.value = userData.username || '';
                 emailElement.textContent = user.email;
             } else {
+                nameElement.textContent = 'User data not found';
                 usernameElement.textContent = 'User data not found';
                 emailElement.textContent = 'User data not found';
             }
         } catch (error) {
             console.error('Error retrieving user data:', error);
+            nameElement.textContent = 'Error loading data';
             usernameElement.textContent = 'Error loading data';
             emailElement.textContent = 'Error loading data';
         }
     } else {
-        // User is not signed in, redirect to the login page
         window.location.href = 'login.html';
+    }
+});
+
+// Edit button click handler
+editButton.addEventListener('click', () => {
+    editUsernameInput.style.display = 'inline-block';
+    usernameElement.style.display = 'none';
+    editButton.style.display = 'none';
+    saveButton.style.display = 'inline-block';
+});
+
+// Save button click handler
+saveButton.addEventListener('click', async () => {
+    const newUsername = editUsernameInput.value.trim();
+    if (auth.currentUser && newUsername) {
+        try {
+            await db.collection('users').doc(auth.currentUser.uid).update({ username: newUsername });
+            usernameElement.textContent = newUsername;
+            editUsernameInput.style.display = 'none';
+            usernameElement.style.display = 'inline';
+            editButton.style.display = 'inline-block';
+            saveButton.style.display = 'none';
+            console.log('Username updated successfully');
+        } catch (error) {
+            console.error('Error updating username:', error);
+            alert('Failed to update username');
+        }
+    } else {
+        alert('Username cannot be empty');
     }
 });
 
