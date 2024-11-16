@@ -13,7 +13,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 350px; /* Increased width for better layout */
     text-align: center;
 }
 
@@ -25,16 +25,45 @@ h1 {
     margin: 10px 0;
 }
 
+/* Styling for buttons */
 button {
     padding: 10px 15px;
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* Styling for the input field */
+#edit-username {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 5px;
+    width: 60%; /* Adjusted for better spacing */
+}
+
+/* Hide save button initially */
+#save-button {
+    margin-left: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 400px) {
+    .profile-container {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    #edit-username {
+        width: 80%; /* Adjust width for smaller screens */
+    }
 }
