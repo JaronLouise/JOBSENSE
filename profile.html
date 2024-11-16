@@ -10,7 +10,14 @@
     <div class="profile-container">
         <h1>User Profile</h1>
         <div id="profile-info">
-            <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+            <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+            <p>
+                <strong>Username:</strong>
+                <span id="username">Loading...</span>
+                <input type="text" id="edit-username" style="display: none;">
+                <button id="edit-button">Edit</button>
+                <button id="save-button" style="display: none;">Save</button>
+            </p>
             <p><strong>Email:</strong> <span id="email">Loading...</span></p>
         </div>
         <button id="logout-button">Logout</button>
