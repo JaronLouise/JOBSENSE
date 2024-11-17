@@ -1,69 +1,150 @@
+:root {
+    --green-color: #31943b; /* Dark Green */
+    --gray-color: #b3b3b3;  /* Light Gray */
+    --white-color: #ffffff; /* White */
+    --black-color: #000000; /* Black */
+    --font-primary: 'Roboto', sans-serif;
+}
+
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: var(--font-primary);
+    background-color: var(--gray-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: var(--black-color);
 }
 
+/* Profile container styling */
 .profile-container {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 350px; /* Increased width for better layout */
+    background-color: var(--white-color);
+    border-radius: 20px; /* Larger radius for smoother edges */
+    padding: 50px 70px; /* Larger padding for more space */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 750px; /* Increased width for a wider layout */
     text-align: center;
+    border: 1px solid var(--gray-color);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styling */
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Larger space from profile info */
+    color: var(--green-color);
+    font-size: 48px; /* Larger font size */
+    font-weight: 700;
 }
 
+/* Profile information */
 #profile-info p {
-    margin: 10px 0;
+    margin: 20px 0;
+    color: var(--black-color);
+    font-size: 24px; /* Much larger font size */
+    line-height: 1.8; /* Increased line-height for better spacing */
 }
 
-/* Styling for buttons */
+/* Button styling */
 button {
-    padding: 10px 15px;
-    margin-top: 15px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 18px 30px; /* Larger padding */
+    margin-top: 25px;
+    background: var(--green-color);
+    color: var(--white-color);
     border: none;
-    border-radius: 5px;
+    border-radius: 35px; /* Larger border-radius for rounded buttons */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 22px; /* Larger font size */
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #287b2a; /* Slightly darker green */
+    transform: scale(1.05);
 }
 
-/* Styling for the input field */
+/* Input field */
 #edit-username {
     display: inline-block;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-left: 5px;
-    width: 60%; /* Adjusted for better spacing */
+    padding: 16px;
+    border: 1px solid var(--gray-color);
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 80%; /* Adjusted width for more space */
+    font-size: 20px; /* Larger font size */
+    background-color: var(--white-color);
+    color: var(--black-color);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Hide save button initially */
+/* Save button */
 #save-button {
-    margin-left: 5px;
+    margin-left: 10px;
+    background-color: var(--green-color);
+    border-radius: 35px;
+}
+
+#save-button:hover {
+    background-color: #287b2a;
+}
+
+/* Logout button */
+#logout-button {
+    background: var(--green-color);
+    margin-top: 40px;
+    border-radius: 35px;
+    font-size: 22px; /* Larger font size */
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#logout-button:hover {
+    background: #287b2a;
 }
 
 /* Responsive design */
-@media (max-width: 400px) {
+@media (max-width: 768px) {
     .profile-container {
-        width: 90%;
-        padding: 15px;
+        width: 90%; /* Decrease container width for smaller screens */
+        padding: 40px 50px;
     }
-    
+
+    h1 {
+        font-size: 40px;
+    }
+
     #edit-username {
-        width: 80%; /* Adjust width for smaller screens */
+        width: 80%;
+    }
+
+    #profile-info p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        width: 90%; /* Adjust container width for mobile */
+        padding: 25px 35px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    #edit-username {
+        width: 80%; /* Keep input width adjusted */
+    }
+
+    #profile-info p {
+        font-size: 18px; /* Adjust font size for smaller screens */
     }
 }
