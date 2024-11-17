@@ -1,3 +1,21 @@
+// Load navbar.html content
+document.addEventListener('DOMContentLoaded', () => {
+    const navbarContainer = document.getElementById('navbar-container');
+    fetch('navbar.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            navbarContainer.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+        });
+});
+
 // Import the necessary Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -32,7 +50,7 @@ onAuthStateChanged(auth, async (user) => {
                 const userData = userDoc.data();
                 const username = userData.username || "User"; // Fallback if username is missing
                 // Display user name in the welcome message
-                document.querySelector('#welcome-message').innerHTML = `Welcome <span class="username">${username}</span>!`;
+                document.querySelector('#welcome-message').innerHTML = `Welcome <span class="username">${username}!</span>`;
 
                 // Fetch and display the streak data
                 await fetchStreakData(user);
@@ -118,6 +136,14 @@ class Calendar {
         // Set month and year in header
         this.monthDisplay.textContent = `${this.months[this.currentMonth]} ${this.currentYear}`;
 
+        const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        daysOfWeek.forEach(day => {
+            const dayHeader = document.createElement('div');
+            dayHeader.className = 'weekday';
+            dayHeader.textContent = day;
+            this.calendarGrid.appendChild(dayHeader);
+        });
+        
         // Get first day of the month and total days
         const firstDayOfMonth = new Date(this.currentYear, this.currentMonth, 1).getDay();
         const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
