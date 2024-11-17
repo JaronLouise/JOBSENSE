@@ -7,47 +7,31 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
  
 </head>
 <body>
-      <div id="navbar-container"></div>
-
-
-    <!-- Main Content -->
-
-
-    <div class="container" style="margin-left: 100px;">
-        <div class="col col-1">
-            <div class="main-header">
-                <h1 id="welcome-message">Welcome user!</h1>
+    <div id="navbar-container"></div>
+    <div class="container">
+        <div class="row row-1">
+            <div class="col col-1">
+                <div class="main-header">
+                    <h1 id="welcome-message">Welcome user!</h1>
+                    <div class="mh-graphics"></div>
+                </div>
             </div>
-            <div class="menu">
-                <b>Menu</b>
-            </div>
-            <div class="list-item" onclick="location.href='education.html'">
-                <p class="label">Learn about Job Sequencing</p>
-                <div class="list-item-button"></div>
-            </div>
-            <div class="list-item" onclick="location.href='simulation.html'">
-                <p class="label">Job Sequencing Simulator</p>
-                <div class="list-item-button"></div>
-            </div>
-            <div class="list-item" onclick="location.href='quiz.html'">
-                <p class="label">Job Sequencing Challenge</p>
-                <div class="list-item-button"></div>
-            </div>
-        </div>
-        <div class="col col-2">
-            <div class="row">
+            <div class="col col-2">
                 <div class="top-square">
                     <div class="stats-container">
                         <h3>Current Streak</h3>
                         <p id="currentStreak">0 days</p>
                     </div>
                 </div>
+            </div>
+            <div class="col col-3">
                 <div class="top-square">
                     <div class="stats-container">
                         <h3>Best Streak</h3>
@@ -55,55 +39,60 @@
                     </div>
                 </div>
             </div>
-            <div class="calendar-card">
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                        <button id="prevMonth">&lt;</button>
-                        <h2 id="monthDisplay"></h2>
-                        <button id="nextMonth">&gt;</button>
-                    </div>
-                    <div class="calendar-grid">
-                        <div class="weekday">Sun</div>
-                        <div class="weekday">Mon</div>
-                        <div class="weekday">Tue</div>
-                        <div class="weekday">Wed</div>
-                        <div class="weekday">Thu</div>
-                        <div class="weekday">Fri</div>
-                        <div class="weekday">Sat</div>
-                    </div>
+        </div>
+        <div class="row row-2">
+            <div class="col col-1">
+                <div class="menu">
+                    <b>Menu</b>
+                </div>
+                <div class="list-item" onclick="location.href='education.html'">
+                    <p class="label">Learn about Job Sequencing</p>
+                    <div class="list-item-button"></div>
+                </div>
+                <div class="list-item" onclick="location.href='simulation.html'">
+                    <p class="label">Job Sequencing Simulator</p>
+                    <div class="list-item-button"></div>
+                </div>
+                <div class="list-item" onclick="location.href='quiz.html'">
+                    <p class="label">Job Sequencing Challenge</p>
+                    <div class="list-item-button"></div>
                 </div>
             </div>
-            <div class="card">
-                <div class="achievement-container">
-                    <h3>Recent Achievements</h3>
-                    <div id="achievements-list">
-                        <!-- Achievements will be populated by JavaScript -->
+            <div class="col col-2">
+                <div class="row row-2-1">
+                    <div class="calendar-card" colspan="2">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button id="prevMonth">&lt;</button>
+                                <h2 id="monthDisplay"></h2>
+                                <button id="nextMonth">&gt;</button>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="weekday">Sun</div>
+                                <div class="weekday">Mon</div>
+                                <div class="weekday">Tue</div>
+                                <div class="weekday">Wed</div>
+                                <div class="weekday">Thu</div>
+                                <div class="weekday">Fri</div>
+                                <div class="weekday">Sat</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-2-2">
+                    <div class="card">
+                        <div class="icons">
+                            <p class="icons-text">
+                                <a href="https://github.com/your-team-name" target="_blank" class="github-link">
+                                    <i class="fab fa-github"></i>JOBSENSE by TeamName
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        // Load navbar.html content
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbarContainer = document.getElementById('navbar-container');
-            fetch('navbar.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    navbarContainer.innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Error loading navbar:', error);
-                });
-        });
-    </script>
-
-
     <script src="js/home.js" type="module" defer></script>
 </body>
 </html>
