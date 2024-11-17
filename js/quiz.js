@@ -232,6 +232,7 @@ async function checkAnswer() {
 
     // Check if the answer container is empty (no jobs inside)
     if (answerContainer.children.length === 0) {
+        // If the container is empty, display an alert or message
         alert("Please place your answer in the container before checking!");
         return;  // Exit the function without checking the answer
     }
@@ -243,12 +244,9 @@ async function checkAnswer() {
         document.getElementById('result').innerText = 'Correct!';
         currentScore++;
     } else {
-        // Display the correct sequence as an alert if the answer is incorrect
-        alert(`Incorrect! The correct sequence is: ${currentQuestion.correctSequence.join(', ')}`);
         document.getElementById('result').innerText = 'Incorrect. Try again!';
     }
 
-    // Reset the answer container and move to the next question after a short delay
     setTimeout(() => {
         document.getElementById('result').innerText = '';
         answerContainer.innerHTML = '';
@@ -276,22 +274,6 @@ async function nextQuestion() {
         document.getElementById('total-score').innerText = currentScore;
         document.getElementById('quiz-container').style.display = 'none';
         document.getElementById('final-score').style.display = 'block';
-         // Display a custom feedback message based on the final score
-         let feedbackMessage = '';
-         if (currentScore === 3) {
-             feedbackMessage = "Perfect! You aced the quiz!";
-         } else if (currentScore === 2) {
-             feedbackMessage = "Almost there! Great effort!";
-         } else if (currentScore === 1) {
-             feedbackMessage = "Try again next time! Don't give up, practice makes perfect.";
-         } else {
-             feedbackMessage = "Keep practicing and you'll get better!";
-         }
- 
-         // Display the feedback message in an alert or on the page
-         alert(feedbackMessage);
-         document.getElementById('feedback-message').innerText = feedbackMessage; // Assuming there's an element for feedback
-
         saveScoreToFirebase(currentScore, selectedDifficulty);
         await handleQuizCompletion(); // Update streak after quiz completion
     }
