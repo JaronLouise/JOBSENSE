@@ -1,8 +1,7 @@
 /*LILINISIN KO PA TO HAHAHAHA, PATI YUNG IBA*/
 :root {
     --box-color: #eee;
-    --dark-blue-color-2: #074173;
-    --btn-hover: #1679AB;
+    --green-color:  #31943b;
     --bg-color: #ffffff;
     --body-color: #f4f4f9;
     --label-color: #555;
@@ -28,10 +27,11 @@ body {
 #quiz-container {
     margin: 0 auto;
     display: flex;
+    justify-content: space-between;
 }
 
 .job {
-    background-color: var(--dark-blue-color-2);
+    background-color: var(--green-color);
 }
 
 .job-list, .answer-container {
@@ -46,13 +46,13 @@ body {
     margin: 5px;
     border-radius: 10px;
     color: var(--bg-color);
-    background-color: var(--dark-blue-color-2);
+    background-color: var(--green-color);
     cursor: grab;
     user-select: none;
 }
 
 .job:hover, .answer-job:hover {
-    background-color: var(--btn-hover);
+    background: linear-gradient(45deg, #31943b, #45d16a);
 }
 
 .job.dragging {
@@ -62,14 +62,14 @@ body {
 .answer-container {
     width: 1000px;
     height: 120px;
-    border: 3px dashed var(--label-color);
+    border: 3px dashed var(--green-color);
     border-radius: 10px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .answer-job {
@@ -79,7 +79,7 @@ body {
 button {
     margin-top: 5px;
     padding: 10px 20px;
-    background-color: var(--dark-blue-color-2);
+    background-color: var(--green-color);
     color: white;
     font-size: 18px;
     border: none;
@@ -87,7 +87,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--btn-hover);
+    background: linear-gradient(45deg, #31943b, #45d16a); /* Use background for gradients */
 }
 
 #level-selection {
@@ -95,6 +95,10 @@ button:hover {
     height: 500px;
     margin: 0 auto;
     gap: 15px;
+}
+
+.level {
+    object-fit: cover;
 }
 
 .row-1{
@@ -120,8 +124,7 @@ button:hover {
 }
 
 h1, h2 {
-    color: var(--dark-blue-color-2);
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3); 
+    color: var(--green-color);
 }
 
 .btn {
@@ -147,13 +150,14 @@ img {
 }
 
 .reset, .check {
-    background-color: var(--btn-hover);
+    background-color: var(--green-color);
     width: 200px;
     border-radius: 10px;
 }
 
 .reset:hover, .check:hover {
-    background-color: var(--dark-blue-color-2);
+    background: linear-gradient(45deg, #31943b, #45d16a); /* Use background for gradients */
+
 }
 
 .problem, .list, .answer-container {
@@ -168,7 +172,9 @@ img {
 
 .problem {
     padding-top: 5px;
-    height: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 200px;
     margin-bottom: 10px;
 }
 
@@ -179,7 +185,6 @@ img {
     justify-content: center; /* Centers the job-list horizontally */
     background-color: var(--box-color);
     width: 1025px;
-    margin: 0 auto;
     border-radius: 20px;
 }
 
@@ -188,7 +193,6 @@ img {
     width: 180px;
     height: 80px;
     margin: 0 10px;
-    border: 2px dashed var(--label-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,7 +216,7 @@ img {
     width: 180px;
     text-align: center;
     font-weight: bold;
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
     margin: 0 10px;
 }
 
