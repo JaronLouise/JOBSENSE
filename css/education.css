@@ -1,5 +1,5 @@
 :root {
-    --dark-blue-color-2: #074173;
+    --green-color:  #31943b;
     --btn-hover: #1679AB;
     --input-field-color: #eee;
     --bg-color: #ffffff;
@@ -10,7 +10,7 @@
 }
 
 * {
-    font-family: "PT Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 }
 
 h1, h2, h3, #progress-text{
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
 }
 
 .progress-bar, .container, .row, .col-2, .card, .card-1 {
@@ -49,8 +49,8 @@ h1, h2, h3, #progress-text{
 .progress-bar {
     position: absolute;
     height: 30px;
-    background-color: var(--input-field-color);
-    border-top: 2px solid var(--dark-blue-color-2);
+    background-color: var(--box-color);
+    border-top: 2px solid var(--green-color);
 }
 
 #progress-text {
@@ -77,10 +77,6 @@ h1, h2, h3, #progress-text{
     flex-direction: column;
 }
 
-.col-2 {
-    margin-top: 10px;
-}
-
 .progress-bar {
     align-items: center;
     justify-content: center;
@@ -88,10 +84,9 @@ h1, h2, h3, #progress-text{
 
 .card {
     height: 330px;
-    margin-bottom: 5px; 
 }
 
-.col-1, .card-1, article {
+.col-1, article {
     background-color: var(--box-color);
     border: 1px solid var(--border-color); 
 }
@@ -108,7 +103,6 @@ h1, h2, h3, #progress-text{
 .card-1 {
     justify-content: center;
     align-items: center;
-    padding: 20px; /* Optional: adjust padding as needed */
     box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
@@ -119,7 +113,11 @@ h1, h2, h3, #progress-text{
 
 .card-2 h3 {
     padding-left: 15px;
-    color: var(--label-color);
+    color: var(--green-color);
+}
+
+h3 {
+    margin: 0;
 }
 
 article {
@@ -135,4 +133,10 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: var(--green-color);
+}
+
+iframe {
+    width: 500px;
+    height: 300px;
 }
