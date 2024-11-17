@@ -27,23 +27,29 @@ async function sleep(ms) {
 }
 
 async function calculateJobSequence() {
-    const numJobs = parseInt(document.getElementById("numJobs").value);
+    const jobRows = document.querySelectorAll('#jobDetails tr');
     const jobs = [];
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = "<h2>Job Sequencing Steps:</h2>";
 
-    // Collect and validate job data
-    for (let i = 1; i <= numJobs; i++) {
-        const jobId = document.getElementById(`job${i}`).value;
-        const profit = parseInt(document.getElementById(`profit${i}`).value);
-        const deadline = parseInt(document.getElementById(`deadline${i}`).value);
+    // Iterate over each row and get job data
+    jobRows.forEach((row, index) => {
+        const inputs = row.querySelectorAll('input');
+        const jobId = inputs[0].value;
+        const profit = parseInt(inputs[1].value);
+        const deadline = parseInt(inputs[2].value);
 
         if (jobId && profit > 0 && deadline > 0) {
             jobs.push({ id: jobId, profit: profit, deadline: deadline });
         } else {
-            alert(`Please fill out all fields for Job ${i} with valid values.`);
+            alert(`Please fill out all fields for Job ${index + 1} with valid values.`);
             return;
         }
+    });
+
+    if (jobs.length === 0) {
+        alert("No valid job data provided.");
+        return;
     }
 
     // Sort jobs by profit in descending order
@@ -67,16 +73,15 @@ async function calculateJobSequence() {
         await sleep(1000);
 
         let slotFound = false;
-        // Find the latest available slot before deadline
         for (let j = job.deadline - 1; j >= 0; j--) {
             if (result[j] === null) {
                 resultDiv.innerHTML += `
-                    <p>The last empty slot available for ${job.id} before deadline is slot ${j}-${j+1}</p>
+                    <p>The last empty slot available for ${job.id} before deadline is slot ${j}-${j + 1}</p>
                 `;
                 result[j] = job;
                 totalProfit += job.profit;
                 slotFound = true;
-                
+
                 // Show updated timeline after assignment
                 await visualizeTimelineStep(result, maxDeadline, j, resultDiv);
                 await sleep(1000);
@@ -102,6 +107,7 @@ async function calculateJobSequence() {
         </div>
     `;
 }
+
 
 async function visualizeTimelineStep(result, maxDeadline, highlightSlot, container) {
     const timelineDiv = document.createElement('div');
