@@ -1,7 +1,6 @@
 /* REGISTER & LOGIN CSS */
 :root {
-    --dark-blue-color-2: #074173;
-    --btn-hover: #1679AB;
+    --green-color:  #31943b;
     --input-field-color: #eee;
     --bg-color: #ffffff;
     --body-color: #f4f4f9;
@@ -27,14 +26,17 @@ body {
     display: flex;
     background-color: var(--bg-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
     text-align: center;
     gap: 15px;
 }
 
+.container, .logreg-img {
+    border-radius: 10px;
+}
+
 h2 {
     margin-bottom: 20px;
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
 }
 
 form {
@@ -49,32 +51,36 @@ label {
     color: var(--label-color);
 }
 
-input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"] {
+    width: 100%; /* Ensures full width for all input types */
     padding: 8px;
+    padding-right: 40px; /* Space for the icon */
     margin-bottom: 15px;
     border: none;
     border-radius: 10px;
     background-color: var(--input-field-color);
+    font-size: 1em; /* Ensures consistent text size */
+    box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
 button {
     width: 300px;
     padding: 10px;
-    background-color: var(--dark-blue-color-2);
+    background-color: var(--green-color);
     color: var(--bg-color);
-    font-weight: 600px;
+    font-weight: 600; /* Corrected the font-weight value */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: var(--btn-hover);
+    background: linear-gradient(45deg, #31943b, #45d16a); /* Use background for gradients */
 }
+
 
 p {
     margin-top: 15px;
@@ -82,24 +88,13 @@ p {
 }
 
 p a {
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
     text-decoration: none;
     font-weight: bold;
 }
 
 p a:hover {
     text-decoration: underline;
-}
-
-button {
-    padding: 10px;
-    background-color: var(--dark-blue-color-2);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .messageDiv{
@@ -151,20 +146,6 @@ small {
 img {
     width: 100%;
     height: 100%;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    width: 100%; /* Ensures full width for all input types */
-    padding: 8px;
-    padding-right: 40px; /* Space for the icon */
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 10px;
-    background-color: var(--input-field-color);
-    font-size: 1em; /* Ensures consistent text size */
-    box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
 .input-with-icon {
