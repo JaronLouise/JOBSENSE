@@ -5,20 +5,27 @@
     --box-color: #f4f4f4;
     --label-color: #555;
     --border-color: #ddd;
+    --green-color: #4CAF50;
+    --light-gray-color: #e6e6e6;
+
 }
+
 
 * {
     font-family: "Poppins", sans-serif;
 }
+
 
 body {
     margin: 30px;
     padding: 16px;
 }
 
+
 .main-header, .list-item, .container, .col-1, .col-2, .row {
     display: flex;
 }
+
 
 .main-header {
     height: 130px;
@@ -26,23 +33,28 @@ body {
     gap: 16px;
 }
 
+
 .main-header, .container, .col-1 {
     flex-grow: 1;
 }
+
 
 h1 {
     font-size: 40px;
 }
 
+
 #welcome-message{
     padding-top: 15px;
 }
+
 
 .top-square {
     width: 225px;
     height: 130px;
     border-radius: 4px;
 }
+
 
 .list-item {
     height: 105px;
@@ -51,6 +63,7 @@ h1 {
     align-items: center;
 }
 
+
 .container {
     margin-left: 150px;
     width: 1200px;
@@ -58,46 +71,473 @@ h1 {
     gap: 16px;
 }
 
+
 .col-2 {  
     width: 450px;
 }
+
 
 .col-1, .col-2 {
     gap: 15px;
     flex-direction: column;
 }
 
+
 .card {
     height: 200px;
 }
+
 
 .menu {
     font-size: 30px;
     color: var(--label-color);
 }
 
+
 .menu b{
     padding-left: 25px;
 }
+
 
 p {
     font-size: 23px;
 }
 
+
 .row {
     gap: 16px;
 }
 
+
 .main-header, .list-item, .top-square, .card {
     border-radius: 20px;
     background-color: var(--box-color);
-    border: 1px solid var(--border-color); 
+    border: 1px solid var(--border-color);
 }
+
 
 .label {
     padding-left: 20px;
 }
 
+
 span {
     color: var(--blue-color);
 }
+
+
+/* Stats Container Styles */
+.stats-container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.stats-container h3 {
+    color: var(--label-color);
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+}
+
+
+.stats-container p {
+    color: var(--blue-color);
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+/* Achievement Container Styles */
+.achievement-container {
+    padding: 20px;
+    height: 100%;
+}
+
+
+.achievement-container h3 {
+    color: var(--label-color);
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+}
+
+
+#achievements-list {
+    overflow-y: auto;
+    max-height: calc(100% - 40px);
+}
+
+
+.achievement-item {
+    padding: 8px;
+    margin-bottom: 8px;
+    background: rgba(22, 121, 171, 0.1);
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: var(--label-color);
+}
+
+
+/* Calendar Container Styles */
+.calendar-container {
+    padding: 15px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+.calendar-grid {
+   
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.calendar-header button {
+    background: var(--blue-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+.calendar-header button:hover {
+    background: var(--dark-blue-color-2);
+}
+
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--label-color);
+}
+
+
+.weekday {
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.8em;
+    color: var(--label-color);
+    padding: 5px 0;
+    background-color: #f0f0f0;
+}
+
+
+
+/* General Styles */
+.date {
+    text-align: center;
+    padding: 5px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    color: var(--label-color);
+}
+
+/* Empty dates */
+.date.empty {
+    visibility: hidden;
+}
+
+/* Current Day */
+.date.current {
+    background-color: var(--light-gray-color);
+    color: var(--label-color);
+}
+
+/* Completed Dates */
+.date.completed {
+    background-color: var(--green-color);
+    color: white;
+}
+
+/* Completed Current Day */
+.date.completed-today {
+    background-color: var(--blue-color);
+    color: white;
+}
+
+/* Weekdays Row */
+.weekdays-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+
+/* Calendar Header */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header button {
+    background: var(--blue-color);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-header button:hover {
+    background: var(--dark-blue-color-2);
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--label-color);
+}
+
+/* Weekdays */
+.weekday {
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.8em;
+    color: var(--label-color);
+    padding: 5px 0;
+    background-color: var(--box-color);
+}
+
+/* Hover effect for dates */
+.date:hover {
+    background-color: rgba(22, 121, 171, 0.05);
+}
+
+/* Completed gradient for overlapping current day */
+.date.completed.current {
+    background: linear-gradient(45deg, var(--green-color) 50%, var(--blue-color) 50%);
+    color: white;
+}
+
+
+.calendar-container {
+    padding: 15px;
+    background-color: var(--box-color);
+    border-radius: 20px;
+    border: 1px solid var(--border-color); /* Only one border */
+}
+
+.calendar-card {
+    background-color: var(--box-color);
+    border: none; /* Remove this if it's wrapped by .calendar-container */
+    border-radius: 20px;
+    padding: 20px;
+    height: auto;
+    min-height: 300px;
+}
+
+
+
+.date {
+    padding: 5px;
+    text-align: center;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.date.empty {
+    visibility: hidden;
+}
+
+
+
+
+.calendar-container {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* FullCalendar customizations */
+.fc {
+    max-width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+
+/* Header styling */
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1em;
+}
+
+
+.fc .fc-toolbar-title {
+    font-size: 1.2em;
+    color: var(--label-color);
+    font-weight: 500;
+}
+
+
+/* Button styling */
+.fc .fc-button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.fc .fc-button-primary {
+    background-color: var(--blue-color);
+    border-color: var(--blue-color);
+    box-shadow: none;
+}
+
+
+.fc .fc-button-primary:hover {
+    background-color: var(--dark-blue-color-2);
+    border-color: var(--dark-blue-color-2);
+}
+
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: var(--dark-blue-color-2);
+    border-color: var(--dark-blue-color-2);
+}
+
+
+/* Day grid styling */
+.fc .fc-daygrid-day-frame {
+    padding: 4px;
+}
+
+
+.fc .fc-daygrid-day-top {
+    justify-content: center;
+    padding-top: 4px;
+}
+
+
+.fc .fc-daygrid-day-number {
+    float: none;
+    padding: 2px;
+    font-size: 0.9em;
+    color: var(--label-color);
+}
+
+
+/* Today's date styling */
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: transparent !important;
+}
+
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+    background-color: var(--blue-color);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Week day header styling */
+.fc .fc-col-header-cell {
+    padding: 8px 0;
+    background-color: transparent;
+}
+
+
+.fc .fc-col-header-cell-cushion {
+    color: var(--label-color);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 4px;
+}
+
+
+/* Grid lines and borders */
+.fc table {
+    border: none;
+}
+
+
+.fc td, .fc th {
+    border: 1px solid var(--border-color);
+}
+
+
+.fc .fc-scrollgrid {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+
+/* Completed date styling */
+.fc .fc-bg-event {
+    background-color: rgba(76, 175, 80, 0.2) !important;
+    opacity: 1;
+}
+
+
+.fc .fc-bg-event .fc-event-title {
+    display: none;
+}
+
+
+/* Hover effect on dates */
+.fc .fc-daygrid-day:hover {
+    background-color: rgba(22, 121, 171, 0.05);
+}
+
+
+.weekdays-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.weekday {
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.date.completed {
+    background-color: green; /* Highlight completed days in green */
+    color: white; /* Text color for contrast */
+}
+
+
