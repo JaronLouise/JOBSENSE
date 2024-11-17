@@ -19,15 +19,15 @@
         </div>
         <div class="row row-2">
             <div class="box">
-                <img src="/assets/sample_asset.png" alt="calendar">
+                <img class="level" src="/assets/easy.png" alt="calendar">
                 <button class="btn" onclick="loadQuiz('easy')">Easy</button>
             </div>
             <div class="box">
-                <img src="/assets/sample_asset.png" alt="calendar">
+                <img class="level" src="/assets/medium.png" alt="calendar">
                 <button class="btn" onclick="loadQuiz('medium')">Medium</button>
             </div>
             <div class="box">
-                <img src="/assets/sample_asset.png" alt="calendar">
+                <img class="level" src="/assets/hard.png" alt="calendar">
                 <button class="btn" onclick="loadQuiz('hard')">Hard</button>
             </div>
         </div>
@@ -58,31 +58,10 @@
         <h2>Your Score: <span id="total-score"></span></h2>
         <button onclick="window.location.reload()">Restart Quiz</button>
     </div>
-
     <!-- Firebase and JavaScript -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
-    <script>
-        // Load navbar.html content
-        document.addEventListener('DOMContentLoaded', () => {
-            const navbarContainer = document.getElementById('navbar-container');
-            fetch('navbar.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    navbarContainer.innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Error loading navbar:', error);
-                });
-        });
-    </script>
     <!-- Quiz logic -->
     <script src="/js/quiz.js" type="text/javascript"tpe="module"></script>
 </body>
