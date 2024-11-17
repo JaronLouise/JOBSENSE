@@ -7,7 +7,6 @@
     --border-color: #ddd;
     --green-color: #4CAF50;
     --light-gray-color: #e6e6e6;
-
 }
 
 
@@ -23,21 +22,15 @@ html, body {
     box-sizing: border-box;
 }
 
-
-/*mock items for graphics*/
 .list-item-button {
-    background-color: var(--green-color);
     width: 80px;
     height: 80px;
 }
 
-/*mock items for graphics*/
 .mh-graphics {
-    margin-top: 10px;
-    height: 100px;
-    width: 100px;
-    margin-right: 0;
-    background-color: var(--green-color);
+    max-width: 100%;  /* Make sure image is responsive */
+    height: auto; 
+    margin-right: 50px;
 }
 
 .main-header, .list-item, .container, .col-1, .col-2, .row {
@@ -46,9 +39,13 @@ html, body {
 
 
 .main-header {
+    width: 750px;
     height: 130px;
     padding-left: 30px;
     gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;  /* This prevents the image from spilling out */
 }
 
 
