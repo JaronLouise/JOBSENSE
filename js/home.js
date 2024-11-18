@@ -176,7 +176,7 @@ class Calendar {
                 ) {
                     // Highlight today's completed date in blue
                     dateDiv.classList.add('completed-today');
-                    dateDiv.style.backgroundColor = 'blue';
+                    dateDiv.style.backgroundColor = '#56bf56';
                     dateDiv.style.color = 'white';
                 } else {
                     // Highlight other completed dates in green
