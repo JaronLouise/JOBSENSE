@@ -179,50 +179,61 @@ function formatDate(date) {
 
 // Helper function to check if two dates are consecutive
 function isDateConsecutive(lastDateString, currentDate) {
-    if (!lastDateString) return true;  // If there's no last date, start the streak
+    if (!lastDateString) return true; // If there's no last date, start the streak
     const lastDate = new Date(lastDateString);
-    const timeDiff = currentDate - lastDate;
-    const oneDay = 1000 * 60 * 60 * 24; // One day in milliseconds
-    return timeDiff === oneDay;
+    
+    // Get the difference in days between the two dates
+    const timeDiff = Math.floor((currentDate - lastDate) / (1000 * 60 * 60 * 24));
+    return timeDiff === 1; // Check if the difference is exactly 1 day
 }
+
 
 // Function to handle quiz completion
 async function handleQuizCompletion() {
     const user = auth.currentUser;
     if (!user) return; // Ensure user is authenticated
 
-    // Get current date and format it
     const currentDate = new Date();
-    const dateString = formatDate(currentDate);  // 'YYYY-MM-DD'
-    const timestamp = currentDate.toISOString();  // Store timestamp
+    const dateString = formatDate(currentDate); // Format as 'YYYY-MM-DD'
 
-    // Update streak data for the user
     const streakRef = db.collection('streaks').doc(user.uid);
 
     try {
         const streakDoc = await streakRef.get();
         const streakData = streakDoc.exists ? streakDoc.data() : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
 
-        // Check if the user completed the quiz today
         const completedDates = streakData.completedDates;
-        const lastCompletedDate = Object.keys(completedDates).pop();  // Get the last completed date
+        const lastCompletedDate = Object.keys(completedDates).pop();
         const isConsecutive = isDateConsecutive(lastCompletedDate, currentDate);
 
-        // Update completed dates and streaks as booleans
-        completedDates[dateString] = true;  // Mark the current date as completed
-        streakData.currentStreak = isConsecutive ? streakData.currentStreak + 1 : 1;
+        // Update completed dates
+        completedDates[dateString] = true;
+
+        // Update streak based on whether the current date is consecutive to the last completed date
+        if (isConsecutive) {
+            streakData.currentStreak += 1;
+        } else {
+            streakData.currentStreak = 1; // Reset streak if not consecutive
+        }
+
+        // Update the best streak
         streakData.bestStreak = Math.max(streakData.currentStreak, streakData.bestStreak);
 
-        // Save the streak data back to Firestore
-        await streakRef.set(streakData, { merge: true });
+        // Save the updated streak data
+        await streakRef.set({
+            completedDates: completedDates,
+            currentStreak: streakData.currentStreak,
+            bestStreak: streakData.bestStreak,
+            lastCompleted: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
 
-        console.log('Quiz completed! Streak updated.');
+        console.log('Streak updated:', streakData);
+
     } catch (error) {
         console.error('Error updating streak data:', error);
     }
-
-    // Optionally, store quiz score or other data here as needed (e.g., in a separate document)
 }
+
 
 // Function to check the answer
 async function checkAnswer() {
@@ -232,7 +243,6 @@ async function checkAnswer() {
 
     // Check if the answer container is empty (no jobs inside)
     if (answerContainer.children.length === 0) {
-        // If the container is empty, display an alert or message
         alert("Please place your answer in the container before checking!");
         return;  // Exit the function without checking the answer
     }
@@ -244,9 +254,12 @@ async function checkAnswer() {
         document.getElementById('result').innerText = 'Correct!';
         currentScore++;
     } else {
+        // Display the correct sequence as an alert if the answer is incorrect
+        alert(`Incorrect! The correct sequence is: ${currentQuestion.correctSequence.join(', ')}`);
         document.getElementById('result').innerText = 'Incorrect. Try again!';
     }
 
+    // Reset the answer container and move to the next question after a short delay
     setTimeout(() => {
         document.getElementById('result').innerText = '';
         answerContainer.innerHTML = '';
@@ -276,5 +289,22 @@ async function nextQuestion() {
         document.getElementById('final-score').style.display = 'block';
         saveScoreToFirebase(currentScore, selectedDifficulty);
         await handleQuizCompletion(); // Update streak after quiz completion
+         // Display a custom feedback message based on the final score
+         let feedbackMessage = '';
+         if (currentScore === 3) {
+             feedbackMessage = "Perfect! You aced the quiz!";
+         } else if (currentScore === 2) {
+             feedbackMessage = "Almost there! Great effort!";
+         } else if (currentScore === 1) {
+             feedbackMessage = "Try again next time! Don't give up, practice makes perfect.";
+         } else {
+             feedbackMessage = "Keep practicing and you'll get better!";
+         }
+ 
+         // Display the feedback message in an alert or on the page
+         alert(feedbackMessage);
+         document.getElementById('feedback-message').innerText = feedbackMessage; // Assuming there's an element for feedback
+
+        
     }
 }
