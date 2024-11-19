@@ -3,87 +3,34 @@
 <head>
   <title>Leftside Navbar</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>
-    /* Navbar styles */
-    .navbar {
-      position: fixed;
-      top: 20px;
-      left: 30px;
-      bottom: 20px;
-      width: 80px;
-      border-radius: 10px;
-      background-color: #333;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-    }
-
-    .navbar-logo {
-      width: 40px;
-      height: 80px;
-      background-color: #ccc;
-    }
-
-    .navbar-icon {
-      width: 50px;
-      height: 50px;
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .navbar-logout {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .navbar-icon i,
-    .navbar-logout i {
-      font-size: 35px;
-      color: #fff;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .navbar {
-        width: 60px;
-      }
-
-      .navbar-logo,
-      .navbar-icon,
-      .navbar-logout {
-        transform: scale(0.8);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
   <nav class="navbar">
-    <div class="navbar-logo"></div>
-    <a href="home.html" class="navbar-icon">
+    <div class="navbar-logo">
+      <img src="assets/js_logo.png" alt="JS Logo">
+    </div>
+    <div class="navbar-icon" onclick="location.href='home.html';">
       <!--home icon-->
       <i class='bx bx-home'></i>
-    </a>
+      <small>Home</small>
+    </div>
     <div class="navbar-icon">
       <!--dark/light mode-->
       <i class='bx bx-moon'></i>
+      <small>Mode</small>
     </div>
-    <a href="profile.html" class="navbar-icon">
+    <div class="navbar-icon" onclick="location.href='profile.html';">
       <!--profile icon-->
       <i class='bx bx-user'></i>
-    </a>
-    <a href="login.html" class="navbar-logout">
+      <small>Profile</small>
+    </div>
+    <div class="navbar-logout" onclick="location.href='login.html';">
       <!--logout icon-->
       <i class='bx bx-log-out'></i>
-    </a>
+      <small>Logout</small>
+    </div>
   </nav>
+  <script src="js/navbar.js"></script>
 </body>
 </html>
