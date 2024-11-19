@@ -192,45 +192,62 @@ async function handleQuizCompletion() {
     const user = auth.currentUser;
     if (!user) return; // Ensure user is authenticated
 
+
     const currentDate = new Date();
     const dateString = formatDate(currentDate); // Format as 'YYYY-MM-DD'
 
+
     const streakRef = db.collection('streaks').doc(user.uid);
+
 
     try {
         const streakDoc = await streakRef.get();
-        const streakData = streakDoc.exists ? streakDoc.data() : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
+        const streakData = streakDoc.exists
+            ? streakDoc.data()
+            : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
+
 
         const completedDates = streakData.completedDates || {};
-        
-        // Sort the dates to get the latest one
-        const sortedDates = Object.keys(completedDates).sort();
-        const lastCompletedDate = sortedDates.length ? sortedDates[sortedDates.length - 1] : null;
 
+
+        // Get the last completed date
+        const sortedDates = Object.keys(completedDates).sort();
+        const lastCompletedDate = sortedDates.length
+            ? sortedDates[sortedDates.length - 1]
+            : null;
+
+
+        // Check if the current date is consecutive to the last completed date
         const isConsecutive = lastCompletedDate && isDateConsecutive(lastCompletedDate, dateString);
 
-        // Update completed dates
-        completedDates[dateString] = true;
 
-        // Update streak based on whether the current date is consecutive to the last completed date
+        // Update streak based on whether the current date is consecutive
         if (isConsecutive) {
             streakData.currentStreak += 1;
-        } else {
-            streakData.currentStreak = 1; // Reset streak if not consecutive
+        } else if (!completedDates[dateString]) {
+            streakData.currentStreak = 1; // Reset if not consecutive and not already recorded
         }
 
-        // Update the best streak
+
+        // Update best streak
         streakData.bestStreak = Math.max(streakData.currentStreak, streakData.bestStreak);
+
+
+        // Update completedDates with the current date
+        completedDates[dateString] = true;
+
 
         // Save the updated streak data
         await streakRef.set({
-            completedDates: completedDates,
+            completedDates,
             currentStreak: streakData.currentStreak,
             bestStreak: streakData.bestStreak,
-            lastCompleted: firebase.firestore.FieldValue.serverTimestamp()
+            lastCompleted: dateString, // Explicitly save the last completed date as 'YYYY-MM-DD'
         }, { merge: true });
 
+
         console.log('Streak updated:', streakData);
+
 
     } catch (error) {
         console.error('Error updating streak data:', error);
