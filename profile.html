@@ -11,15 +11,20 @@
     <div class="profile-container">
         <h1>User Profile</h1>
         <div id="profile-info">
-            <p><strong>Name:</strong> <span id="name">Loading...</span></p>
-            <p>
-                <strong>Username:</strong>
-                <span id="username">Loading...</span>
-                <input type="text" id="edit-username" style="display: none;">
+            <div class="profile-field">
+                <label for="name"><strong>Name:</strong></label>
+                <input type="text" id="name" value="Loading..." readonly>
+            </div>
+            <div class="profile-field">
+                <label for="username"><strong>Username:</strong></label>
+                <input type="text" id="username" value="Loading..." readonly>
                 <button id="edit-button">Edit</button>
                 <button id="save-button" style="display: none;">Save</button>
-            </p>
-            <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+            </div>
+            <div class="profile-field">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="text" id="email" value="Loading..." readonly>
+            </div>
         </div>
         <button id="logout-button">Logout</button>
     </div>
