@@ -22,6 +22,7 @@ const editButton = document.getElementById('edit-button');
 const saveButton = document.getElementById('save-button');
 const emailElement = document.getElementById('email');
 const logoutButton = document.getElementById('logout-button');
+const quizHistoryBody = document.getElementById('quiz-history-body');
 
 
 // Listen for authentication state changes
@@ -44,6 +45,12 @@ auth.onAuthStateChanged(async (user) => {
                 usernameElement.value = 'User data not found';
                 emailElement.value = 'User data not found';
             }
+
+
+            // Fetch quiz history for the user
+            await fetchQuizHistory(user.uid);
+
+
         } catch (error) {
             // Handle errors during Firestore fetch
             console.error('Error retrieving user data:', error);
@@ -63,6 +70,94 @@ editButton.addEventListener('click', () => {
     usernameElement.removeAttribute('readonly');
     editButton.style.display = 'none';
     saveButton.style.display = 'inline-block';
+});
+
+
+
+
+// Add this variable to store the quiz data globally
+let quizData = [];
+
+
+// Modified fetchQuizHistory function
+async function fetchQuizHistory(userId) {
+    try {
+        quizHistoryBody.innerHTML = '';
+       
+        const quizHistorySnapshot = await db.collection('users')
+            .doc(userId)
+            .collection('quizScores')
+            .get();
+
+
+        if (!quizHistorySnapshot.empty) {
+            // Store the quiz data globally
+            quizData = quizHistorySnapshot.docs.map(doc => {
+                const data = doc.data();
+                return {
+                    level: data.level || 'N/A',
+                    score: data.score,
+                    timestamp: data.timestamp?.toDate() || new Date(0),
+                    timestampString: data.timestamp?.toDate().toLocaleString() || 'N/A'
+                };
+            });
+
+
+            // Initial sort by date
+            sortAndDisplayQuizHistory('date');
+        } else {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="3">No quiz history available</td>`;
+            quizHistoryBody.appendChild(row);
+        }
+    } catch (error) {
+        console.error('Error fetching quiz history:', error);
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="3">Error loading quiz history</td>`;
+        quizHistoryBody.appendChild(row);
+    }
+}
+
+
+// Add sorting functionality
+function sortAndDisplayQuizHistory(sortBy) {
+    const sortedData = [...quizData].sort((a, b) => {
+        switch (sortBy) {
+            case 'date':
+                return b.timestamp - a.timestamp;
+            case 'level':
+                const levelOrder = { 'easy': 1, 'medium': 2, 'hard': 3 };
+                return levelOrder[a.level.toLowerCase()] - levelOrder[b.level.toLowerCase()];
+            case 'score':
+                return b.score - a.score;
+            default:
+                return 0;
+        }
+    });
+
+
+    // Clear and repopulate the table
+    quizHistoryBody.innerHTML = '';
+    sortedData.forEach(data => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.level}</td>
+            <td>${data.score}</td>
+            <td>${data.timestampString}</td>
+        `;
+        quizHistoryBody.appendChild(row);
+    });
+}
+
+
+// Add event listener for the sort dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    const sortDropdown = document.getElementById('sort-by');
+    if (sortDropdown) {
+        sortDropdown.addEventListener('change', (e) => {
+            sortAndDisplayQuizHistory(e.target.value);
+        });
+    }
 });
 
 
