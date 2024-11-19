@@ -1,28 +1,28 @@
 # JOBSENSE - Job Ordering and Scheduling Educational Simulator
 
-## Project Title
+## :rocket: Project Title
 **JOBSENSE (Job Ordering and Scheduling Educational Simulator)**
 
-## Team Name
+## :handshake: Team Name
 *Iisip pa ng team name*
 
-## Team Members
+## :busts_in_silhouette: Team Members
 - **Frontend Developer**: Nerine Rosette Recto
 - **Backend Developer**: Rose Ann Aguilar
 - **Project Manager/Fullstack Developer**: Jaron Louise Arquillo
 
-## Instructor
+## :woman_teacher: Instructor
 **Ms. Fatima Marie P. Agdon, MSCS**
 
-## Project Start Date
+## :date: Project Start Date
 **November 7, 2024**
 
-## Expected Completion Date
+## :hourglass: Expected Completion Date
 **November 24, 2024**
 
 ---
 
-## Project Overview
+## :spiral_notepad: Project Overview
 
 **Objective**  
 <p align="justify">
@@ -31,7 +31,7 @@ The objective of this project is to develop a web application that simulates and
 
 ---
 
-## Features
+## :old_key: Features
 
 - **Educational Content**: Provides detailed explanations of job sequencing algorithms and scheduling principles.
 - **Simulation Tool**: An interactive tool that allows users to input job details (e.g., name, duration, profit) or generate random job data to visualize job scheduling.
@@ -40,7 +40,7 @@ The objective of this project is to develop a web application that simulates and
 
 ---
 
-## Technologies Used
+## :gear: Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript – for creating the user interface and interactive features.
 - **Backend**: Node.js, Express – for handling API requests, business logic, and database interactions.
@@ -51,7 +51,7 @@ The objective of this project is to develop a web application that simulates and
 
 ---
 
-## Getting Started
+##  :vertical_traffic_light: Getting Started
 
 These instructions will guide you on setting up a local copy of **JOBSENSE** for development and testing purposes.
 
@@ -63,7 +63,7 @@ To get started, ensure you have the following installed:
 - **Firebase**: For storing user progress and quiz data.
 ---
 
-## Installation and Setup
+## :hammer_and_pick: Installation and Setup
 
 Follow these steps to install and set up **JOBSENSE**:
 
@@ -92,7 +92,7 @@ Follow these steps to install and set up **JOBSENSE**:
      
 ---
 
-## Usage
+## 	:desktop_computer: Usage
 
 To use **JOBSENSE** effectively, follow these instructions:
 
@@ -108,7 +108,7 @@ To use **JOBSENSE** effectively, follow these instructions:
 
 ---
 
-## License
+## :shield: License
 
 This project is licensed under the [MIT License](LICENSE).
 
