@@ -1,3 +1,11 @@
+/* Root variables for colors */
+:root {
+      --bg-color: #333;
+      --icon-color: #fff;
+      --hover-color: #31943b; /* Green color */
+      --text-color: #ddd;
+}
+
 /* Navbar styles */
 .navbar {
       position: fixed;
@@ -6,8 +14,8 @@
       bottom: 20px;
       width: 80px;
       border-radius: 10px;
-      background-color: #333;
-      color: #fff;
+      background-color: var(--bg-color);
+      color: var(--icon-color);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -15,45 +23,57 @@
       padding: 20px 0;
 }
 
-.navbar-logo {
-      width: 40px;
-      height: 80px;
-      background-color: #ccc;
-}
-
-.navbar-icon {
+/* Icon container */
+.navbar-icon, .navbar-logout {
       width: 50px;
       height: 50px;
       margin: 10px 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.navbar-logout {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.navbar-logo img {
+      width: 50px;
+      height: 50px;
 }
 
-.navbar-icon i,
-.navbar-logout i {
+.navbar-icon small, .navbar-logout small {
+      margin-top: 5px;
+      font-size: 10px;
+      color: var(--text-color);
+}
+
+/* Icon styles */
+.navbar-icon i, .navbar-logout i {
       font-size: 35px;
-      color: #fff;
+      color: var(--icon-color);
+      transition: color 0.3s ease;
+}
+
+/* Hover effects */
+.navbar-icon:hover i, .navbar-logout:hover i {
+      color: var(--hover-color);
+      transform: scale(1.1);
+}
+
+.navbar-icon:hover small, .navbar-logout:hover small {
+      color: var(--hover-color);
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .navbar {
-        width: 60px;
+      width: 60px;
   }
 
   .navbar-logo,
   .navbar-icon,
   .navbar-logout {
-        transform: scale(0.8);
+      transform: scale(0.8);
   }
 }
