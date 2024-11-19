@@ -1,3 +1,21 @@
+// Load navbar.html content
+document.addEventListener('DOMContentLoaded', () => {
+    const navbarContainer = document.getElementById('navbar-container');
+    fetch('navbar.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            navbarContainer.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading navbar:', error);
+        });
+});
+
 function generateJobInputs() {
     const numJobs = parseInt(document.getElementById("numJobs").value);
     if (isNaN(numJobs) || numJobs <= 0) {
@@ -179,14 +197,15 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
         slot.style.borderRadius = '4px';
         
         if (result[i]) {
-            slot.style.backgroundColor = '#a8e6ff';
+            slot.style.backgroundColor = '#56bf56';
+            slot.style.color = 'white';
             slot.textContent = result[i].id;
         } else {
             slot.style.backgroundColor = '#eee';
         }
         
         if (i === highlightSlot) {
-            slot.style.backgroundColor = '#4fc3f7';
+            slot.style.backgroundColor = '#56bf56';
             slot.style.color = 'white';
         }
         
@@ -206,8 +225,8 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
             lineNumber.className = 'slot-number';
             lineNumber.textContent = `${i + 1}-${i + 2}`; // Format as X-Y
             lineNumber.style.position = 'absolute';
-            lineNumber.style.top = '-20px'; // Adjust as needed to position it above the line
-            lineNumber.style.left = '50%';
+            lineNumber.style.top = '25px'; // Adjust as needed to position it above the line
+            lineNumber.style.left = '70%';
             lineNumber.style.transform = 'translateX(-50%)';
             slotWrapper.appendChild(lineNumber);
         }
