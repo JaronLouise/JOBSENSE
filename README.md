@@ -1,4 +1,10 @@
 <h1 align="center">JOBSENSE - Job Ordering and Scheduling Educational Simulator</h1>
+<p align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1001&color=31943B&center=true&vCenter=true&width=435&lines=Simulate+job+sequencing+algorithms.;Optimize+task+allocation." alt="Typing SVG" />
+  </a>
+</p>
+
 
 ## :rocket: Project Title
 **JOBSENSE (Job Ordering and Scheduling Educational Simulator)**
