@@ -3,7 +3,8 @@
     --gray-color: #b3b3b3;  /* Light Gray */
     --white-color: #ffffff; /* White */
     --black-color: #000000; /* Black */
-    --font-primary: 'Roboto', sans-serif;
+    --hover-color: #287b2a;
+    --font-primary: 'Poppins', sans-serif;
 }
 
 /* General body styling */
@@ -24,10 +25,13 @@ body {
     border-radius: 20px; /* Larger radius for smoother edges */
     padding: 50px 70px; /* Larger padding for more space */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    width: 750px; /* Increased width for a wider layout */
-    text-align: center;
+    width: 750px; 
     border: 1px solid var(--gray-color);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-container h1 {
+    text-align: center;
 }
 
 .profile-container:hover {
@@ -39,7 +43,7 @@ body {
 h1 {
     margin-bottom: 40px; /* Larger space from profile info */
     color: var(--green-color);
-    font-size: 48px; /* Larger font size */
+    font-size: 30px; /* Larger font size */
     font-weight: 700;
 }
 
@@ -67,7 +71,7 @@ button {
 }
 
 button:hover {
-    background: #287b2a; /* Slightly darker green */
+    background: var(--hover-color); /* Slightly darker green */
     transform: scale(1.05);
 }
 
@@ -93,7 +97,7 @@ button:hover {
 }
 
 #save-button:hover {
-    background-color: #287b2a;
+    background-color: var(--hover-color);
 }
 
 /* Logout button */
@@ -107,8 +111,43 @@ button:hover {
 }
 
 #logout-button:hover {
-    background: #287b2a;
+    background: var(--hover-color);
 }
+
+/* Input field styling */
+input[type="text"] {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin: 10px 0;
+    border: 1px solid var(--gray-color);
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Read-only input styling */
+input[readonly] {
+    background-color: var(--gray-color);
+    color: var(--black-color);
+    cursor: not-allowed;
+}
+
+/* Profile field container */
+.profile-field {
+    margin-bottom: 20px;
+}
+
+.profile-field label {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--black-color);
+}
+
 
 /* Responsive design */
 @media (max-width: 768px) {
