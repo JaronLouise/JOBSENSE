@@ -201,9 +201,13 @@ async function handleQuizCompletion() {
         const streakDoc = await streakRef.get();
         const streakData = streakDoc.exists ? streakDoc.data() : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
 
-        const completedDates = streakData.completedDates;
-        const lastCompletedDate = Object.keys(completedDates).pop();
-        const isConsecutive = isDateConsecutive(lastCompletedDate, currentDate);
+        const completedDates = streakData.completedDates || {};
+        
+        // Sort the dates to get the latest one
+        const sortedDates = Object.keys(completedDates).sort();
+        const lastCompletedDate = sortedDates.length ? sortedDates[sortedDates.length - 1] : null;
+
+        const isConsecutive = lastCompletedDate && isDateConsecutive(lastCompletedDate, dateString);
 
         // Update completed dates
         completedDates[dateString] = true;
@@ -232,6 +236,22 @@ async function handleQuizCompletion() {
         console.error('Error updating streak data:', error);
     }
 }
+
+// Helper function to check if dates are consecutive
+function isDateConsecutive(lastDateString, currentDateString) {
+    const lastDate = new Date(lastDateString);
+    const currentDate = new Date(currentDateString);
+
+    // Difference in days
+    const differenceInDays = Math.ceil((currentDate - lastDate) / (1000 * 60 * 60 * 24));
+    return differenceInDays === 1;
+}
+
+// Helper function to format the date
+function formatDate(date) {
+    return date.toISOString().split('T')[0]; // Returns 'YYYY-MM-DD'
+}
+
 
 // Function to check the answer
 async function checkAnswer() {
