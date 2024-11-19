@@ -100,8 +100,6 @@ function getDayWord(streakCount) {
     return streakCount === 1 ? 'day' : 'days';
 }
 
-
-
 // Calendar class for rendering and tracking completed dates
 class Calendar {
     constructor(user) {
