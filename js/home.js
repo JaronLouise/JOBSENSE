@@ -97,7 +97,7 @@ async function fetchStreakData(user) {
 
 // Function to determine whether to use "day" or "days"
 function getDayWord(streakCount) {
-    return streakCount === 1 ? 'day' : 'days';
+    return streakCount <= 1 ? 'day' : 'days';
 }
 
 // Calendar class for rendering and tracking completed dates
