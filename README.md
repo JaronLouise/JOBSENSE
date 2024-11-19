@@ -1,4 +1,4 @@
-# JOBSENSE - Job Ordering and Scheduling Educational Simulator
+<h1 align="center">JOBSENSE - Job Ordering and Scheduling Educational Simulator</h1>
 
 ## :rocket: Project Title
 **JOBSENSE (Job Ordering and Scheduling Educational Simulator)**
