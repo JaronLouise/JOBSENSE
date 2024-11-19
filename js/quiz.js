@@ -187,7 +187,6 @@ function isDateConsecutive(lastDateString, currentDate) {
     return timeDiff === 1; // Check if the difference is exactly 1 day
 }
 
-
 // Function to handle quiz completion
 async function handleQuizCompletion() {
     const user = auth.currentUser;
@@ -233,7 +232,6 @@ async function handleQuizCompletion() {
         console.error('Error updating streak data:', error);
     }
 }
-
 
 // Function to check the answer
 async function checkAnswer() {
@@ -303,8 +301,6 @@ async function nextQuestion() {
  
          // Display the feedback message in an alert or on the page
          alert(feedbackMessage);
-         document.getElementById('feedback-message').innerText = feedbackMessage; // Assuming there's an element for feedback
-
-        
+         document.getElementById('feedback-message').innerText = feedbackMessage;
     }
 }
