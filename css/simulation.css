@@ -1,7 +1,5 @@
 :root {
-    --btn-color: #1C1678;
-    --dark-blue-color-2: #074173;
-    --btn-hover: #1679AB;
+    --green-color:  #31943b;
     --input-field-color: #eee;
 }
 
@@ -36,7 +34,7 @@ th, td {
 }
 
 thead {
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
     font-size: 20px;
 }
 
@@ -52,7 +50,7 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: var(--dark-blue-color-2);
+    background-color: var(--green-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     color: white;
     font-weight: bold;
@@ -62,7 +60,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--btn-hover);
+    background: linear-gradient(45deg, #31943b, #45d16a);
 }
 
 .container {
@@ -78,7 +76,7 @@ button:hover {
 
 h1 {
     text-align: center;
-    color: var(--dark-blue-color-2);
+    color: var(--green-color);
 }
 
 .num-job-field {
@@ -126,4 +124,100 @@ label {
     width: 120px;
     font-size: 18px;
     font-weight: 700;
+}
+
+.result-section {
+    width: 100%; /* Flexible width */
+    max-width: 600px; /* Constrain maximum width */
+    padding: 10px;
+    overflow-x: hidden; /* Hide horizontal overflow initially */
+    box-sizing: border-box;
+    transition: overflow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.slot-container {
+    display: flex;
+    height: 100px;
+    flex-wrap: nowrap; /* Prevent wrapping to maintain alignment */
+    gap: 10px; /* Space between slots */
+    justify-content: flex-start;
+    overflow-x: hidden; /* Horizontal scrolling if necessary */
+}
+
+.slot-container:hover {
+    overflow-x: auto;
+}
+
+.slot-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.slot {
+    width: 70px; /* Adjusted for better fitting */
+    height: 40px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+}
+
+.connection-line {
+    width: 50px; /* Adjusted for smaller connections */
+    height: 2px;
+    background-color: #ffa726;
+}
+
+.slot-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px; /* Smaller text size */
+    color: #333;
+}
+
+.timeline-step {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.final-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid var(--green-color);
+    border-radius: 10px;
+    background-color: #e8f5e9;
+    font-size: 16px;
+}
+
+.step-explanation {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+#result h2 {
+    color: var(--green-color);
+}
+
+.col-2 {
+    max-height: 100vh; /* Constrain height to viewport */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding: 10px; /* Add padding for content spacing */
+    scrollbar-width: none; /* For Firefox: hide scrollbar */
+    -ms-overflow-style: none; /* For IE and Edge: hide scrollbar */
+}
+
+.col-2::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera: hide scrollbar */
 }
