@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +28,35 @@
             </div>
         </div>
         <button id="logout-button">Logout</button>
+
+
+<!-- Replace the existing quiz history section with this -->
+<div class="quiz-history">
+    <h2>Quiz History</h2>
+    <div class="sorting-controls">
+        <select id="sort-by" class="sort-dropdown">
+            <option value="date">Sort by Date (Latest to Oldest)</option>
+            <option value="level">Sort by Level (Easy to Hard)</option>
+            <option value="score">Sort by Score (Highest to Lowest)</option>
+        </select>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="quiz-history-body">
+                <!-- This will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
@@ -53,3 +83,5 @@
     <script src="js/profile.js"></script>
 </body>
 </html>
+
+
