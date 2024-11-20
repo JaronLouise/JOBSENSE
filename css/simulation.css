@@ -1,17 +1,22 @@
 :root {
-    --green-color:  #31943b;
+    --green-color: #31943b;
     --input-field-color: #eee;
 }
 
 * {
     font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0;
-    padding: 0;
 }
 
 table, th, td {
@@ -29,8 +34,8 @@ th, td {
 }
 
 #jobTable th, #jobTable td {
-    width: 33.33%; /* Adjust if you add more columns */
-    text-align: center; /* Center-aligns content in each cell */
+    width: 33.33%;
+    text-align: center;
 }
 
 thead {
@@ -44,7 +49,7 @@ input {
     margin: 5px 0;
     box-sizing: border-box;
     background-color: var(--input-field-color);
-    font-size: 20px;
+    font-size: 16px;
     border: none;
 }
 
@@ -56,7 +61,6 @@ button {
     font-weight: bold;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 button:hover {
@@ -66,26 +70,31 @@ button:hover {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding-top: 60px;
     display: flex;
     gap: 20px;
 }
 
 .col {
+    flex: 1;
     max-width: 600px;
 }
 
 h1 {
     text-align: center;
     color: var(--green-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .num-job-field {
-    width: 480px;
+    flex: 1; /* Allow input to take remaining space */
+    min-width: 0; /* Allows flex item to shrink below content size */
 }
 
-.num-jobs{
-    align-self: center;
-    margin: 0;
+.num-jobs {
+    flex-shrink: 0; /* Prevent button from shrinking */
+    width: 120px;
 }
 
 .num-job-field, .num-jobs, .job-seq-btn {
@@ -95,25 +104,22 @@ h1 {
 .row {
     display: flex;
     gap: 5px;
+    flex-wrap: nowrap; /* Changed to nowrap to keep elements in line */
+    align-items: center;
 }
 
 h3 {
     padding-left: 10px;
-    font-size: 23px;
+    font-size: 1.4rem;
     color: var(--green-color);
 }
 
-input, .num-jobs,.job-seq-btn{
+input, .num-jobs, .job-seq-btn {
     border-radius: 10px;
 }
 
-.result-section {
-    width: 600px;
-    padding-left: 20px;
-}
-
 label {
-    font-size: 20px;
+    font-size: 1.2rem;
     padding-left: 5px;
 }
 
@@ -123,26 +129,28 @@ label {
 
 .num-jobs, .job-seq-btn {
     width: 120px;
-    font-size: 18px;
+    font-size: 1.1rem;
     font-weight: 700;
 }
 
 .result-section {
-    width: 100%; /* Flexible width */
-    max-width: 600px; /* Constrain maximum width */
+    width: 100%;
+    max-width: 600px;
     padding: 10px;
-    overflow-x: hidden; /* Hide horizontal overflow initially */
+    overflow-x: hidden;
     box-sizing: border-box;
-    transition: overflow 0.3s ease-in-out; /* Smooth transition */
+    transition: overflow 0.3s ease-in-out;
 }
 
 .slot-container {
     display: flex;
     height: 100px;
-    flex-wrap: nowrap; /* Prevent wrapping to maintain alignment */
-    gap: 10px; /* Space between slots */
+    flex-wrap: nowrap;
+    gap: 10px;
     justify-content: flex-start;
-    overflow-x: hidden; /* Horizontal scrolling if necessary */
+    overflow-x: none;
+    padding: 10px 0;
+    -ms-overflow-style: none;
 }
 
 .slot-container:hover {
@@ -153,11 +161,11 @@ label {
     position: relative;
     display: flex;
     align-items: center;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
 }
 
 .slot {
-    width: 70px; /* Adjusted for better fitting */
+    width: 70px;
     height: 40px;
     background-color: #f8f8f8;
     border: 1px solid #ccc;
@@ -170,7 +178,7 @@ label {
 }
 
 .connection-line {
-    width: 50px; /* Adjusted for smaller connections */
+    width: 55px;
     height: 2px;
     background-color: #ffa726;
 }
@@ -178,9 +186,9 @@ label {
 .slot-number {
     position: absolute;
     top: 50px;
-    margin: 0 auto;
+    left: 50%;
     transform: translateX(-50%);
-    font-size: 12px; /* Smaller text size */
+    font-size: 12px;
     color: #333;
 }
 
@@ -193,8 +201,7 @@ label {
 }
 
 .final-result {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     padding: 15px;
     border: 2px solid var(--green-color);
     border-radius: 10px;
@@ -210,16 +217,100 @@ label {
 
 #result h2 {
     color: var(--green-color);
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.col-1 {
+    margin-top: 20px;
 }
 
 .col-2 {
-    max-height: 100vh; /* Constrain height to viewport */
-    overflow-y: scroll; /* Enable vertical scrolling */
-    padding: 10px; /* Add padding for content spacing */
-    scrollbar-width: none; /* For Firefox: hide scrollbar */
-    -ms-overflow-style: none; /* For IE and Edge: hide scrollbar */
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .col-2::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera: hide scrollbar */
+    display: none; /* Hide scrollbar for Webkit-based browsers */
+}
+
+.col-2::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+/* Update media queries */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .col {
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    label {
+        font-size: 1rem;
+    }
+    
+    /* Remove the width calculation for num-job-field since we're using flex */
+    .num-job-field {
+        min-width: 0;
+    }
+    
+    .col-2 {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+    }
+    
+    thead {
+        font-size: 16px;
+    }
+    
+    input {
+        font-size: 14px;
+    }
+    
+    .num-jobs {
+        width: 100px;
+        font-size: 0.9rem;
+    }
+    
+    /* Remove the flex-direction: column from .row */
+    .row {
+        flex-direction: row;
+    }
+    
+    /* Remove the 100% width setting for num-job-field */
+    .slot {
+        width: 60px;
+        height: 35px;
+        font-size: 12px;
+    }
+    
+    .connection-line {
+        width: 45px;
+    }
 }
