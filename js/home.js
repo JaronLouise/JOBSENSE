@@ -1,4 +1,4 @@
-// Load navbar.html content
+//Load navbar.html content
 document.addEventListener('DOMContentLoaded', () => {
     const navbarContainer = document.getElementById('navbar-container');
     fetch('navbar.html')
