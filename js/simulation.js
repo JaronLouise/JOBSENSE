@@ -1,6 +1,6 @@
 // Load navbar.html content
 document.addEventListener('DOMContentLoaded', () => {
-    const navbarContainer = document.getElementById('navbar-container');
+   const navbarContainer = document.getElementById('navbar-container');
     fetch('navbar.html')
         .then(response => {
             if (!response.ok) {
@@ -136,7 +136,6 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
     const slotsDiv = document.createElement('div');
     slotsDiv.className = 'slot-container';
     slotsDiv.style.display = 'flex';
-    slotsDiv.style.paddingLeft = '20px';
     
     // Constants for spacing
     const slotWidth = 80;
@@ -172,8 +171,8 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
     initialNumber.className = 'slot-number';
     initialNumber.textContent = '0-1'; // Format as 0-1
     initialNumber.style.position = 'absolute';
-    initialNumber.style.top = '-20px'; // Adjust as needed to position it above the line
-    initialNumber.style.left = '50%';
+    initialNumber.style.top = '15px'; // Adjust as needed to position it above the line
+    initialNumber.style.left = '70%';
     initialNumber.style.transform = 'translateX(-50%)';
     initialContainer.appendChild(initialNumber);
     
@@ -225,7 +224,7 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
             lineNumber.className = 'slot-number';
             lineNumber.textContent = `${i + 1}-${i + 2}`; // Format as X-Y
             lineNumber.style.position = 'absolute';
-            lineNumber.style.top = '25px'; // Adjust as needed to position it above the line
+            lineNumber.style.top = '15px'; // Adjust as needed to position it above the line
             lineNumber.style.left = '70%';
             lineNumber.style.transform = 'translateX(-50%)';
             slotWrapper.appendChild(lineNumber);
