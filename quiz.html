@@ -11,6 +11,26 @@
 </head>
 <body>
     <div id="navbar-container"  style="margin-left: 100px;"></div>
+    <!-- Tutorial Popup -->
+    <div id="tutorial-popup" class="tutorial-overlay" style="display: none;">
+        <div class="tutorial-content">
+            <div id="close-tutorial" class="close-button">×</div>
+            <h2>Welcome to the Job Sequencing Quiz!</h2>
+            <p>Learn how to play:</p>
+            <ul>
+                <li>Select a level: Easy, Medium, or Hard.</li>
+                <img src="assets/1.png" alt="Step 1 image" class="tutorial-image">
+                
+                <li>Drag and drop the job elements into the correct sequence.</li>
+                <img src="assets/js tutorial.gif" alt="Drag and drop demo" class="tutorial-image gif-image">
+                
+                <li>Click "Check Answer" to verify your solution.</li>
+                <img src="assets/3.png" alt="Step 3 image" class="tutorial-image">
+                
+                <li>Try to get the highest score and keep your streak!</li>
+            </ul>
+        </div>
+    </div>
     <!-- Level Selection -->
     <div id="level-selection">
         <div class="row row-1">
@@ -48,7 +68,7 @@
         <div id="answer-container" class="answer-container"></div>
         <div class="quiz-btn">
             <button class="reset" id="reset-button">Reset</button>
-            <button class="check" onclick="checkAnswer()">Check Answer</button>
+            <button class="check" id="check-button" onclick="checkAnswer()">Check Answer</button>
         </div>
         <p id="result"></p>
     </div>
@@ -57,10 +77,9 @@
     <div id="final-score" style="display: none;">
         <p id="feedback-message"></p>
         <h2>Your Score: <span id="total-score"></span></h2>
-        <button onclick="window.location.reload()">Restart Quiz</button>
-        <button onclick="window.location.href='home.html'">Quit</button>
+        <button class="restart-quiz" onclick="window.location.reload()">Restart Quiz</button>
+        <button class="quit-button" onclick="window.location.href='home.html'">Quit</button>
     </div>
-    
     <!-- Firebase and JavaScript -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
