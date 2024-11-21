@@ -1,3 +1,20 @@
+// Show the tutorial popup when the page loads
+window.addEventListener('load', () => {
+    const tutorialPopup = document.getElementById('tutorial-popup');
+    const skipButton = document.getElementById('skip-tutorial');
+    const closeButton = document.getElementById('close-tutorial');  // Get the close button
+
+    console.log(tutorialPopup, skipButton, closeButton);  // Debugging line to check if elements are found
+
+    // Display the tutorial popup
+    tutorialPopup.style.display = 'flex';
+
+    // Close the tutorial when the close button (X) is clicked
+    closeButton.addEventListener('click', () => {
+        console.log('Close button clicked');  // Debugging line to check if event triggers
+        tutorialPopup.style.display = 'none';
+    });
+});
 
 // Firebase configuration and initialization
 const firebaseConfig = {
@@ -9,24 +26,10 @@ const firebaseConfig = {
     appId: "1:600112311901:web:f9c87eead4ff40584be7b4"
 };
 
-
-
-
-
-
-
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
-
-
-
-
-
-
-
 
 let currentUserId = null;
 let currentQuestionIndex = 0;
