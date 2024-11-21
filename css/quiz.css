@@ -12,12 +12,118 @@
 }
 
 body {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
+    margin: 0;
     text-align: center;
 }
 
+/* Style for the popup */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dim the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.tutorial-content {
+    position: relative; /* Enables positioning of absolutely positioned child elements */
+    background-color: #fff;
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Limit the maximum width */
+    height: 70%; /* Fixed height for scrollability */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.tutorial-content::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar (Chrome, Safari, Edge)*/
+}
+
+/* Optional: For Firefox */
+.tutorial-content {
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* For older versions of Internet Explorer */
+}
+
+.tutorial-content h2 {
+    color: var(--green-color);
+    margin-bottom: 15px;
+}
+
+.tutorial-content ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.tutorial-content ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.tutorial-button {
+    padding: 10px 20px;
+    background-color: var(--green-color);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tutorial-button:hover {
+    background: linear-gradient(45deg, #31943b, #45d16a);
+}
+
+/* Prevent images from stretching and set fixed width */
+.tutorial-image {
+    width: 600px; /* Fixed width */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 10px auto;
+}
+
+/* Optional: Center GIF and adjust its size */
+.gif-image {
+    width: 600px; /* Fixed width */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 15px auto;
+}
+
+.close-button {
+    position: absolute; /* Position it relative to the parent container */
+    top: 20px; /* Adjust distance from the top edge of the container */
+    right: 20px; /* Adjust distance from the right edge of the container */
+    font-size: 24px; /* Size of the close icon */
+    font-weight: bold;
+    color: #333; /* Visible color */
+    cursor: pointer;
+    z-index: 10; /* Ensure it stays above other elements */
+    background: none; /* No background color */
+    border: none;
+    outline: none;
+}
+
+.close-button:hover {
+    color: #ff0000; /* Highlight color on hover */
+}
+
 #quiz-container, #level-selection, .row-2 {
-    width: 1200px;
+    /*width: 1200px;*/
+    width: 100%;
+
 }
 
 #quiz-container, #level-selection {
@@ -41,11 +147,11 @@ body {
     flex-wrap: wrap;
 }
 
-.job, .answer-job {
+.job, .answer-job { 
     padding: 10px;
     margin: 5px;
     border-radius: 10px;
-    color: var(--bg-color);
+    color: white;
     background-color: var(--green-color);
     cursor: grab;
     user-select: none;
@@ -170,16 +276,6 @@ img {
     border-radius: 20px;
 }
 
-.job, .answer-job {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 10px;
-    color: white;
-    background-color: var(--green-color);
-    cursor: grab;
-    user-select: none;
-}
-
 .problem {
     padding-top: 5px;
     padding-left: 10px;
@@ -230,3 +326,144 @@ img {
     margin: 0 10px;
 }
 
+#final-score {
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.restart-quiz, .quit-button {
+    border-radius: 10px;
+}
+
+#feedback-message {
+    font: 20px;
+}
+
+/* Mobile View: Adjust layout for small screens */
+@media (max-width: 768px) {
+    #navbar-container {
+        margin-left: 0;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    .row-1 {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .row-2 {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .box {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #quiz-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .problem, .list, .answer-container {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .problem {
+        height: auto;
+        padding: 10px;
+    }
+
+    .list {
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .answer-container {
+        height: auto;
+        padding: 10px;
+    }
+
+    .quiz-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .reset, .check {
+        width: 100%;
+    }
+
+    #final-score {
+        padding: 20px;
+    }
+
+    #final-score button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Tablet View: Moderate adjustments */
+@media (max-width: 1024px) {
+    #level-selection {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .row-1, .box {
+        width: 80%;
+    }
+
+    .problem, .list, .answer-container {
+        width: 95%;
+    }
+
+    .btn {
+        width: 80%;
+    }
+
+    #quiz-container {
+        gap: 10px;
+    }
+}
+
+/* Large Desktop Adjustments */
+@media (min-width: 1200px) {
+    #quiz-container, #level-selection {
+        width: 1200px;
+    }
+
+    .row-1 {
+        width: 1190px;
+    }
+
+    .box {
+        width: 380px;
+    }
+
+    img {
+        width: 360px;
+        height: 280px;
+    }
+}
