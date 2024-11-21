@@ -12,7 +12,7 @@
       top: 20px;
       left: 30px;
       bottom: 20px;
-      width: 80px;
+      width: 100vw;
       border-radius: 10px;
       background-color: var(--bg-color);
       color: var(--icon-color);
@@ -69,70 +69,94 @@
   }
  
   /* Mobile View - Navbar at top (for screens 768px or below) */
-  @media (max-width: 768px) {
-      .navbar {
-          position: relative;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: auto;
-          flex-direction: row;
-          justify-content: space-around;
-          padding: 10px 0;
-          border-radius: 0;
-      }
- 
-      .navbar-logo {
-          width: 40px;
-          height: 40px;
-      }
- 
-      .navbar-icon,
-      .navbar-logout {
-          width: 40px;
-          height: 40px;
-          margin: 0;
-          padding: 0;
-      }
- 
-      .navbar-icon i, .navbar-logout i {
-          font-size: 30px;
-      }
- 
-      .navbar-icon small, .navbar-logout small {
-          display: none;
-      }
- 
-      .navbar-logo,
-      .navbar-icon,
-      .navbar-logout {
-          transform: scale(1);
-      }
-  }
- 
-  /* Desktop View - Sidebar Navbar (default) */
-  @media (min-width: 769px) {
-      .navbar {
-          width: 80px;
-      }
- 
-      .navbar-logo {
-          margin-bottom: 20px;
-      }
- 
-      .navbar-icon,
-      .navbar-logout {
-          width: 50px;
-          height: 50px;
-      }
- 
-      .navbar-icon i, .navbar-logout i {
-          font-size: 35px;
-      }
- 
-      .navbar-icon small, .navbar-logout small {
-          margin-top: 5px;
-          font-size: 10px;
-          color: var(--text-color);
-      }
-  }
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        bottom: 0; /* Place the navbar at the bottom for mobile */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full-width for a cleaner mobile UI */
+        height: 60px; /* Reduced height for compact view */
+        flex-direction: row; /* Horizontal layout for navbar items */
+        justify-content: space-evenly; /* Equal spacing between items */
+        align-items: center; /* Center align the icons */
+        padding: 0; /* Remove extra padding */
+        border-radius: 0; /* Remove rounded corners for mobile */
+        background-color: var(--bg-color); /* Ensure visibility */
+        z-index: 999; /* Make sure it's above other content */
+    }
+
+    /* Navbar logo */
+    .navbar-logo {
+        width: 40px;
+        height: 40px;
+        margin: 0; /* Remove extra margin */
+    }
+
+    .navbar-logo img {
+        width: 100%; /* Ensure the logo fits the container */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Icon container for mobile */
+    .navbar-icon, .navbar-logout {
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Icons - Mobile size */
+    .navbar-icon i, .navbar-logout i {
+        font-size: 24px; /* Adjust icon size */
+    }
+
+    /* Small text for icons */
+    .navbar-icon small, .navbar-logout small {
+        font-size: 8px; /* Reduced font size */
+        color: var(--text-color); /* Match text color */
+    }
+}
+
+
+/* Desktop View - Sidebar Navbar (default) */
+@media (min-width: 769px) {
+    .navbar {
+        position: fixed;
+        top: 20px;
+        left: 30px;
+        bottom: 20px;
+        width: 80px;
+        border-radius: 10px;
+        background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-logo {
+        margin-bottom: 20px;
+    }
+
+    .navbar-icon, .navbar-logout {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-icon i, .navbar-logout i {
+        font-size: 35px;
+    }
+
+    .navbar-icon small, .navbar-logout small {
+        margin-top: 5px;
+        font-size: 10px;
+        color: var(--text-color);
+    }
+}
