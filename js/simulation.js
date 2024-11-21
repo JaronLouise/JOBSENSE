@@ -1,5 +1,3 @@
-
-
 function generateJobInputs() {
     const numJobs = parseInt(document.getElementById("numJobs").value);
     if (isNaN(numJobs) || numJobs <= 0) {
@@ -28,88 +26,15 @@ async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function calculateJobSequence() {
-    const jobRows = document.querySelectorAll('#jobDetails tr');
-    const jobs = [];
-    const resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = "<h2>Job Sequencing Steps:</h2>";
-
-    // Iterate over each row and get job data
-    jobRows.forEach((row, index) => {
-        const inputs = row.querySelectorAll('input');
-        const jobId = inputs[0].value;
-        const profit = parseInt(inputs[1].value);
-        const deadline = parseInt(inputs[2].value);
-
-        if (jobId && profit > 0 && deadline > 0) {
-            jobs.push({ id: jobId, profit: profit, deadline: deadline });
-        } else {
-            alert(`Please fill out all fields for Job ${index + 1} with valid values.`);
-            return;
-        }
-    });
-
-    if (jobs.length === 0) {
-        alert("No valid job data provided.");
-        return;
+// New function to show/hide profit information
+function showProfitInfo() {
+    const profitInfoDiv = document.getElementById("profit-info");
+    if (profitInfoDiv.style.display === "none") {
+        profitInfoDiv.style.display = "block";
+    } else {
+        profitInfoDiv.style.display = "none";
     }
-
-    // Sort jobs by profit in descending order
-    jobs.sort((a, b) => b.profit - a.profit);
-    const maxDeadline = Math.max(...jobs.map(job => job.deadline));
-    const result = new Array(maxDeadline).fill(null);
-    let totalProfit = 0;
-    let stepCount = 1;
-
-    // Process each job with visualization
-    for (const job of jobs) {
-        resultDiv.innerHTML += `
-            <div class="step-explanation">
-                <h3>Step ${stepCount}: Processing ${job.id}</h3>
-                <p>Profit: ${job.profit}, Deadline: ${job.deadline}</p>
-            </div>
-        `;
-
-        // Show current timeline before assignment
-        await visualizeTimelineStep(result, maxDeadline, null, resultDiv);
-        await sleep(1000);
-
-        let slotFound = false;
-        for (let j = job.deadline - 1; j >= 0; j--) {
-            if (result[j] === null) {
-                resultDiv.innerHTML += `
-                    <p>The last empty slot available for ${job.id} before deadline is slot ${j}-${j + 1}</p>
-                `;
-                result[j] = job;
-                totalProfit += job.profit;
-                slotFound = true;
-
-                // Show updated timeline after assignment
-                await visualizeTimelineStep(result, maxDeadline, j, resultDiv);
-                await sleep(1000);
-                break;
-            }
-        }
-
-        if (!slotFound) {
-            resultDiv.innerHTML += `
-                <p>No available slot found for ${job.id} before its deadline</p>
-            `;
-        }
-
-        stepCount++;
-    }
-
-    // Display final sequence and total profit
-    resultDiv.innerHTML += `
-        <div class="final-result">
-            <h3>Final Job Sequence</h3>
-            <p>All the slots are filled. The sequence of jobs is: ${result.map(job => job ? job.id : 'Empty').join(' ')}</p>
-            <p>Total Profit: Php ${totalProfit}</p>
-        </div>
-    `;
 }
-
 
 async function visualizeTimelineStep(result, maxDeadline, highlightSlot, container) {
     const timelineDiv = document.createElement('div');
@@ -219,4 +144,94 @@ async function visualizeTimelineStep(result, maxDeadline, highlightSlot, contain
     
     timelineDiv.appendChild(slotsDiv);
     container.appendChild(timelineDiv);
+}
+
+async function calculateJobSequence() {
+    const jobRows = document.querySelectorAll('#jobDetails tr');
+    const jobs = [];
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "<h2>Job Sequencing Steps:</h2>";
+
+    // Iterate over each row and get job data
+    jobRows.forEach((row, index) => {
+        const inputs = row.querySelectorAll('input');
+        const jobId = inputs[0].value;
+        const profit = parseInt(inputs[1].value);
+        const deadline = parseInt(inputs[2].value);
+
+        if (jobId && profit > 0 && deadline > 0) {
+            jobs.push({ id: jobId, profit: profit, deadline: deadline });
+        } else {
+            alert(`Please fill out all fields for Job ${index + 1} with valid values.`);
+            return;
+        }
+    });
+
+    if (jobs.length === 0) {
+        alert("No valid job data provided.");
+        return;
+    }
+
+    // Sort jobs by profit in descending order
+    jobs.sort((a, b) => b.profit - a.profit);
+    const maxDeadline = Math.max(...jobs.map(job => job.deadline));
+    const result = new Array(maxDeadline).fill(null);
+    let totalProfit = 0;
+    let stepCount = 1;
+
+    // Process each job with visualization
+    for (const job of jobs) {
+        resultDiv.innerHTML += `
+            <div class="step-explanation">
+                <h3>Step ${stepCount}: Processing ${job.id}</h3>
+                <p>Profit: ${job.profit}, Deadline: ${job.deadline}</p>
+            </div>
+        `;
+
+        // Show current timeline before assignment
+        await visualizeTimelineStep(result, maxDeadline, null, resultDiv);
+        await sleep(1000);
+
+        let slotFound = false;
+        for (let j = job.deadline - 1; j >= 0; j--) {
+            if (result[j] === null) {
+                resultDiv.innerHTML += `
+                    <p>The last empty slot available for ${job.id} before deadline is slot ${j}-${j + 1}</p>
+                `;
+                result[j] = job;
+                totalProfit += job.profit;
+                slotFound = true;
+
+                // Show updated timeline after assignment
+                await visualizeTimelineStep(result, maxDeadline, j, resultDiv);
+                await sleep(1000);
+                break;
+            }
+        }
+
+        if (!slotFound) {
+            resultDiv.innerHTML += `
+                <p>No available slot found for ${job.id} before its deadline</p>
+            `;
+        }
+
+        stepCount++;
+    }
+
+    // Display final sequence and total profit
+    resultDiv.innerHTML += `
+        <div class="final-result">
+            <h3>Final Job Sequence</h3>
+            <p>All the slots are filled. The sequence of jobs is: ${result.map(job => job ? job.id : 'Empty').join(' ')}</p>
+            <div class="profit-container">
+                <p>Total Profit: Php ${totalProfit}</p>
+                <span class="info-icon" onclick="showProfitInfo()" style="cursor: pointer;">ℹ️</span>
+            </div>
+        </div>
+        <div id="profit-info" class="info-text" style="display: none;">
+            The total profit represents the maximum profit achievable by scheduling the jobs
+            optimally within their respective deadlines. This is calculated by selecting 
+            the most profitable jobs that can be completed before their respective deadlines.
+        </div>
+    `;
 }
