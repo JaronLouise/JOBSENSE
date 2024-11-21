@@ -170,6 +170,16 @@ img {
     border-radius: 20px;
 }
 
+.job, .answer-job {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--green-color);
+    cursor: grab;
+    user-select: none;
+}
+
 .problem {
     padding-top: 5px;
     padding-left: 10px;
