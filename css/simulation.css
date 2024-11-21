@@ -1,6 +1,7 @@
 :root {
     --green-color: #31943b;
     --input-field-color: #eee;
+    --yellow-color: #ffeb3b; 
 }
 
 * {
@@ -220,6 +221,50 @@ label {
     font-size: 1.5rem;
     margin: 15px 0;
 }
+
+.final-result {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid var(--green-color);
+    border-radius: 10px;
+    background-color: #e8f5e9;
+    font-size: 16px;
+    position: relative; 
+  }
+  
+  .info-icon {
+    font-size: 20px;
+    color: var(--info-icon-color);
+    cursor: pointer;
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+  }
+  
+  .info-icon:hover {
+    color: var(--green-color);
+  }
+
+.info-icon:hover {
+    color: var(--green-color);
+}
+
+.info-text {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 4px dashed var(--yellow-color);
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    color: var(--info-icon-color);
+  }
+
+.profit-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 
 .col-1 {
     margin-top: 20px;
