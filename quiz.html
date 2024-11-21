@@ -55,10 +55,12 @@
 
     <!-- Display final score -->
     <div id="final-score" style="display: none;">
+        <p id="feedback-message"></p>
         <h2>Your Score: <span id="total-score"></span></h2>
         <button onclick="window.location.reload()">Restart Quiz</button>
         <button onclick="window.location.href='home.html'">Quit</button>
     </div>
+    
     <!-- Firebase and JavaScript -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
