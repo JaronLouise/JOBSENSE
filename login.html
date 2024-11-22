@@ -8,15 +8,16 @@
 </head>
 <body>
     <div class="container">
+        <!-- Welcome screen illustration -->
         <div class="col col-1">
             <img class="logreg-img" src="/assets/log_reg.png" alt="welcome">
         </div>
+        <!-- Login form -->
         <div class="col col-2-login">
             <h2>Sign In</h2>
             <form id="loginForm">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
                 <label for="password">Password</label>
                 <div class="input-with-icon">
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
@@ -24,13 +25,11 @@
                 </div>
                 <div id="signInMessage" style="display:none; color:red;"></div>
                 <small><a href="#" id="reset">Forgot Password</a></small>
-
                 <button type="submit" class="submit-btn-log">Login</button>
             </form>
             <p>Don't have an account? <a href="register.html">Register</a></p>
         </div>
     </div>
-
    <script src="/js/logreg.js" type="module"></script>
 </body>
 </html>
