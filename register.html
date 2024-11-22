@@ -3,36 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
+    <title>Sign Up</title>
+    <link rel="icon" href="/assets/js_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/logreg.css">
 </head>
 <body>
     <div class="container">
+        <!-- Welcome screen illustration -->
         <div class="col col-1">
             <img class="logreg-img" src="/assets/log_reg.png" alt="welcome">
         </div>
+        <!-- Register form -->
         <div class="col col-2-register">
             <h2>Register</h2>
             <form id="registerForm">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
-
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter a username" required>
-
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter a password" required>
-
                 <button type="submit" class="submit-btn-reg">Register</button>
             </form>
             <div id="signUpMessage"></div>
             <p>Already have an account? <a href="login.html">Login</a></p>
         </div>
     </div>
-
     <script src="/js/logreg.js" type="module"></script>
 </body>
 </html>
