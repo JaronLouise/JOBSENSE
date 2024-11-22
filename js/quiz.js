@@ -4,10 +4,13 @@ window.addEventListener('load', () => {
     const skipButton = document.getElementById('skip-tutorial');
     const closeButton = document.getElementById('close-tutorial');  // Get the close button
 
+
     console.log(tutorialPopup, skipButton, closeButton);  // Debugging line to check if elements are found
+
 
     // Display the tutorial popup
     tutorialPopup.style.display = 'flex';
+
 
     // Close the tutorial when the close button (X) is clicked
     closeButton.addEventListener('click', () => {
@@ -15,6 +18,7 @@ window.addEventListener('load', () => {
         tutorialPopup.style.display = 'none';
     });
 });
+
 
 // Firebase configuration and initialization
 const firebaseConfig = {
@@ -26,16 +30,26 @@ const firebaseConfig = {
     appId: "1:600112311901:web:f9c87eead4ff40584be7b4"
 };
 
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
+
 
 let currentUserId = null;
 let currentQuestionIndex = 0;
 let currentScore = 0;
 let selectedDifficulty = 'easy';
 let questions = [];
+
+
+
+
+
+
+
+
 
 
 
@@ -61,12 +75,28 @@ auth.onAuthStateChanged((user) => {
 
 
 
+
+
+
+
+
+
+
+
 async function loadQuiz(difficulty) {
     selectedDifficulty = difficulty;
     currentQuestionIndex = 0;
     currentScore = 0;
     document.getElementById('level-selection').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
+
+
+
+
+
+
+
+
 
 
 
@@ -92,6 +122,14 @@ async function loadQuiz(difficulty) {
 
 
 
+
+
+
+
+
+
+
+
 async function fetchQuestions(difficulty) {
     const questions = [];
     try {
@@ -105,9 +143,25 @@ async function fetchQuestions(difficulty) {
 
 
 
+
+
+
+
+
+
+
+
         if (!querySnapshot.empty) {
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
+
+
+
+
+
+
+
+
 
 
 
@@ -140,8 +194,24 @@ async function fetchQuestions(difficulty) {
 
 
 
+
+
+
+
+
+
+
+
 function parseJobs(jobsString) {
     console.log('Jobs string from Firestore:', jobsString); // Log the raw jobs string
+
+
+
+
+
+
+
+
 
 
 
@@ -163,8 +233,24 @@ function parseJobs(jobsString) {
 
 
 
+
+
+
+
+
+
+
+
     // Split the string by commas and trim whitespace
     const jobList = jobsString.split(',').map(job => job.trim());
+
+
+
+
+
+
+
+
 
 
 
@@ -183,8 +269,24 @@ function parseJobs(jobsString) {
 
 
 
+
+
+
+
+
+
+
+
     return jobList; // Return an array of job names
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -209,6 +311,14 @@ function parseCorrectSequence(sequenceString) {
 
 
 
+
+
+
+
+
+
+
+
 function createJobList(jobs) {
     const jobListContainer = document.getElementById('job-list');
     jobListContainer.innerHTML = ''; // Clear previous content
@@ -220,7 +330,23 @@ function createJobList(jobs) {
 
 
 
+
+
+
+
+
+
+
+
     console.log('Jobs for current question:', jobs); // Log jobs for current question
+
+
+
+
+
+
+
+
 
 
 
@@ -242,9 +368,25 @@ function createJobList(jobs) {
 
 
 
+
+
+
+
+
+
+
+
         // Display only the job name
         jobElement.innerText = job; // Display job name directly
         jobElement.dataset.name = job; // Set job name as a data attribute
+
+
+
+
+
+
+
+
 
 
 
@@ -268,6 +410,14 @@ function createJobList(jobs) {
 
 
 
+
+
+
+
+
+
+
+
         // Append the job element to the container
         jobListContainer.appendChild(jobElement);
     });
@@ -279,8 +429,24 @@ function createJobList(jobs) {
 
 
 
+
+
+
+
+
+
+
+
     enableDragAndDrop(); // Enable drag-and-drop functionality
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -300,6 +466,14 @@ function displayQuestion(question) {
 
 
 
+
+
+
+
+
+
+
+
     // Clear the answer container when displaying a new question
     const answerContainer = document.getElementById('answer-container');
     answerContainer.innerHTML = '';
@@ -311,8 +485,24 @@ function displayQuestion(question) {
 
 
 
+
+
+
+
+
+
+
+
     createJobList(question.jobs); // This will show only the jobs for the current question
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -332,11 +522,27 @@ function enableDragAndDrop() {
 
 
 
+
+
+
+
+
+
+
+
     jobList.addEventListener('dragover', e => {
         e.preventDefault();
         const draggingElement = document.querySelector('.dragging');
         jobList.appendChild(draggingElement);
     });
+
+
+
+
+
+
+
+
 
 
 
@@ -359,8 +565,24 @@ function enableDragAndDrop() {
 
 
 
+
+
+
+
+
+
+
+
 function saveScoreToFirebase(score, level) {
     if (!currentUserId) return;
+
+
+
+
+
+
+
+
 
 
 
@@ -383,6 +605,14 @@ function saveScoreToFirebase(score, level) {
 
 
 
+
+
+
+
+
+
+
+
 // Helper function to format the date as 'YYYY-MM-DD'
 function formatDate(date) {
     const year = date.getFullYear();
@@ -390,6 +620,14 @@ function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -419,22 +657,28 @@ function isDateConsecutive(lastDateString, currentDate) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 async function handleQuizCompletion() {
     const user = auth.currentUser;
     if (!user) return; // Ensure user is authenticated
-
-
 
 
     const currentDate = new Date();
     const dateString = formatDate(currentDate); // Format as 'YYYY-MM-DD'
 
 
-
-
     const streakRef = db.collection('streaks').doc(user.uid);
-
-
 
 
     try {
@@ -444,11 +688,7 @@ async function handleQuizCompletion() {
             : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
 
 
-
-
         const completedDates = streakData.completedDates || {};
-
-
 
 
         // Get the last completed date
@@ -458,12 +698,8 @@ async function handleQuizCompletion() {
             : null;
 
 
-
-
         // Check if the current date is consecutive to the last completed date
         const isConsecutive = lastCompletedDate && isDateConsecutive(lastCompletedDate, dateString);
-
-
 
 
         // Update streak based on whether the current date is consecutive
@@ -474,18 +710,20 @@ async function handleQuizCompletion() {
         }
 
 
-
-
         // Update best streak
         streakData.bestStreak = Math.max(streakData.currentStreak, streakData.bestStreak);
-
-
 
 
         // Update completedDates with the current date
         completedDates[dateString] = true;
 
 
+        console.log("Updated streak data:", {
+            completedDates,
+            currentStreak: streakData.currentStreak,
+            bestStreak: streakData.bestStreak,
+            lastCompleted: dateString
+        });
 
 
         // Save the updated streak data
@@ -493,21 +731,29 @@ async function handleQuizCompletion() {
             completedDates,
             currentStreak: streakData.currentStreak,
             bestStreak: streakData.bestStreak,
-            lastCompleted: dateString, // Explicitly save the last completed date as 'YYYY-MM-DD'
+            lastCompleted: dateString, // Explicitly save the last completed date
         }, { merge: true });
 
 
-
-
         console.log('Streak updated:', streakData);
-
-
 
 
     } catch (error) {
         console.error('Error updating streak data:', error);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -532,6 +778,14 @@ function isDateConsecutive(lastDateString, currentDateString) {
 
 
 
+
+
+
+
+
+
+
+
     // Difference in days
     const differenceInDays = Math.ceil((currentDate - lastDate) / (1000 * 60 * 60 * 24));
     return differenceInDays === 1;
@@ -544,10 +798,34 @@ function isDateConsecutive(lastDateString, currentDateString) {
 
 
 
+
+
+
+
+
+
+
+
 // Helper function to format the date
 function formatDate(date) {
     return date.toISOString().split('T')[0]; // Returns 'YYYY-MM-DD'
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -577,6 +855,14 @@ async function checkAnswer() {
 
 
 
+
+
+
+
+
+
+
+
     // Check if the answer container is empty (no jobs inside)
     if (answerContainer.children.length === 0) {
         alert("Please place your answer in the container before checking!");
@@ -590,8 +876,24 @@ async function checkAnswer() {
 
 
 
+
+
+
+
+
+
+
+
     console.log('Selected Sequence:', selectedSequence);
     console.log('Correct Sequence:', currentQuestion.correctSequence);
+
+
+
+
+
+
+
+
 
 
 
@@ -616,6 +918,14 @@ async function checkAnswer() {
 
 
 
+
+
+
+
+
+
+
+
     // Reset the answer container and move to the next question after a short delay
     setTimeout(() => {
         document.getElementById('result').innerText = '';
@@ -623,6 +933,14 @@ async function checkAnswer() {
         nextQuestion();
     }, 2000);
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -644,11 +962,27 @@ document.getElementById('reset-button').addEventListener('click', function() {
 
 
 
+
+
+
+
+
+
+
+
     // Move all jobs from answer-container back to job-list
     while (answerContainer.firstChild) {
         jobList.appendChild(answerContainer.firstChild);
     }
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -671,6 +1005,10 @@ async function nextQuestion() {
 
 
 
+
+
+
+
         // Display a custom feedback message based on the final score
         let feedbackMessage = '';
         if (currentScore === 3) {
@@ -686,6 +1024,10 @@ async function nextQuestion() {
 
 
 
+
+
+
+
         // Display the feedback message in the 'feedback-message' element
         const feedbackElement = document.getElementById('feedback-message');
         if (feedbackElement) {
@@ -695,6 +1037,9 @@ async function nextQuestion() {
         }
     }
 }
+
+
+
 
 
 
