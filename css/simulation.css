@@ -239,7 +239,7 @@ label {
     border-radius: 3px;
 }
 
-/* Update media queries */
+/* Media queries */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -262,7 +262,6 @@ label {
         font-size: 1rem;
     }
     
-    /* Remove the width calculation for num-job-field since we're using flex */
     .num-job-field {
         min-width: 0;
     }
@@ -295,12 +294,10 @@ label {
         font-size: 0.9rem;
     }
     
-    /* Remove the flex-direction: column from .row */
     .row {
         flex-direction: row;
     }
     
-    /* Remove the 100% width setting for num-job-field */
     .slot {
         width: 60px;
         height: 35px;
