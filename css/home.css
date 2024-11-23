@@ -13,7 +13,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Responsive Design: Base adjustments */
 html, body {
     margin: 0;
     padding: 0;
@@ -25,27 +24,41 @@ html, body {
 }
 
 .list-item-button {
-    width: 80px;
     height: 80px;
 }
 
-.mh-graphics {
-    max-width: 100%;  /* Make sure image is responsive */
-    height: auto; 
-    margin-right: 50px;
+.list-item-button, .robot img {
+    width: 80px;
 }
 
-.main-header, .list-item, .container, .col-1, .col-2, .row {
+.mh-graphics {
+    margin-right: 5px;
+}
+
+.mh-graphics, .top-square, .container, .col-2-top, .fc {
+    max-width: 100%;  
+}
+
+.mh-graphics, .top-square, .calendar-card {
+    height: auto; 
+
+}
+
+.robot img {
+    height: 86px;
+}
+
+.main-header, .list-item, .container, .col-1, .col-2, .col-2-top, .row, .top-square, .stats-container, .calendar-header, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     display: flex;
 }
 
 .main-header {
-    width: 750px;
     height: 130px;
-    gap: 16px;
+    overflow: hidden;  
+}
+
+.main-header, .list-item, .calendar-header {
     justify-content: space-between;
-    align-items: center;
-    overflow: hidden;  /* This prevents the image from spilling out */
 }
 
 .container, .col-1 {
@@ -57,33 +70,32 @@ h1 {
 }
 
 #welcome-message{
-    padding-top: 15px;
-    padding-left: 30px;
+    padding: 15px 0 0 30px;
 }
 
 .top-square {
-    max-width: 100%;
-    width: 236px; /* Prevent it from stretching too much on larger screens */
-    height: auto; /* Allow height to adjust naturally with content */
-    padding: 20px; /* Ensure padding scales for smaller screens */
-    display: flex;
-    align-items: center;
+    width: 236px; 
+    padding: 20px; 
+}
+
+.top-square, .stats-container, .fc .fc-daygrid-day-top, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     justify-content: center;
+}
+
+.main-header, .top-square, .list-item, .stats-container, .calendar-header, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number  {
+    align-items: center;
+}
+
+.top-square, .card, .stats-container, .weekday, .date, .weekdays-row{
     text-align: center;
 }
 
 .list-item {
     height: 105px;
     padding: 16px;
-    box-sizing: border-box;
-    align-items: center;
-    border-radius: 20px;
-    background-color: var(--box-color);
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
 }
 
 .list-item:hover {
@@ -99,28 +111,25 @@ h1 {
 
 .container {
     margin: 0 auto;
-    padding-top: 90px;
-    padding-right: 50px;
-    max-width: 100%;
+    padding: 40px 50px 0 0;
     width: 1200px;
     flex-wrap: wrap; 
-    gap: 16px;
 }
 
-.col-1 {
+.list-item, .calendar-container {
+    box-sizing: border-box;
+}
+
+.col-1, .main-header{
     width: 750px;
 }
 
 .col-2-top {
-    gap: 15px;
-    max-width: 100%;
     width: 465px;
-    display: flex;
     flex-direction: row;
 }
 
 .col-1, .col-2 {
-    gap: 15px;
     flex-direction: column;
 }
 
@@ -137,14 +146,13 @@ p {
     font-size: 23px;
 }
 
-.row {
+.row, .container, .main-header, .col-2-top, .col-1, .col-2  {
     gap: 16px;
 }
 
 .card {
     height: 88px;
     width: 465px;
-    text-align: center;
 }
 
 .icons-text {
@@ -166,15 +174,9 @@ span {
     text-shadow: 0px 0px 1px #265f2a; 
 }
 
-/* Stats Container Styles */
 .stats-container {
     padding: 5px;
-    height: 100%;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 .stats-container h3 {
@@ -191,24 +193,23 @@ span {
     margin: 0;
 }
 
-/* Calendar Container Styles */
-.calendar-container {
-    padding: 15px;
+.stats-container, .calendar-container {
     height: 100%;
-    box-sizing: border-box;
 }
 
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 5px;
+.calendar-container {
+    padding: 20px 15px 0px 15px;
+}
+
+.calendar-card {
+    background-color: var(--box-color);
+    border-radius: 20px;
+    width: 465px;
+    min-height: 300px;
+    border: 1px solid var(--border-color); 
 }
 
 .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -229,17 +230,14 @@ span {
 }
 
 .weekday {
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.8em;
+    font-weight: 600;
+    font-size: 0.9em;
     color: var(--label-color);
-    padding: 5px 0;
-    background-color: #f0f0f0;
+    padding: 8px 0; 
+    background-color: var(--box-color);
 }
 
-/* General Styles */
 .date {
-    text-align: center;
     padding: 5px;
     font-size: 0.9em;
     border-radius: 5px;
@@ -248,48 +246,20 @@ span {
     color: var(--label-color);
 }
 
-/* Empty dates */
 .date.empty {
     visibility: hidden;
 }
 
-/* Current Day */
 .date.current {
     background-color: var(--light-gray-color);
     color: var(--label-color);
 }
 
-/* Completed Dates */
-.date.completed {
+.date.completed, .date.completed-today {
     background-color: var(--green-color);
     color: white;
 }
 
-/* Completed Current Day */
-.date.completed-today {
-    background-color: var(--green-color);
-    color: white;
-}
-
-/* Weekdays Styling */
-.weekday {
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.9em;
-    color: var(--label-color);
-    padding: 8px 0; 
-    background-color: var(--box-color);
-
-}
-
-/* Weekdays Row */
-.weekdays-row {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    background-color: #f9f9f9; /* Optional for better contrast */
-}
-
-/* Calendar Grid */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -297,79 +267,24 @@ span {
     margin-top: 5px;
 }
 
-/* Calendar Header */
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.calendar-header h2 {
-    margin: 0;
-    font-size: 1.2em;
-    color: var(--label-color);
-}
-
-/* Weekdays */
-.weekday {
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.8em;
-    color: var(--label-color);
-    padding: 5px 0;
-    background-color: var(--box-color);
-}
-
-/* Hover effect for dates */
 .date:hover {
     background-color: rgba(22, 121, 171, 0.05);
 }
 
-/* Completed gradient for overlapping current day */
 .date.completed.current {
     background: linear-gradient(45deg, var(--green-color) 50%, var(--blue-color) 50%);
     color: white;
-}
-
-.calendar-card {
-    background-color: var(--box-color);
-    border-radius: 20px;
-    width: 465px;
-    height: auto;
-    min-height: 300px;
-    border: 1px solid var(--border-color); /* Only one border */
-}
-
-.calendar-container {
-    padding-top: 20px;
-}
-
-.date {
-    padding: 5px;
-    text-align: center;
-    font-size: 0.9em;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .date.empty {
     visibility: hidden;
 }
 
-.calendar-container {
-    height: 100%;
-    box-sizing: border-box;
-}
-
-/* FullCalendar customizations */
 .fc {
-    max-width: 100%;
     height: 100%;
     background: transparent;
 }
 
-/* Header styling */
 .fc .fc-toolbar.fc-header-toolbar {
     margin-bottom: 1em;
 }
@@ -388,13 +303,11 @@ span {
     background-color: var(--green-color);
 }
 
-/* Day grid styling */
 .fc .fc-daygrid-day-frame {
     padding: 4px;
 }
 
 .fc .fc-daygrid-day-top {
-    justify-content: center;
     padding-top: 4px;
 }
 
@@ -405,7 +318,6 @@ span {
     color: var(--label-color);
 }
 
-/* Today's date styling */
 .fc .fc-daygrid-day.fc-day-today {
     background-color: transparent !important;
 }
@@ -416,12 +328,8 @@ span {
     border-radius: 50%;
     width: 24px;
     height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-/* Week day header styling */
 .fc .fc-col-header-cell {
     padding: 8px 0;
     background-color: transparent;
@@ -434,7 +342,6 @@ span {
     padding: 4px;
 }
 
-/* Grid lines and borders */
 .fc table {
     border: none;
 }
@@ -448,7 +355,6 @@ span {
     border-radius: 8px;
 }
 
-/* Completed date styling */
 .fc .fc-bg-event {
     background-color: rgba(76, 175, 80, 0.2) !important;
     opacity: 1;
@@ -458,15 +364,14 @@ span {
     display: none;
 }
 
-/* Hover effect on dates */
 .fc .fc-daygrid-day:hover {
     background-color: rgba(22, 121, 171, 0.05);
 }
 
 .weekdays-row {
     display: grid;
+    background-color: #f9f9f9;
     grid-template-columns: repeat(7, 1fr);
-    text-align: center;
     font-weight: bold;
 }
 
@@ -476,11 +381,9 @@ span {
 }
 
 .date.completed {
-    background-color: var(--green-color); /* Highlight completed days in green */
-    color: white; /* Text color for contrast */
+    background-color: var(--green-color); 
+    color: white; 
 }
-
-/* Base styles remain the same */
 
 /* Responsive Design Adjustments */
 @media (max-width: 1200px) {
