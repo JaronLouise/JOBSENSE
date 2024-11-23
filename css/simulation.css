@@ -1,7 +1,14 @@
 :root {
     --green-color: #31943b;
     --input-field-color: #eee;
-    --yellow-color: #ffeb3b; 
+    --gradient-color: #45d16a;
+    --slot-color:#f8f8f8;
+    --border-color: #ccc;
+    --border-color-2: #ddd; 
+    --line-color: #ffa726;
+    --slot-number: #333;
+    --timeline-color: #f9f9f9;
+    --result-color: #e8f5e9;
 }
 
 * {
@@ -16,8 +23,8 @@ body {
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 table, th, td {
@@ -26,32 +33,33 @@ table, th, td {
 
 th, td {
     padding: 5px;
-    text-align: center;
-}
-
-#jobTable {
-    table-layout: fixed;
-    width: 100%;
-}
-
-#jobTable th, #jobTable td {
     width: 33.33%;
+} 
+
+th, td, h1, .job-inputs-section, .slot {
     text-align: center;
 }
 
 thead {
-    color: var(--green-color);
     font-size: 20px;
 }
 
+thead, h1, h3, #result h2 {
+    color: var(--green-color);
+
+}
+
 input {
-    width: 100%;
     padding: 8px;
     margin: 5px 0;
     box-sizing: border-box;
     background-color: var(--input-field-color);
     font-size: 16px;
     border: none;
+}
+
+table, input, .result-section {
+    width: 100%;
 }
 
 button {
@@ -65,15 +73,18 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(45deg, #31943b, #45d16a);
+    background: linear-gradient(45deg, var(--green-color), var(--gradient-color));
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 60px;
-    display: flex;
     gap: 20px;
+}
+
+.container, .row, .slot-container, .slot-wrapper, .slot {
+    display: flex;
 }
 
 .col {
@@ -82,19 +93,17 @@ button:hover {
 }
 
 h1 {
-    text-align: center;
-    color: var(--green-color);
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
 .num-job-field {
-    flex: 1; /* Allow input to take remaining space */
-    min-width: 0; /* Allows flex item to shrink below content size */
+    flex: 1; 
+    min-width: 0; 
 }
 
 .num-jobs {
-    flex-shrink: 0; /* Prevent button from shrinking */
+    flex-shrink: 0; 
     width: 120px;
 }
 
@@ -103,29 +112,23 @@ h1 {
 }
 
 .row {
-    display: flex;
     gap: 5px;
-    flex-wrap: nowrap; /* Changed to nowrap to keep elements in line */
+    flex-wrap: nowrap; 
     align-items: center;
 }
 
 h3 {
     padding-left: 10px;
     font-size: 1.4rem;
-    color: var(--green-color);
 }
 
-input, .num-jobs, .job-seq-btn {
+input, .num-jobs, .job-seq-btn, .final-result {
     border-radius: 10px;
 }
 
 label {
     font-size: 1.2rem;
     padding-left: 5px;
-}
-
-.job-inputs-section {
-    text-align: center;
 }
 
 .num-jobs, .job-seq-btn {
@@ -135,7 +138,6 @@ label {
 }
 
 .result-section {
-    width: 100%;
     max-width: 600px;
     padding: 10px;
     overflow-x: hidden;
@@ -144,7 +146,6 @@ label {
 }
 
 .slot-container {
-    display: flex;
     height: 100px;
     flex-wrap: nowrap;
     gap: 10px;
@@ -160,7 +161,6 @@ label {
 
 .slot-wrapper {
     position: relative;
-    display: flex;
     align-items: center;
     flex-shrink: 0;
 }
@@ -168,20 +168,18 @@ label {
 .slot {
     width: 70px;
     height: 40px;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
+    background-color: var(--slot-color);
+    border: 1px solid var(--border-color) ;
     border-radius: 4px;
-    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     font-size: 14px;
 }
 
 .connection-line {
     width: 55px;
     height: 2px;
-    background-color: #ffa726;
+    background-color: var(--line-color);
 }
 
 .slot-number {
@@ -190,87 +188,41 @@ label {
     left: 50%;
     transform: translateX(-50%);
     font-size: 12px;
-    color: #333;
+    color: var(--slot-number);
 }
 
 .timeline-step {
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color-2);
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--timeline-color);
 }
 
 .final-result {
     margin: 20px 0;
     padding: 15px;
     border: 2px solid var(--green-color);
-    border-radius: 10px;
-    background-color: #e8f5e9;
+    background-color: var(--result-color);
     font-size: 16px;
 }
 
 .step-explanation {
     margin-bottom: 20px;
     font-size: 14px;
-    color: #555;
+    color: var(--slot-number);
 }
 
 #result h2 {
-    color: var(--green-color);
     font-size: 1.5rem;
     margin: 15px 0;
 }
-
-.final-result {
-    margin: 20px 0;
-    padding: 15px;
-    border: 2px solid var(--green-color);
-    border-radius: 10px;
-    background-color: #e8f5e9;
-    font-size: 16px;
-    position: relative; 
-  }
-  
-  .info-icon {
-    font-size: 20px;
-    color: var(--info-icon-color);
-    cursor: pointer;
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
-  }
-  
-  .info-icon:hover {
-    color: var(--green-color);
-  }
-
-.info-icon:hover {
-    color: var(--green-color);
-}
-
-.info-text {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    border: 4px dashed var(--yellow-color);
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    color: var(--info-icon-color);
-  }
-
-.profit-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 
 .col-1 {
     margin-top: 20px;
 }
 
-.col-1, .col-2 {
+.col-1,.col-2 {
     max-height: 100vh;
     overflow-y: auto;
     padding: 10px;
