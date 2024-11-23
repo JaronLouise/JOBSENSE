@@ -1,45 +1,37 @@
 :root {
-    --green-color: #31943b; /* Dark Green */
-    --gray-color: #b3b3b3;  /* Light Gray */
-    --white-color: #ffffff; /* White */
-    --black-color: #000000; /* Black */
+    --green-color: #31943b;
+    --gray-color: #b3b3b3;
+    --white-color: #ffffff;
+    --black-color: #000000;
     --input-field-color: #eee;
     --hover-color: #287b2a;
-    --font-primary: 'Poppins', sans-serif;
 }
 
 * {
-    font-family: var(--font-primary);
-}
-
-/* General body styling */
-body {
-    background-color: var(--gray-color);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--gray-color);
     width: 100%;
-    min-height: 100vh; /* Ensure full height for the viewport */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: column;
     align-items: center;
 }
 
-
-/* Profile container styling */
 .profile-container {
     background-color: var(--white-color);
+    border: 1px solid var(--gray-color);
     border-radius: 20px;
     padding: 50px 70px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     width: 750px;
-    border: 1px solid var(--gray-color);
     transition: transform 0.3s, box-shadow 0.3s;
-    margin: 20px 0; /* Add vertical spacing to prevent edge clipping */
-}
-
-
-.profile-container h1 {
-    text-align: center;
+    margin: 20px 0;
 }
 
 .profile-container:hover {
@@ -47,113 +39,14 @@ body {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Heading styling */
-h1 {
-    margin-bottom: 40px; /* Larger space from profile info */
+.profile-container h1 {
+    text-align: center;
+    margin-bottom: 40px;
     color: var(--green-color);
-    font-size: 30px; /* Larger font size */
+    font-size: 30px;
     font-weight: 700;
 }
 
-/* Ensure consistent width for all input fields */
-.profile-field input[type="text"] {
-    width: calc(100% - 25px); /* Adjust width to consider padding/margin */
-}
-
-/* Profile information */
-#profile-info p {
-    margin: 20px 0;
-    color: var(--black-color);
-    font-size: 24px; /* Much larger font size */
-    line-height: 1.8; /* Increased line-height for better spacing */
-}
-
-
-/* Button styling */
-button {
-    padding: 18px 30px; /* Larger padding */
-    margin-top: 25px;
-    background: var(--green-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 35px; /* Larger border-radius for rounded buttons */
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    font-size: 22px; /* Larger font size */
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-
-button:hover {
-    background: var(--hover-color); /* Slightly darker green */
-    transform: scale(1.05);
-}
-
-
-/* Input field */
-#edit-username  {
-    display: inline-block;
-    padding: 16px;
-    border: 1px solid var(--gray-color);
-    border-radius: 10px;
-    margin-left: 10px;
-    width: 80%; /* Adjusted width for more space */
-    font-size: 20px; /* Larger font size */
-    background-color: var(--white-color);
-    color: var(--black-color);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Input field */
-#edit-username:hover, #save-button:hover {
-    background-color: var(--hover-color);
-}
-
-/* Input field styling */
-input[type="text"] {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    margin: 10px 0;
-    border: 1px solid var(--gray-color);
-    border-radius: 10px;
-    font-size: 20px;
-    background-color: var(--input-field-color);
-    color: var(--black-color);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Read-only input styling */
-input[readonly] {
-    background-color: var(--input-field-color);
-    color: var(--black-color);
-    cursor: not-allowed;
-}
-
-/* Align input and buttons in a single row */
-.input-group {
-    width: 100%;
-    display: flex;
-    align-items: center; /* Align items vertically centered */
-    gap: 10px; /* Space between input and buttons */
-}
-
-/* Adjust the input width when beside buttons */
-.input-group input[type="text"] {
-    flex-grow: 1; /* Input takes available space */
-}
-
-/* Reduce button size to match input height */
-.input-group button {
-    padding: 10px 15px; /* Smaller padding for buttons */
-    font-size: 16px; /* Smaller font size for buttons */
-    border-radius: 8px; /* Match the input style */
-    height: auto; /* Ensure proper alignment with the input field */
-}
-
-/* Profile field container */
 .profile-field {
     margin-bottom: 20px;
 }
@@ -166,78 +59,72 @@ input[readonly] {
     color: var(--black-color);
 }
 
+.profile-field input[type="text"],
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--gray-color);
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: var(--input-field-color);
+    color: var(--black-color);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+input[readonly] {
+    cursor: not-allowed;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.input-group button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    height: auto;
+}
+
+button {
+    padding: 18px 30px;
+    background: var(--green-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 22px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background: var(--hover-color);
+    transform: scale(1.05);
+}
+
 #edit-button, #save-button {
     width: 20%;
-    margin-top: 0;
     height: 57px;
 }
 
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .profile-container {
-        width: 90%; /* Decrease container width for smaller screens */
-        padding: 40px 50px;
-    }
-
-
-    h1 {
-        font-size: 40px;
-    }
-
-
-    #edit-username {
-        width: 80%;
-    }
-
-
-    #profile-info p {
-        font-size: 20px;
-    }
-}
-
-
-@media (max-width: 480px) {
-    .profile-container {
-        width: 90%; /* Adjust container width for mobile */
-        padding: 25px 35px;
-    }
-
-
-    h1 {
-        font-size: 36px;
-    }
-
-
-    #edit-username {
-        width: 80%; /* Keep input width adjusted */
-    }
-
-
-    #profile-info p {
-        font-size: 18px; /* Adjust font size for smaller screens */
-    }
-}
-
-
-/* Quiz history section */
 .quiz-history {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 2px solid var(--gray-color); /* Slightly thicker border */
+    border-top: 2px solid var(--gray-color);
 }
-
 
 .quiz-history h2 {
     color: var(--green-color);
-    font-size: 26px; /* Larger font size */
+    font-size: 26px;
     margin-bottom: 20px;
-    font-weight: 700; /* Bolder weight for emphasis */
-    text-align: center; /* Center align the heading */
+    font-weight: 700;
+    text-align: center;
 }
 
-
-/* Table container styling for proper scrolling on small screens */
 .table-container {
     overflow-x: auto;
     margin-top: 20px;
@@ -245,93 +132,39 @@ input[readonly] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Styling for the table */
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--white-color);
     font-size: 18px;
-    table-layout: auto; /* Automatically adjusts column width */
+    table-layout: auto;
 }
 
-
-/* Table header styling */
 thead {
     background-color: var(--green-color);
     color: var(--white-color);
 }
 
-
 th, td {
     padding: 15px 20px;
     text-align: left;
     border-bottom: 1px solid var(--gray-color);
-    word-break: break-word; /* Prevent text overflow */
+    word-break: break-word;
 }
 
-
-/* Highlight table header */
 th {
     font-weight: 600;
-    text-transform: uppercase; /* Optional: makes header text uppercase */
+    text-transform: uppercase;
 }
 
-
-/* Styling for table rows */
 tbody tr:hover {
-    background-color: rgba(49, 148, 59, 0.05); /* Light green on hover */
+    background-color: rgba(49, 148, 59, 0.05);
 }
-
-
-tbody tr:last-child td {
-    border-bottom: none; /* Remove border from the last row */
-}
-
-
-/* Make the table fully visible on small screens */
-@media (max-width: 768px) {
-    .quiz-history h2 {
-        font-size: 22px;
-    }
-
-
-    table {
-        font-size: 16px;
-    }
-
-
-    th, td {
-        padding: 12px 15px;
-    }
-}
-
-
-@media (max-width: 480px) {
-    .quiz-history h2 {
-        font-size: 20px;
-    }
-
-
-    table {
-        font-size: 14px;
-    }
-
-
-    th, td {
-        padding: 10px 12px;
-    }
-}
-
-
-/* Add these styles to your profile.css file */
-
 
 .sorting-controls {
     margin-bottom: 20px;
     text-align: right;
 }
-
 
 .sort-dropdown {
     padding: 12px 20px;
@@ -342,26 +175,54 @@ tbody tr:last-child td {
     color: var(--black-color);
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: var(--font-primary);
 }
 
-
-.sort-dropdown:hover {
-    border-color: var(--green-color);
-}
-
-
+.sort-dropdown:hover,
 .sort-dropdown:focus {
-    outline: none;
     border-color: var(--green-color);
     box-shadow: 0 0 0 2px rgba(49, 148, 59, 0.2);
+    outline: none;
 }
 
-
-/* Responsive adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
+    .profile-container {
+        width: 90%;
+        padding: 40px 50px;
+    }
+
+    .quiz-history h2 {
+        font-size: 22px;
+    }
+
+    table {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 12px 15px;
+    }
+
     .sort-dropdown {
         width: 100%;
         margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 25px 35px;
+    }
+
+    .quiz-history h2 {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px 12px;
     }
 }
