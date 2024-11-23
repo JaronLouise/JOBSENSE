@@ -222,7 +222,7 @@ async function calculateJobSequence() {
     resultDiv.innerHTML += `
         <div class="final-result">
             <h3>Final Job Sequence</h3>
-            <p>All the slots are filled. The sequence of jobs is: ${result.map(job => job ? job.id : 'Empty').join(' ')}</p>
+            <p>All the slots are filled. The sequence of jobs is: ${result.map(job => job ? job.id : 'Empty').join(' - ')}</p>
             <div class="profit-container">
                 <p>Total Profit: Php ${totalProfit}</p>
                 <span class="info-icon" onclick="showProfitInfo()" style="cursor: pointer;">ℹ️</span>
