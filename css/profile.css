@@ -4,7 +4,7 @@
     --white-color: #ffffff;
     --black-color: #000000;
     --input-field-color: #eee;
-    --hover-color: #287b2a;
+    --gradient-2-color: #45d16a;
 }
 
 * {
@@ -59,9 +59,8 @@ body {
     color: var(--black-color);
 }
 
-.profile-field input[type="text"],
-.input-group input[type="text"] {
-    width: 100%;
+.profile-field input[type="text"] {
+    width: 100%; /* Retain full width for the first two inputs */
     padding: 16px;
     border: 1px solid var(--gray-color);
     border-radius: 10px;
@@ -78,37 +77,39 @@ input[readonly] {
 
 .input-group {
     display: flex;
+    align-items: center; 
     gap: 10px;
 }
 
+.input-group input[type="text"] {
+    width: calc(100% - 120px);
+    padding: 16px;
+    border: 1px solid var(--gray-color);
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: var(--input-field-color);
+    color: var(--black-color);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
 .input-group button {
+    width: 100px; 
+    height: 50px; 
     padding: 10px 15px;
+    font-weight: bold;
     font-size: 16px;
     border-radius: 8px;
-    height: auto;
-}
-
-button {
-    padding: 18px 30px;
-    background: var(--green-color);
+    background-color: var(--green-color);
     color: var(--white-color);
     border: none;
-    border-radius: 35px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    font-size: 22px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-button:hover {
-    background: var(--hover-color);
-    transform: scale(1.05);
-}
-
-#edit-button, #save-button {
-    width: 20%;
-    height: 57px;
+.input-group button:hover {
+    background: linear-gradient(45deg, var(--green-color), var(--gradient-2-color));
+    transform: translateY(-3px);
 }
 
 .quiz-history {
@@ -126,7 +127,7 @@ button:hover {
 }
 
 .table-container {
-    overflow-x: auto;
+    overflow-x: hidden;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -225,4 +226,89 @@ tbody tr:hover {
     th, td {
         padding: 10px 12px;
     }
+}
+
+/* Animations*/
+.profile-container {
+    background-color: var(--white-color);
+    border: 1px solid var(--gray-color);
+    border-radius: 20px;
+    padding: 50px 70px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 750px;
+    transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin: 20px 0;
+    animation: slideIn 1s ease-out; /* Slide-in animation on page load */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profile-field input[type="text"]:focus {
+    outline: none;
+    border-color: var(--green-color);
+    box-shadow: 0 0 5px rgba(49, 148, 59, 0.5);
+    transition: border-color 0.3s, box-shadow 0.3s ease;
+}
+
+.input-group button {
+    width: 100px; 
+    height: 50px; 
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s ease, box-shadow 0.2s ease;
+    transform: scale(1); 
+}
+
+.input-group button:hover {
+    background: linear-gradient(45deg, var(--green-color), var(--gradient-2-color));
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+tbody tr {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(49, 148, 59, 0.05);
+    transform: translateX(5px); 
+}
+
+.sort-dropdown {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid var(--gray-color);
+    border-radius: 8px;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-dropdown:hover,
+.sort-dropdown:focus {
+    border-color: var(--green-color);
+    box-shadow: 0 0 0 2px rgba(49, 148, 59, 0.2);
+    outline: none;
+    transform: scale(1.05); 
 }
