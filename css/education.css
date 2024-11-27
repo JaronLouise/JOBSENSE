@@ -209,3 +209,119 @@ iframe {
         height: 250px;
     }
 }
+
+/*Animations */
+/* Animation Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animations and Transitions for Elements */
+body {
+    animation: fadeIn 1.2s ease-out;
+}
+
+.content h1, .content h2, .content h3 {
+    animation: slideIn 1s ease-out;
+}
+
+h1, h2, h3, #progress-text, .card-2 h3, a:hover {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#progress-text {
+    animation: textFadeIn 1s ease-out;
+}
+
+.card {
+    animation: fadeInUp 1s ease-out;
+}
+
+.card-1 iframe {
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-1 iframe:hover {
+    transform: scale(1.05);
+}
+
+article {
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+a:hover {
+    color: var(--green-color);
+    transform: translateY(-2px);
+}
+
+.card-2 h3 {
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.col-1 .content p {
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
