@@ -50,7 +50,7 @@ The objective of this project is to develop a web application that simulates and
 ## :gear: Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript – for creating the user interface and interactive features.
-- **Backend**: Node.js, Express – for handling API requests, business logic, and database interactions.
+- **Backend**: Express – for handling API requests, business logic, and database interactions.
 - **Database**: Firebase – used for storing user progress, quiz scores, and simulation data.
 - **API**: REST API – enables dynamic content retrieval for educational sections and job data.
 - **Hosting**: Web server or cloud hosting platform – to deploy and serve the application to users.
@@ -66,7 +66,6 @@ These instructions will guide you on setting up a local copy of **JOBSENSE** for
 
 To get started, ensure you have the following installed:
 
-- **Node.js** and **npm**: Required to run backend services and manage dependencies.
 - **Firebase**: For storing user progress and quiz data.
 ---
 
