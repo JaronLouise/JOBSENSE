@@ -213,13 +213,14 @@ function formatDate(date) {
 
 
 // Helper function to check if two dates are consecutive
-function isDateConsecutive(lastDateString, currentDate) {
-    if (!lastDateString) return true; // If there's no last date, start the streak
+function isDateConsecutive(lastDateString, currentDateString) {
     const lastDate = new Date(lastDateString);
-   
-    // Get the difference in days between the two dates
-    const timeDiff = Math.floor((currentDate - lastDate) / (1000 * 60 * 60 * 24));
-    return timeDiff === 1; // Check if the difference is exactly 1 day
+    const currentDate = new Date(currentDateString);
+
+
+    // Difference in days
+    const differenceInDays = Math.ceil((currentDate - lastDate) / (1000 * 60 * 60 * 24));
+    return differenceInDays === 1;
 }
 
 
@@ -232,7 +233,7 @@ async function handleQuizCompletion() {
 
 
     const currentDate = new Date();
-    const dateString = formatDate(currentDate); // Format as 'YYYY-MM-DD'
+    const dateString = formatDateToLocalTimezone(currentDate); // Format as 'YYYY-MM-DD'
 
 
     console.log("Current date string:", dateString);
@@ -245,7 +246,7 @@ async function handleQuizCompletion() {
         const streakDoc = await streakRef.get();
         let streakData = streakDoc.exists
             ? streakDoc.data()
-            : { completedDates: {}, currentStreak: 0, bestStreak: 0 };
+            : { completedDates: {}, currentStreak: 0, bestStreak: 0, lastCompleted: null };
 
 
         console.log("Fetched streak data:", streakData);
@@ -254,27 +255,34 @@ async function handleQuizCompletion() {
         const completedDates = streakData.completedDates || {};
 
 
+        // Check if the current date is already recorded
+        if (completedDates[dateString]) {
+            console.log("Quiz already completed for today. Streak unchanged.");
+            return; // Exit the function without making changes
+        }
+
+
         // Get the last completed date
-        const sortedDates = Object.keys(completedDates).sort();
-        const lastCompletedDate = sortedDates.length
-            ? sortedDates[sortedDates.length - 1]
-            : null;
+        const lastCompletedDate = streakData.lastCompleted;
 
 
         console.log("Last completed date:", lastCompletedDate);
 
 
-        const isConsecutive = lastCompletedDate && isDateConsecutive(lastCompletedDate, dateString);
+        // Determine if the streak should be incremented or reset
+        let isConsecutive = false;
+        if (lastCompletedDate) {
+            isConsecutive = isDateConsecutive(lastCompletedDate, dateString);
+        }
 
 
         console.log("Is date consecutive:", isConsecutive);
 
 
-        // Update streak based on whether the current date is consecutive
         if (isConsecutive) {
             streakData.currentStreak += 1;
-        } else if (!completedDates[dateString]) {
-            streakData.currentStreak = 1; // Reset if not consecutive and not already recorded
+        } else {
+            streakData.currentStreak = 1; // Reset streak if not consecutive
         }
 
 
@@ -282,32 +290,40 @@ async function handleQuizCompletion() {
         streakData.bestStreak = Math.max(streakData.currentStreak, streakData.bestStreak);
 
 
-        // Update completedDates with the current date
+        // Mark the current date as completed
         completedDates[dateString] = true;
+
+
+        // Update `lastCompleted` explicitly
+        streakData.lastCompleted = dateString;
 
 
         console.log("Updated streak data:", {
             completedDates,
             currentStreak: streakData.currentStreak,
             bestStreak: streakData.bestStreak,
+            lastCompleted: streakData.lastCompleted,
         });
 
 
-        // Save the updated streak data
+        // Save the updated streak data to Firestore
         await streakRef.set({
             completedDates,
             currentStreak: streakData.currentStreak,
             bestStreak: streakData.bestStreak,
+            lastCompleted: streakData.lastCompleted, // Explicitly include `lastCompleted`
         }, { merge: true });
 
 
-        console.log('Streak updated successfully');
+        console.log("Streak updated successfully");
 
 
     } catch (error) {
-        console.error('Error updating streak data:', error);
+        console.error("Error updating streak data:", error);
     }
 }
+
+
 
 
 // Helper function to check if dates are consecutive
@@ -322,10 +338,13 @@ function isDateConsecutive(lastDateString, currentDateString) {
 }
 
 
-// Helper function to format the date
-function formatDate(date) {
-    return date.toISOString().split('T')[0]; // Returns 'YYYY-MM-DD'
+function formatDateToLocalTimezone(date) {
+    // Get the local date as 'YYYY-MM-DD'
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localDate.toISOString().split('T')[0];
 }
+
+
 
 
 // Function to check the answer
