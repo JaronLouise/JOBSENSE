@@ -278,7 +278,7 @@ label {
     gap: 10px;
 }
 
-/* Update media queries */
+/* Media queries */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -301,7 +301,6 @@ label {
         font-size: 1rem;
     }
     
-    /* Remove the width calculation for num-job-field since we're using flex */
     .num-job-field {
         min-width: 0;
     }
@@ -334,12 +333,10 @@ label {
         font-size: 0.9rem;
     }
     
-    /* Remove the flex-direction: column from .row */
     .row {
         flex-direction: row;
     }
     
-    /* Remove the 100% width setting for num-job-field */
     .slot {
         width: 60px;
         height: 35px;
@@ -348,5 +345,63 @@ label {
     
     .connection-line {
         width: 45px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    animation: fadeIn 1s ease-out;
+}
+
+.input-section, .job-inputs-section {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    animation: buttonPulse 0.5s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+input:focus {
+    outline: 2px solid var(--green-color);
+    transition: outline 0.3s ease;
+    box-shadow: 0 0 5px rgba(49, 148, 59, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+    .col-2 .slot-container .slot,
+    .col-2 .connection-line,
+    .col-2 .final-result {
+        animation: none;
     }
 }
