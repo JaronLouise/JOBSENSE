@@ -66,7 +66,7 @@ These instructions will guide you on setting up a local copy of **JOBSENSE** for
 
 To get started, ensure you have the following installed:
 
-- **Firebase**: For storing user progress and quiz data.
+- **Firebase**: For storing user information, streak, and quiz data.
 ---
 
 ## :hammer_and_pick: Installation and Setup
