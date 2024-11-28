@@ -499,7 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             document.getElementById('result').innerText = 'Correct!';
-            currentScore++;
         } else {
             // Play incorrect sound
             incorrectSound.play().catch(error => {
