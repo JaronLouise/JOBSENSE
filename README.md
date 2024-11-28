@@ -52,7 +52,7 @@ The objective of this project is to develop a web application that simulates and
 - **Frontend**: HTML, CSS, JavaScript – for creating the user interface and interactive features.
 - **Backend**: Express – for handling API requests, business logic, and database interactions.
 - **Database**: Firebase – used for storing user progress, quiz scores, and simulation data.
-- **API**: REST API – enables dynamic content retrieval for educational sections and job data.
+- **API**: REST API – enables secure communication between frontend and Firebase for efficient data management.
 - **Hosting**: Web server or cloud hosting platform – to deploy and serve the application to users.
 - **Version Control**: Git and GitHub – for collaborative development and version management.
 
