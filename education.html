@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/education.css">
 </head>
 <body>
-    <div id="navbar-container" style="margin-left: 100px;"></div>
+    <div id="navbar-container"></div>
     <div class="container">
         <div class="row">
             <div class="col col-1">
@@ -34,9 +34,61 @@
                     <p>Given jobs J(i) with deadline D(i) and profit P(i) for 0≤i≤1, these jobs are arranged in descending order of profit p1⩾p2⩾p3⩾…⩾pn.</p>
                     <h2>Examples of Job Sequencing with Deadlines</h2>
                     <p>In the given job sequencing problem, we need to determine the optimal job sequence within their deadlines to achieve maximum profit. Each job is characterized by a deadline and a profit. Our goal is to find the most profitable combination of jobs that meet their respective deadlines.</p>
-                    <!--Insert Image Example-->
+                    <!-- Example Jobs -->
+                    <table>
+                        <tr>
+                          <th>Job</th>
+                          <th>Job 1</th>
+                          <th>Job 2</th>
+                          <th>Job 3</th>
+                          <th>Job 4</th>
+                          <th>Job 5</th>
+                        </tr>
+                        <tr>
+                          <td>Deadline</td>
+                          <td>2</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>1</td>
+                          <td>3</td>
+                        </tr>
+                        <tr>
+                          <td>Profit</td>
+                          <td>100</td>
+                          <td>50</td>
+                          <td>75</td>
+                          <td>80</td>
+                          <td>90</td>
+                        </tr>
+                    </table>     
                     <p>We want to find the optimal sequence of jobs to perform, considering their deadlines, in order to maximize the total profit. So, we’ll arrange the profits in descending order:</p>
-                    <!--Insert Image Example-->
+                    <!--Arranged Jobs-->
+                    <table>
+                        <tr>
+                          <th>Job</th>
+                          <th>Job 1</th>
+                          <th>Job 5</th>
+                          <th>Job 4</th>
+                          <th>Job 3</th>
+                          <th>Job 2</th>
+                        </tr>
+                        <tr>
+                          <td>Deadline</td>
+                          <td>2</td>
+                          <td>3</td>
+                          <td>1</td>
+                          <td>2</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>Profit</td>
+                          <td>100</td>
+                          <td>90</td>
+                          <td>80</td>
+                          <td>75</td>
+                          <td>50</td>
+                        </tr>
+                    </table> 
                     <p>Job 1 (100) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
                     <p>Job 5 (90) can be assigned to the deadline 3 (at index 2) since it’s the highest possible deadline available.</p>
                     <p>Job 3 (75) can be assigned to the deadline 2 (at index 1) since it’s the highest possible deadline available.</p>
@@ -44,9 +96,7 @@
                     <p>Job 2 (50) can’t be assigned as all slots with deadlines 2 and 3 are occupie</p>
                     <p>The total profit obtained by scheduling the selected jobs is <strong>100 + 90 + 75 = 265.</strong></p>
                     <p>The sequence of jobs that are scheduled: Job 1, Job 5, and Job 3.</p>
-                    <p>The optimal sequence of jobs, considering their deadlines, that maximizes the total profit is Job 1, Job 5, and Job 3, with a total profit of 265.</p>
-                    <!--Insert implementation-->
-                    
+                    <p>The optimal sequence of jobs, considering their deadlines, that maximizes the total profit is Job 1, Job 5, and Job 3, with a total profit of 265.</p>                   
                     <h2>Frequently Asked Questions on Job Sequencing with Deadlines</h2>
                     <h3>Q1 What is the Job Sequencing with Deadlines problem?</h3>
                     <p>The Job Sequencing with Deadlines problem involves scheduling a set of jobs to maximize profit while adhering to their respective deadlines. Each job has a deadline and a profit, and the goal is to find the best arrangement of jobs that yields the highest total profit within the given time constraints.</p>
@@ -66,15 +116,18 @@
                     <h3>Q5 Can the Job Sequencing with Deadlines algorithm handle jobs with different durations?</h3>
                     <p>The basic Job Sequencing with Deadlines algorithm assumes that each job requires exactly one unit of time to complete. If jobs have different durations, a more advanced scheduling algorithm would be necessary to accommodate varying processing times</p>
                 </div>
+                <!--Lesson Progress Bar-->
                 <div class="progress-bar">
                     <span id="progress-text">0%</span>
                 </div>
             </div>
             <div class="col col-2">
                 <div class="card card-1">
+                    <!--Embedded Youtube Video-->
                     <iframe src="https://www.youtube.com/embed/zPtI8q9gvX8?si=WnJwULrTwETsDrfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="card card-2">
+                    <!--Related Articles-->
                     <h3>More About Job Sequencing Problems</h3>
                     <article class="related-article">
                         <a href="https://www.geeksforgeeks.org/job-sequencing-problem/" target="_blank">
@@ -94,6 +147,5 @@
     </div>
     <script src="js/education.js"></script>
     <script src="js/navbar.js" type="module"></script>
-
 </body>
 </html>
