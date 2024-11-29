@@ -1,47 +1,85 @@
+/* Root Variables for consistent theming */
 :root {
     --green-color:  #31943b;
     --bg-color: #ffffff;
     --box-color: #f4f4f4;
     --label-color: #555;
     --border-color: #ddd;
+    --table-background: #31943b3c;
 }
 
+/* Global font styling */
 * {
     font-family: "Poppins", sans-serif;
 }
 
+/* Body styling */
 body {
     line-height: 1.6;
     padding: 0;
 }
 
+/* Main content wrapper */
 .content {
     max-width: 800px;
     margin: 5px auto;
     padding-left: 25px;
     padding-right: 25px;
-    height: calc(100vh - 50px); 
-    overflow-y: auto; 
-    scrollbar-width: none; 
-    position: relative; 
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    position: relative;
 }
 
+/* Hide the scrollbar in webkit browsers */
 .content::-webkit-scrollbar {
     display: none;
 }
 
+/* Header, links, and progress text color */
 h1, h2, h3, #progress-text, .card-2 h3, a:hover  {
     color: var(--green-color);
 }
 
+/* Navbar container positioning */
+.navbar-container {
+    margin-left: 100px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table, header, and cell borders and background */
+table, th, td {
+    border: 1px solid black;
+    background-color: var(--table-background);
+}
+
+/* Table cell padding and alignment */
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+
+/* Zebra-striping for table rows */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Flexbox layout for multiple components */
 .progress-bar, .container, .row, .col-2, .card, .card-1 {
     display: flex;
 }
 
+/* Progress bar and first column width */
 .progress-bar, .col-1 {
     width: 700px;
 }
 
+/* Styling for the progress bar */
 .progress-bar {
     position: absolute;
     height: 30px;
@@ -49,41 +87,49 @@ h1, h2, h3, #progress-text, .card-2 h3, a:hover  {
     border-top: 2px solid var(--green-color);
 }
 
+/* Progress text styling */
 #progress-text {
     font-size: 16px;
     font-weight: bold;
 }
 
+/* Main container layout */
 .container {
     width: 1200px;
     box-sizing: border-box;
-    margin: auto; 
+    margin: auto;
 }
 
+/* Row layout for spacing between columns */
 .row {
     gap: 15px;
 }
 
+/* Sidebar column layout */
 .col-1 {
     height: 100vh;
     background-color: var(--box-color);
     border: 1px solid var(--border-color);
 }
 
+/* Content column layout */
 .col-2 {
     width: 495px;
     flex-direction: column;
 }
 
+/* Center-align content in progress bar */
 .progress-bar {
     align-items: center;
     justify-content: center;
 }
 
+/* Card styling */
 .card {
     height: 330px;
 }
 
+/* Article section for content */
 article {
     background-color: var(--box-color);
     border: 1px solid var(--border-color);
@@ -93,49 +139,60 @@ article {
     margin-bottom: 10px;
 }
 
+/* Card-1 and iframe border-radius */
 .card-1, article, iframe {
     border-radius: 20px;
 }
 
+/* Card-2 layout */
 .card-2 {
     width: 495px;
     flex-direction: column;
 }
 
+/* Card-1 layout and centering */
 .card-1 {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
 }
 
+/* iframe inside card-1 */
 .card-1 iframe {
     max-width: 100%;
     height: 300px;
 }
 
+/* Card-2 header padding */
 .card-2 h3 {
     padding-left: 15px;
 }
 
+/* General body and h3 margin reset */
 body, h3 {
     margin: 0;
 }
 
+/* Link styling */
 a {
     text-decoration: none;
     color: var(--label-color);
 }
 
+/* Hover effect for links */
 a:hover {
     text-decoration: underline;
 }
 
+/* iframe element styling */
 iframe {
     width: 500px;
     height: 300px;
 }
 
 /* Media Queries for Responsive Design */
+
+/* For screens smaller than 1200px */
 @media screen and (max-width: 1200px) {
     .container {
         width: 95%;
@@ -158,6 +215,7 @@ iframe {
     }
 }
 
+/* For screens smaller than 992px */
 @media screen and (max-width: 992px) {
     .row {
         flex-direction: column;
@@ -177,6 +235,7 @@ iframe {
     }
 }
 
+/* For screens smaller than 768px */
 @media screen and (max-width: 768px) {
     #navbar-container {
         margin-left: 0 !important;
@@ -195,6 +254,7 @@ iframe {
     }
 }
 
+/* For screens smaller than 480px */
 @media screen and (max-width: 480px) {
     .container {
         width: 100%;
@@ -210,8 +270,7 @@ iframe {
     }
 }
 
-/*Animations */
-/* Animation Keyframes */
+/* Keyframes for Animations */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -252,7 +311,7 @@ iframe {
     }
 }
 
-/* Animations and Transitions for Elements */
+/* Animations applied to elements */
 body {
     animation: fadeIn 1.2s ease-out;
 }
@@ -324,4 +383,3 @@ a:hover {
 .card:hover {
     transform: scale(1.05);
 }
-
