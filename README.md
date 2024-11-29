@@ -11,7 +11,7 @@
 **JOBSENSE (Job Ordering and Scheduling Educational Simulator)**
 
 ## :handshake: Team Name
-*Iisip pa ng team name*
+**TASKticians**
 
 ## :busts_in_silhouette: Team Members
 - **Frontend Developer**: Nerine Rosette Recto
