@@ -1,12 +1,14 @@
+/* Root variables for color theming */
 :root {
-    --green-color: #31943b;
-    --input-field-color: #eee;
-    --bg-color: #ffffff;
-    --gradient-2-color: #45d16a;
-    --white-color: white;
-    --label-color: #555;
+    --green-color: #31943b;  /* Main color */
+    --input-field-color: #eee;  /* Input field background color */
+    --bg-color: #ffffff;  /* Background color */
+    --gradient-2-color: #45d16a;  /* Gradient secondary color */
+    --white-color: white;  /* White color */
+    --label-color: #555;  /* Label text color */
 }
 
+/* Global styling for all elements */
 * {
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
@@ -14,6 +16,7 @@
     padding: 0;
 }
 
+/* Body styling with centering and animation */
 body {
     display: flex;
     justify-content: center;
@@ -24,6 +27,7 @@ body {
     animation: fadeInBody 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Main container styling, including layout and animations */
 .container {
     display: flex;
     width: 100%;
@@ -39,17 +43,20 @@ body {
     animation: slideUpContainer 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Column layouts for the container */
 .col-1, .col-2-login, .col-2-register {
     flex: 1;
     min-width: 0;
 }
 
+/* Left column layout with image */
 .col-1 {
     display: flex;
     align-items: center;
     animation: fadeInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Image inside the left column, with scaling animation */
 .logreg-img {
     width: 100%;
     height: 100%;
@@ -58,6 +65,7 @@ body {
     animation: scaleInImage 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Right columns for login and register, with column flexbox layout */
 .col-2-login, .col-2-register {
     display: flex;
     flex-direction: column;
@@ -67,6 +75,7 @@ body {
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Form styling inside the right columns */
 form {
     display: flex;
     flex-direction: column;
@@ -76,12 +85,14 @@ form {
     animation: slideInForm 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Heading styling for form sections */
 h2 {
     margin-bottom: 20px;
     color: var(--green-color);
     animation: fadeInText 0.6s ease-in-out;
 }
 
+/* Label styling for form fields */
 label {
     margin-bottom: 5px;
     text-align: left;
@@ -90,6 +101,7 @@ label {
     font-size: 18px;
 }
 
+/* Input fields (email, password, text) styling */
 input[type="email"],
 input[type="password"],
 input[type="text"] {
@@ -103,6 +115,7 @@ input[type="text"] {
     transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
+/* Focused input fields with shadow and scaling effect */
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
@@ -110,6 +123,7 @@ input[type="text"]:focus {
     transform: scale(1.02);
 }
 
+/* Styling for inputs with icons (like password field with eye icon) */
 .input-with-icon {
     position: relative;
     display: flex;
@@ -117,6 +131,7 @@ input[type="text"]:focus {
     width: 100%;
 }
 
+/* Eye icon inside the password input */
 .eye-icon {
     position: absolute;
     right: 10px;
@@ -125,6 +140,7 @@ input[type="text"]:focus {
     font-size: 1.2em;
 }
 
+/* Button styling with background and hover effects */
 button {
     width: 100%;
     max-width: 300px;
@@ -140,26 +156,31 @@ button {
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease;
 }
 
+/* Hover effect for button */
 button:hover {
     background: linear-gradient(45deg, var(--green-color), var(--gradient-2-color));
     transform: translateY(-3px);
 }
 
+/* Paragraph styling for links and messages */
 p {
     margin-top: 15px;
     font-size: 0.9rem;
 }
 
+/* Styling for links inside paragraphs */
 p a {
     color: var(--green-color);
     text-decoration: none;
     font-weight: bold;
 }
 
+/* Hover effect for links inside paragraphs */
 p a:hover {
     text-decoration: underline;
 }
 
+/* Styling for message divs (error or success messages) */
 .messageDiv {
     background-color: hsl(327, 90%, 28%);
     color: var(--white-color);
@@ -171,58 +192,71 @@ p a:hover {
     font-size: 1rem;
 }
 
+/* Small text styling, like terms or extra info */
 small {
     text-align: left;
     padding: 0 0 10px 8px;
 }
 
-/* Animations */
+/* Keyframes for various animations */
+
+/* Fade-in effect for the body */
 @keyframes fadeInBody {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
+/* Slide-up effect for the container */
 @keyframes slideUpContainer {
     0% { transform: translateY(30px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 
+/* Scale-in effect for the image */
 @keyframes scaleInImage {
     0% { transform: scale(0.95); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
 
+/* Fade-in from the left for the left column */
 @keyframes fadeInLeft {
     0% { transform: translateX(-30px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
+/* Fade-in upwards for elements like form fields */
 @keyframes fadeInUp {
     0% { transform: translateY(20px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 
+/* Fade-in effect for text */
 @keyframes fadeInText {
     0% { opacity: 0; transform: translateY(5px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Slide-in effect for the form */
 @keyframes slideInForm {
     0% { transform: translateY(30px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 
+/* Fade-out effect for messages */
 @keyframes fadeOutMessage {
     0%, 80% { opacity: 1; }
     100% { opacity: 0; }
 }
 
+/* Slide-in effect for messages */
 @keyframes slideInMessage {
     0% { transform: translateX(-30px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
-/* Media Queries */
+/* Media Queries for responsive design */
+
+/* For screens smaller than 768px, adjust layout and styling */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -231,7 +265,7 @@ small {
     }
 
     .col-1 {
-        display: none;
+        display: none;  /* Hide left column on smaller screens */
     }
 
     .col-2-login, .col-2-register {
@@ -258,6 +292,7 @@ small {
     }
 }
 
+/* For screens smaller than 480px, further adjust styling */
 @media screen and (max-width: 480px) {
     body {
         padding: 10px;
@@ -280,6 +315,7 @@ small {
     }
 }
 
+/* For screens smaller than 320px, make small adjustments */
 @media screen and (max-width: 320px) {
     .container {
         margin: 5px;
