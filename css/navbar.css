@@ -1,3 +1,4 @@
+/* :root - Define global CSS variables for colors */
 :root {
     --bg-color: #333;
     --icon-color: #fff;
@@ -5,10 +6,12 @@
     --text-color: #ddd;
 }
 
+/* * - Apply global font family "Poppins" to all elements */
 * {
     font-family: "Poppins", sans-serif;
 }
 
+/* .navbar - Style for the navbar container: fixed position, background color, layout, and transitions */
 .navbar {
     position: fixed;
     top: 20px;
@@ -27,16 +30,19 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* .navbar-logo img - Set size and transition effect for logo image */
 .navbar-logo img {
     width: 50px;
     height: 50px;
     transition: transform 0.3s ease;
 }
 
+/* .navbar-logo img:hover - Rotate the logo on hover */
 .navbar-logo img:hover {
     transform: rotate(360deg);
 }
 
+/* .navbar-icon, .navbar-logout - Style for navbar icons and logout buttons: size, layout, cursor, and transitions */
 .navbar-icon, .navbar-logout {
     width: 50px;
     height: 50px;
@@ -52,6 +58,7 @@
     overflow: hidden;
 }
 
+/* .navbar-icon small, .navbar-logout small - Style for small text inside navbar icons and logout buttons */
 .navbar-icon small, .navbar-logout small {
     margin-top: 5px;
     font-size: 10px;
@@ -59,22 +66,25 @@
     transition: all 0.3s ease;
 }
 
+/* .navbar-icon i, .navbar-logout i - Style for the icon (Font Awesome or other) inside navbar icons and logout buttons */
 .navbar-icon i, .navbar-logout i {
     font-size: 35px;
     color: var(--icon-color);
     transition: all 0.3s ease;
 }
 
+/* .navbar-icon:hover, .navbar-logout:hover - Add a hover effect to slightly raise the navbar icons and logout buttons */
 .navbar-icon:hover, .navbar-logout:hover {
     transform: translateY(-5px);
 }
 
+/* .navbar-icon:hover i, .navbar-logout:hover i, .navbar-icon:hover small, .navbar-logout:hover small - Change the color of the icon and text on hover */
 .navbar-icon:hover i, .navbar-logout:hover i,
 .navbar-icon:hover small, .navbar-logout:hover small {
     color: var(--hover-color);
 }
 
-/* Hover Effect with Ripple */
+/* Hover Effect with Ripple - Create a ripple effect inside the navbar icon and logout button on hover */
 .navbar-icon::before, .navbar-logout::before {
     content: '';
     position: absolute;
@@ -89,6 +99,7 @@
     transition: all 0.3s ease;
 }
 
+/* .navbar-icon:hover::before, .navbar-logout:hover::before - Expand the ripple effect when hovering over the navbar icon and logout button */
 .navbar-icon:hover::before, .navbar-logout:hover::before {
     width: 100px;
     height: 100px;
