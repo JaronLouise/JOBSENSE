@@ -1,3 +1,4 @@
+/* :root - defines custom CSS variables for colors */
 :root {
     --green-color: #31943b;
     --gray-color: #b3b3b3;
@@ -7,6 +8,7 @@
     --gradient-2-color: #45d16a;
 }
 
+/* Global styles applied to all elements */
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -14,6 +16,7 @@
     box-sizing: border-box;
 }
 
+/* Body styles - background color, layout, and alignment */
 body {
     background-color: var(--gray-color);
     width: 100%;
@@ -23,6 +26,7 @@ body {
     align-items: center;
 }
 
+/* Profile container styling */
 .profile-container {
     background-color: var(--white-color);
     border: 1px solid var(--gray-color);
@@ -34,11 +38,13 @@ body {
     margin: 20px 0;
 }
 
+/* Profile container hover effect */
 .profile-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Header in the profile container (User Profile) */
 .profile-container h1 {
     text-align: center;
     margin-bottom: 40px;
@@ -47,10 +53,12 @@ body {
     font-weight: 700;
 }
 
+/* Profile field container for each input group */
 .profile-field {
     margin-bottom: 20px;
 }
 
+/* Label styling within profile fields */
 .profile-field label {
     display: block;
     font-size: 20px;
@@ -59,6 +67,7 @@ body {
     color: var(--black-color);
 }
 
+/* Styling for text input fields in the profile */
 .profile-field input[type="text"] {
     width: 100%; /* Retain full width for the first two inputs */
     padding: 16px;
@@ -71,16 +80,19 @@ body {
     margin: 10px 0;
 }
 
+/* Readonly input styling (disabled fields) */
 input[readonly] {
     cursor: not-allowed;
 }
 
+/* Grouping of the input and buttons inside the input group */
 .input-group {
     display: flex;
     align-items: center; 
     gap: 10px;
 }
 
+/* Styling of text input inside the input group (username input) */
 .input-group input[type="text"] {
     width: calc(100% - 120px);
     padding: 16px;
@@ -93,6 +105,7 @@ input[readonly] {
     margin: 10px 0;
 }
 
+/* Styling for the buttons in the input group (edit and save) */
 .input-group button {
     width: 100px; 
     height: 50px; 
@@ -105,19 +118,21 @@ input[readonly] {
     border: none;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-}
-
+} 
+/* Hover effect for the buttons inside input groups (Edit/Save buttons) */
 .input-group button:hover {
     background: linear-gradient(45deg, var(--green-color), var(--gradient-2-color));
     transform: translateY(-3px);
 }
 
+/* Quiz history section styling */
 .quiz-history {
     margin-top: 40px;
     padding-top: 30px;
     border-top: 2px solid var(--gray-color);
 }
 
+/* Heading for the quiz history section */
 .quiz-history h2 {
     color: var(--green-color);
     font-size: 26px;
@@ -126,6 +141,7 @@ input[readonly] {
     text-align: center;
 }
 
+/* Container for the quiz history table */
 .table-container {
     overflow-x: hidden;
     margin-top: 20px;
@@ -133,6 +149,7 @@ input[readonly] {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Table styling inside the quiz history section */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -141,32 +158,38 @@ table {
     table-layout: auto;
 }
 
+/* Table header styling */
 thead {
     background-color: var(--green-color);
     color: var(--white-color);
 }
 
+/* Table cells (th and td) styling */
 th, td {
     padding: 15px 20px;
     text-align: left;
     border-bottom: 1px solid var(--gray-color);
-    word-break: break-word;
+    word-break: break-word; 
 }
 
+/* Table header cell font style */
 th {
     font-weight: 600;
     text-transform: uppercase;
 }
 
+/* Hover effect for rows in the quiz history table */
 tbody tr:hover {
     background-color: rgba(49, 148, 59, 0.05);
 }
 
+/* Container for sorting controls in quiz history section */
 .sorting-controls {
     margin-bottom: 20px;
     text-align: right;
 }
 
+/* Styling for the sort dropdown menu */
 .sort-dropdown {
     padding: 12px 20px;
     font-size: 16px;
@@ -175,15 +198,17 @@ tbody tr:hover {
     background-color: var(--white-color);
     color: var(--black-color);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; 
 }
 
+/* Hover and focus effects for the sort dropdown */
 .sort-dropdown:hover,
 .sort-dropdown:focus {
     border-color: var(--green-color);
     box-shadow: 0 0 0 2px rgba(49, 148, 59, 0.2);
     outline: none;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -228,7 +253,7 @@ tbody tr:hover {
     }
 }
 
-/* Animations*/
+/* Animation for profile-container on hover */
 .profile-container {
     background-color: var(--white-color);
     border: 1px solid var(--gray-color);
@@ -238,7 +263,7 @@ tbody tr:hover {
     width: 750px;
     transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
     margin: 20px 0;
-    animation: slideIn 1s ease-out; /* Slide-in animation on page load */
+    animation: slideIn 1s ease-out; 
 }
 
 @keyframes slideIn {
@@ -257,6 +282,7 @@ tbody tr:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Animation for input fields when focused */
 .profile-field input[type="text"]:focus {
     outline: none;
     border-color: var(--green-color);
@@ -264,6 +290,7 @@ tbody tr:hover {
     transition: border-color 0.3s, box-shadow 0.3s ease;
 }
 
+/* Animation for input-group buttons on hover */
 .input-group button {
     width: 100px; 
     height: 50px; 
@@ -285,15 +312,17 @@ tbody tr:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
+/* Hover effect for quiz history table rows */
 tbody tr {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 tbody tr:hover {
     background-color: rgba(49, 148, 59, 0.05);
-    transform: translateX(5px); 
+    transform: translateX(5px); /* Slight horizontal shift */
 }
 
+/* Animation for sorting dropdown on hover/focus */
 .sort-dropdown {
     padding: 12px 20px;
     font-size: 16px;
