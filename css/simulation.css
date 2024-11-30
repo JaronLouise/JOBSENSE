@@ -1,16 +1,18 @@
+/* Root CSS variables for consistent design elements across the page */
 :root {
     --green-color: #31943b;
     --input-field-color: #eee;
     --gradient-color: #45d16a;
-    --slot-color:#f8f8f8;
+    --slot-color: #f8f8f8;
     --border-color: #ccc;
-    --border-color-2: #ddd; 
+    --border-color-2: #ddd;
     --line-color: #ffa726;
     --slot-number: #333;
     --timeline-color: #f9f9f9;
     --result-color: #e8f5e9;
 }
 
+/* Universal selector for consistent layout and reset across all elements */
 * {
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
@@ -18,37 +20,44 @@
     padding: 0;
 }
 
+/* Body styling with padding for content spacing */
 body {
     padding: 20px;
 }
 
+/* Table layout with fixed width and no border collapsing */
 table {
     border-collapse: collapse;
     table-layout: fixed;
 }
 
+/* Table elements without visible borders */
 table, th, td {
     border: none;
 }
 
+/* Table header and data cell padding and width distribution */
 th, td {
     padding: 5px;
     width: 33.33%;
-} 
+}
 
+/* Center alignment for various elements like headers, job inputs, and slots */
 th, td, h1, .job-inputs-section, .slot {
     text-align: center;
 }
 
+/* Increased font size for the table header */
 thead {
     font-size: 20px;
 }
 
+/* Green color applied to key header elements */
 thead, h1, h3, #result h2 {
     color: var(--green-color);
-
 }
 
+/* Input field styling with padding, background color, and no borders */
 input {
     padding: 8px;
     margin: 5px 0;
@@ -58,10 +67,12 @@ input {
     border: none;
 }
 
+/* Full-width layout for table, input fields, and result sections */
 table, input, .result-section {
     width: 100%;
 }
 
+/* Button styling: padding, background color, text shadow, and bold text */
 button {
     padding: 10px 20px;
     background-color: var(--green-color);
@@ -72,10 +83,12 @@ button {
     cursor: pointer;
 }
 
+/* Button hover effect with a color gradient transition */
 button:hover {
     background: linear-gradient(45deg, var(--green-color), var(--gradient-color));
 }
 
+/* Main container for layout with a maximum width, centered alignment, and spacing */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -83,122 +96,141 @@ button:hover {
     gap: 20px;
 }
 
+/* Flexbox layout for container and other key sections */
 .container, .row, .slot-container, .slot-wrapper, .slot {
     display: flex;
 }
 
+/* Flex layout for columns with responsive width control */
 .col {
     flex: 1;
     max-width: 600px;
 }
 
+/* Large heading style with bottom margin for separation */
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
 }
-
-.num-job-field {
+/* Input field used for job count input, designed to expand within the row container */
+.num-job-field {  
     flex: 1; 
     min-width: 0; 
 }
 
-.num-jobs {
-    flex-shrink: 0; 
-    width: 120px;
+/* Button for submitting job count, with fixed width and no shrinking to ensure consistent size */
+.num-jobs {  
+    flex-shrink: 0;  
+    width: 120px;  
 }
 
-.num-job-field, .num-jobs, .job-seq-btn {
-    height: 47.5px;
+/* Shared height for the job input field, job submission button, and simulation button */
+.num-job-field, .num-jobs, .job-seq-btn {  
+    height: 47.5px;  
 }
 
-.row {
-    gap: 5px;
-    flex-wrap: nowrap; 
-    align-items: center;
+/* Row layout for inputs and buttons with a small gap and centered alignment */
+.row {  
+    gap: 5px;  
+    flex-wrap: nowrap;  
+    align-items: center;  
 }
 
-h3 {
-    padding-left: 10px;
-    font-size: 1.4rem;
+/* Header styling for section titles, with left padding for better alignment */
+h3 {  
+    padding-left: 10px;  
+    font-size: 1.4rem;  
 }
 
-input, .num-jobs, .job-seq-btn, .final-result {
-    border-radius: 10px;
+/* Rounded corners for input fields, buttons, and final result container */
+input, .num-jobs, .job-seq-btn, .final-result {  
+    border-radius: 10px;  
 }
 
-label {
-    font-size: 1.2rem;
-    padding-left: 5px;
+/* Label styling for input descriptions with increased font size and left padding */
+label {  
+    font-size: 1.2rem;  
+    padding-left: 5px;  
 }
 
-.num-jobs, .job-seq-btn {
-    width: 120px;
-    font-size: 1.1rem;
-    font-weight: 700;
+/* Shared styling for job count button and simulation button, with consistent width and bold text */
+.num-jobs, .job-seq-btn {  
+    width: 120px;  
+    font-size: 1.1rem;  
+    font-weight: 700;  
 }
 
-.result-section {
-    max-width: 600px;
-    padding: 10px;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    transition: overflow 0.3s ease-in-out;
+/* Container for displaying the results with width constraint, hidden overflow, and smooth transitions */
+.result-section {  
+    max-width: 600px;  
+    padding: 10px;  
+    overflow-x: hidden;  
+    box-sizing: border-box;  
+    transition: overflow 0.3s ease-in-out;  
 }
 
-.slot-container {
-    height: 100px;
-    flex-wrap: nowrap;
-    gap: 10px;
-    justify-content: flex-start;
-    overflow-x: none;
-    padding: 10px 0;
-    -ms-overflow-style: none;
+/* Horizontal container for slots with a fixed height, gap, and left-aligned layout */
+.slot-container {  
+    height: 100px;  
+    flex-wrap: nowrap;  
+    gap: 10px;  
+    justify-content: flex-start;  
+    overflow-x: none;  
+    padding: 10px 0;  
+    -ms-overflow-style: none;  
 }
 
-.slot-container:hover {
-    overflow-x: auto;
+/* Enables horizontal scrolling when hovering over the slot container */
+.slot-container:hover {  
+    overflow-x: auto;  
 }
 
-.slot-wrapper {
-    position: relative;
-    align-items: center;
-    flex-shrink: 0;
+/* Wrapper for individual slot elements with relative positioning for dynamic layout */
+.slot-wrapper {  
+    position: relative;  
+    align-items: center;  
+    flex-shrink: 0;  
 }
 
-.slot {
-    width: 70px;
-    height: 40px;
-    background-color: var(--slot-color);
-    border: 1px solid var(--border-color) ;
-    border-radius: 4px;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+/* Slot box design with fixed size, border, rounded corners, and centered content */
+.slot {  
+    width: 70px;  
+    height: 40px;  
+    background-color: var(--slot-color);  
+    border: 1px solid var(--border-color);  
+    border-radius: 4px;  
+    justify-content: center;  
+    align-items: center;  
+    font-size: 14px;  
 }
 
-.connection-line {
-    width: 55px;
-    height: 2px;
-    background-color: var(--line-color);
+/* Visual line connecting slots in the timeline, with fixed width and color */
+.connection-line {  
+    width: 55px;  
+    height: 2px;  
+    background-color: var(--line-color);  
 }
 
-.slot-number {
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    color: var(--slot-number);
+/* Positioning and styling for slot numbers displayed beneath each slot */
+.slot-number {  
+    position: absolute;  
+    top: 50px;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    font-size: 12px;  
+    color: var(--slot-number);  
 }
 
-.timeline-step {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid var(--border-color-2);
-    border-radius: 8px;
-    background-color: var(--timeline-color);
+/* Styling for timeline step elements with padding, border, rounded corners, and background */
+.timeline-step {  
+    margin-bottom: 20px;  
+    padding: 10px;  
+    border: 1px solid var(--border-color-2);  
+    border-radius: 8px;  
+    background-color: var(--timeline-color);  
 }
 
+/* Container for displaying the final result, styled with padding, border, and background color */
 .final-result {
     margin: 20px 0;
     padding: 15px;
@@ -207,22 +239,26 @@ label {
     font-size: 16px;
 }
 
+/* Explanation section for steps, with smaller font size and color matching slot numbers */
 .step-explanation {
     margin-bottom: 20px;
     font-size: 14px;
     color: var(--slot-number);
 }
 
+/* Header styling within the #result section */
 #result h2 {
     font-size: 1.5rem;
     margin: 15px 0;
 }
 
+/* Styling for the first column, with a top margin for separation */
 .col-1 {
     margin-top: 20px;
 }
 
-.col-1,.col-2 {
+/* Common column styling for both columns to allow scrolling if content exceeds viewport height */
+.col-1, .col-2 {
     max-height: 100vh;
     overflow-y: auto;
     padding: 10px;
@@ -230,38 +266,33 @@ label {
     -ms-overflow-style: none;
 }
 
+/* Hide scrollbar for Webkit browsers in the second column */
 .col-2::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Webkit-based browsers */
+    display: none;
 }
 
+/* Custom scrollbar thumb for the second column */
 .col-2::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 }
 
-.final-result {
-    margin: 20px 0;
-    padding: 15px;
-    border: 2px solid var(--green-color);
-    border-radius: 10px;
-    background-color: #e8f5e9;
-    font-size: 16px;
-    position: relative; 
-}
-  
+/* Styling for informational icon in the result section, positioned top-right */
 .info-icon {
     font-size: 20px;
     color: var(--green-color);
     cursor: pointer;
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
-  
+
+/* Hover effect for the informational icon */
 .info-icon:hover {
     color: var(--green-color);
 }
 
+/* Hidden by default, shown when the info icon is interacted with */
 .info-text {
     display: none;
     margin-top: 10px;
@@ -272,6 +303,7 @@ label {
     color: var(--info-icon-color);
 }
 
+/* Container for displaying profit-related data, aligned with gaps between items */
 .profit-container {
     display: flex;
     align-items: center;
