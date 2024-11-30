@@ -1,22 +1,26 @@
-:root {
+/* Global CSS Variables for theme colors */
+:root { 
     --box-color: #eee;
-    --green-color:  #31943b;
+    --green-color: #31943b;
     --body-color: #f4f4f9;
     --label-color: #555;
     --border-color: #ddd;
     --gradient-color: #45d16a;
 }
 
-* {
+/* Set default font for all elements */
+* { 
     font-family: "Poppins", sans-serif;
 }
 
-body {
+/* Style for body layout and alignment */
+body { 
     margin: 0;
     text-align: center;
 }
 
-.tutorial-overlay {
+/* Overlay for tutorial popup */
+.tutorial-overlay { 
     position: fixed;
     top: 0;
     left: 0;
@@ -25,268 +29,318 @@ body {
     z-index: 1000;
 }
 
-.tutorial-content {
-    position: relative; 
+/* Main content container for the tutorial popup */
+.tutorial-content { 
+    position: relative;
     width: 80%;
     max-width: 600px;
-    height: 70%; 
-    overflow-y: scroll; 
+    height: 70%;
+    overflow-y: scroll;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
-.tutorial-content::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar (Chrome, Safari, Edge)*/
+/* Hide scrollbar for webkit browsers */
+.tutorial-content::-webkit-scrollbar { 
+    display: none;
 }
 
-/* Optional: For Firefox */
-.tutorial-content {
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
+/* Hide scrollbar for Firefox and IE */
+.tutorial-content { 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.tutorial-content h2 {
+/* Heading style in tutorial content */
+.tutorial-content h2 { 
     color: var(--green-color);
     margin-bottom: 15px;
 }
 
-.tutorial-content ul {
+/* Unordered list styling for tutorial steps */
+.tutorial-content ul { 
     list-style: none;
     padding: 0;
     text-align: left;
     margin-bottom: 20px;
 }
 
-.tutorial-content ul li {
+/* List item styles for each tutorial step */
+.tutorial-content ul li { 
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
 
-.job, .answer-job, button, .reset, .check {
+/* Background color for job elements, buttons, and reset/check actions */
+.job, .answer-job, button, .reset, .check { 
     background-color: var(--green-color);
 }
 
-.tutorial-image {
+/* Tutorial images */
+.tutorial-image { 
     display: block;
     margin: 10px auto;
 }
 
-.gif-image {
+/* GIF images in the tutorial */
+.gif-image { 
     margin: 15px auto;
 }
 
-.tutorial-image, .gif-image {
+/* Common dimensions and scaling for tutorial and GIF images */
+.tutorial-image, .gif-image { 
     width: 600px;
-    max-width: 100%; 
-    height: auto; 
+    max-width: 100%;
+    height: auto;
 }
 
-.close-button {
+/* Styling for the close button */
+.close-button { 
     top: 20px;
-    right: 20px; 
-    font-size: 24px; 
+    right: 20px;
+    font-size: 24px;
     font-weight: bold;
-    color: var(--label-color); 
+    color: var(--label-color);
     cursor: pointer;
-    z-index: 10; 
-    background: none; 
+    z-index: 10;
+    background: none;
     outline: none;
 }
 
-.close-button:hover {
-    color: #ff0000; 
+/* Close button hover effect */
+.close-button:hover { 
+    color: #ff0000;
 }
 
-.close-button, .slot .job {
-    position: absolute; 
+/* Absolute positioning for the close button and job slots */
+.close-button, .slot .job { 
+    position: absolute;
+}
+/* Full width layout for quiz container, level selection, row 2, and tutorial overlay */
+#quiz-container, #level-selection, .row-2, .tutorial-overlay { 
+    width: 100%; 
 }
 
-#quiz-container, #level-selection, .row-2, .tutorial-overlay {
-    width: 100%;
+/* Column layout for quiz container and level selection */
+#quiz-container, #level-selection { 
+    flex-direction: column; 
 }
 
-#quiz-container, #level-selection {
-    flex-direction: column;
+/* Space between content in quiz container */
+#quiz-container { 
+    justify-content: space-between; 
 }
 
-#quiz-container {
-    justify-content: space-between;
+/* Centering elements with margin auto */
+#quiz-container, #level-selection, .quiz-btn, .problem, .list { 
+    margin: 0 auto; 
 }
 
-#quiz-container, #level-selection, .quiz-btn, .problem, .list  {
-    margin: 0 auto;
+/* Flex display for layout consistency across different sections */
+#quiz-container, .job-list, .answer-container, #level-selection, .row-2, .list, .slot, .tutorial-overlay { 
+    display: flex; 
 }
 
-#quiz-container, .job-list, .answer-container, #level-selection, .row-2, .list, .slot, .tutorial-overlay {
-    display: flex;
+/* Wrap job and answer container items */
+.job-list, .answer-container { 
+    margin-bottom: 5px; 
+    flex-wrap: wrap; 
 }
 
-.job-list, .answer-container {
-    margin-bottom: 5px;
-    flex-wrap: wrap;
+/* Center-align job, answer containers, and other elements */
+.job-list, .answer-container, .tutorial-overlay, .list, .slot, #final-score { 
+    justify-content: center; 
 }
 
-.job-list, .answer-container, .tutorial-overlay, .list, .slot, #final-score  {
-    justify-content: center;
-}
-
+/* Common padding and margin for job and answer job items */
 .job, .answer-job { 
-    padding: 10px;
-    margin: 5px;
-    color: white;
-    cursor: grab;
-    user-select: none;
+    padding: 10px; 
+    margin: 5px; 
+    color: white; 
+    cursor: grab; 
+    user-select: none; 
 }
 
-.tutorial-content, .job, .answer-job, .answer-container, img, .reset, .check, .restart-quiz, .quit-button, .btn {
-    border-radius: 10px;
+/* Rounded corners for interactive elements */
+.tutorial-content, .job, .answer-job, .answer-container, img, .reset, .check, .restart-quiz, .quit-button, .btn { 
+    border-radius: 10px; 
 }
 
-.job:hover, .answer-job:hover {
-    background: linear-gradient(45deg, #31943b, #45d16a);
-}
-
-.job.dragging {
-    opacity: 0.5;
-}
-
-.problem, .list, .row-1, .box {
-    border: 1px solid var(--border-color);
-}
-
-.answer-container {
-    width: 1000px;
-    height: 120px;
-    border: 3px dashed var(--green-color);
-    padding: 10px;
-    margin: 10px auto;
-}
-
-.answer-container, .tutorial-overlay, .list, .slot{
-    align-items: center;
-}
-
-.answer-job {
-    cursor: grab;
-}
-
-button {
-    margin-top: 5px;
-    padding: 10px 20px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: linear-gradient(45deg, #31943b, #45d16a); /* Use background for gradients */
-}
-
-.close-button, button {
-    border: none;
-}
-
-#level-selection {
-    height: 500px;
-    gap: 15px;
-}
-
-.level {
-    object-fit: cover;
-}
-
-.row-1{
-    margin-top: 50px;
-    width: 1190px;
-}
-
-.row-1, .box, .problem, .list, #final-score{
-    border-radius: 20px;
-}
-
-.row-1, .row-2 {
-    box-sizing: border-box;
-}
-
-.row-2 {
-    height: 400px;
-    justify-content: space-around;
-}
-
-.box {
-    width: 380px;
-    height: 360px;
-}
-
-h1, h2 {
-    color: var(--green-color);
-}
-
-.btn {
-    width: 350px;
-}
-
-img {
-    margin-top: 10px;
-    width: 360px;
-    height: 280px;
-}
-
-.quiz-btn {
-    padding-top: 10px;
-    gap: 20px;
-}
-
-.reset, .check {
-    width: 200px;
-}
-
-.reset:hover, .check:hover {
+/* Gradient background effect on hover for job elements */
+.job:hover, .answer-job:hover { 
     background: linear-gradient(45deg, #31943b, #45d16a); 
 }
 
-.problem, .list, .answer-container, .row-1, #final-score, .tutorial-content, .box {
-    background-color: var(--box-color);
+/* Reduced opacity when a job element is being dragged */
+.job.dragging { 
+    opacity: 0.5; 
 }
 
-.problem, .list {
-    width: 1025px;
+/* Border styling for problem, list, row 1, and boxes */
+.problem, .list, .row-1, .box { 
+    border: 1px solid var(--border-color); 
 }
 
-.problem {
-    padding: 5px 10px 0 10px;
-    height: 200px;
-    margin-bottom: 10px;
+/* Dotted border for answer container and center alignment */
+.answer-container { 
+    width: 1000px; 
+    height: 120px; 
+    border: 3px dashed var(--green-color); 
+    padding: 10px; 
+    margin: 10px auto; 
 }
 
-.list {
-    height: 150px;
-    width: 1025px;
+/* Center alignment for answer container, tutorial overlay, list, and slot */
+.answer-container, .tutorial-overlay, .list, .slot { 
+    align-items: center; 
 }
 
-.slot {
-    width: 180px;
-    height: 80px;
-    margin: 0 10px;
-    position: relative;
+/* Grab cursor for answer jobs */
+.answer-job { 
+    cursor: grab; 
 }
 
-.slot .job {
+/* Common button styling with padding and color */
+button { 
+    margin-top: 5px; 
+    padding: 10px 20px; 
+    color: white; 
+    font-size: 18px; 
+    cursor: pointer; 
+}
+
+/* Gradient background effect on hover for buttons */
+button:hover { 
+    background: linear-gradient(45deg, #31943b, #45d16a); 
+}
+/* Removes borders for close button and all buttons */
+.close-button, button { 
+    border: none; 
+}
+
+/* Layout and spacing for level selection container */
+#level-selection { 
+    height: 500px; 
+    gap: 15px; 
+}
+
+/* Ensures images fit within their container in the level section */
+.level { 
+    object-fit: cover; 
+}
+
+/* Top margin and width adjustment for the first row */
+.row-1 { 
+    margin-top: 50px; 
+    width: 1190px; 
+}
+
+/* Rounded corners for rows, problem, list, final score, and box elements */
+.row-1, .box, .problem, .list, #final-score { 
+    border-radius: 20px; 
+}
+
+/* Box sizing model for rows */
+.row-1, .row-2 { 
+    box-sizing: border-box; 
+}
+
+/* Layout and alignment for the second row */
+.row-2 { 
+    height: 400px; 
+    justify-content: space-around; 
+}
+
+/* Box dimensions for each level selection card */
+.box { 
+    width: 380px; 
+    height: 360px; 
+}
+
+/* Heading colors for h1 and h2 tags */
+h1, h2 { 
+    color: var(--green-color); 
+}
+
+/* Button width adjustment for level selection buttons */
+.btn { 
+    width: 350px; 
+}
+
+/* Image size and spacing adjustments */
+img { 
+    margin-top: 10px; 
+    width: 360px; 
+    height: 280px; 
+}
+
+/* Button container padding and spacing for quiz buttons */
+.quiz-btn { 
+    padding-top: 10px; 
+    gap: 20px; 
+}
+
+/* Width adjustment for reset and check buttons */
+.reset, .check { 
+    width: 200px; 
+}
+
+/* Hover effect for reset and check buttons */
+.reset:hover, .check:hover { 
+    background: linear-gradient(45deg, #31943b, #45d16a); 
+}
+
+/* Background color for problem, list, answer container, tutorial content, and box */
+.problem, .list, .answer-container, .row-1, #final-score, .tutorial-content, .box { 
+    background-color: var(--box-color); 
+}
+
+/* Width adjustment for problem and list containers */
+.problem, .list { 
+    width: 1025px; 
+}
+
+/* Padding, height, and margin for problem container */
+.problem { 
+    padding: 5px 10px 0 10px; 
+    height: 200px; 
+    margin-bottom: 10px; 
+}
+
+/* Height and width for list container */
+.list { 
+    height: 150px; 
+    width: 1025px; 
+}
+
+/* Slot dimensions and positioning */
+.slot { 
+    width: 180px; 
+    height: 80px; 
+    margin: 0 10px; 
+    position: relative; 
+}
+
+/* Positioning for jobs within a slot */
+.slot .job { 
     top: -40px; 
 }
 
-#final-score {
-    margin: 50px auto;
-    padding-top: 50px;
-    width: 700px;
-    height: 400px;
-    border: 1px solid var(--border-color);
+/* Dimensions and border for the final score display */
+#final-score { 
+    margin: 50px auto; 
+    padding-top: 50px; 
+    width: 700px; 
+    height: 400px; 
+    border: 1px solid var(--border-color); 
 }
 
-#feedback-message {
-    font-size: 30px;
+/* Font size for feedback message */
+#feedback-message { 
+    font-size: 30px; 
 }
+
 
 /* Mobile View: Adjust layout for small screens */
 @media (max-width: 768px) {
@@ -406,7 +460,7 @@ img {
     .row-1 {
         width: 1190px;
     }
-
+  
     .box {
         width: 380px;
     }
@@ -416,7 +470,6 @@ img {
         height: 280px;
     }
 }
-
 
 /* Animations */
 @keyframes fadeIn {
@@ -439,6 +492,7 @@ img {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Tutorial Popup Animations */
 @keyframes slideIn {
     from { 
         opacity: 0; 
@@ -454,6 +508,7 @@ img {
     animation: slideIn 0.6s ease;
 }
 
+/* Job Dragging Animations */
 @keyframes jobDrag {
     0% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
@@ -465,6 +520,7 @@ img {
     animation: jobDrag 0.2s infinite;
 }
 
+/* Button Hover Animations */
 .btn, .reset, .check, .restart-quiz, .quit-button {
     transition: all 0.3s ease;
 }
@@ -474,6 +530,7 @@ img {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Final Score Animations */
 @keyframes scorePopIn {
     from { 
         opacity: 0; 
@@ -489,6 +546,7 @@ img {
     animation: scorePopIn 0.7s ease;
 }
 
+/* Close Tutorial Button Pulse */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -499,6 +557,7 @@ img {
     animation: pulse 0.5s ease;
 }
 
+/* Subtle Entrance Animations for Quiz Elements */
 #quiz-container .header,
 #quiz-container .problem,
 #quiz-container .list,
