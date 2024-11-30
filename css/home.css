@@ -1,3 +1,4 @@
+/* Root Variables: Defines color schemes */
 :root {
     --green-color:  #31943b;
     --blue-color: #1679AB;
@@ -9,87 +10,107 @@
     --light-gray-color: #e6e6e6;
 }
 
+/* Apply Poppins font to all elements */
 * {
     font-family: "Poppins", sans-serif;
 }
 
+/* Remove default margins, padding, and set box-sizing for html and body */
 html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Padding for the first row */
 .row-1 {
     padding-top:35px;
 }
 
+/* Set the height of list item buttons */
 .list-item-button {
     height: 80px;
 }
 
+/* Set width for both list-item buttons and robot images */
 .list-item-button, .robot img {
     width: 80px;
 }
 
+/* Adjust right margin for the graphics inside the main header */
 .mh-graphics {
     margin-right: 5px;
 }
 
+/* Ensure these elements do not exceed the screen width */
 .mh-graphics, .top-square, .container, .col-2-top, .fc {
     max-width: 100%;  
 }
 
+/* Allow the main header, top squares, and calendar card to adjust their height automatically */
 .mh-graphics, .top-square, .calendar-card {
     height: auto; 
 }
 
+/* Adjust the robot image to a maximum width of 150px */
 .robot img {
     max-width: 150px; /* Increased from the default size */
     height: auto;
 }
 
+/* Set flex layout for main header, list items, container, columns, rows, and various other elements */
 .main-header, .list-item, .container, .col-1, .col-2, .col-2-top, .row, .top-square, .stats-container, .calendar-header, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     display: flex;
 }
 
+/* Set fixed height and hide overflow in main header */
 .main-header {
     height: 130px;
     overflow: hidden;  
 }
 
+/* Justify content between elements in the main header, list items, and calendar header */
 .main-header, .list-item, .calendar-header {
     justify-content: space-between;
 }
 
+/* Allow container and column 1 to grow to take up available space */
 .container, .col-1 {
     flex-grow: 1;
 }
 
+/* Set font size for the h1 element */
 h1 {
     font-size: 40px;
 }
 
+/* Apply padding for the welcome message */
 #welcome-message{
     padding: 15px 0 0 30px;
 }
 
+/* Set size and padding for top square containers */
 .top-square {
     width: 236px; 
     padding: 20px; 
 }
 
+/* Center align content within top square, stats container, and calendar day number */
 .top-square, .stats-container, .fc .fc-daygrid-day-top, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     justify-content: center;
 }
 
+/* Align content to center in main header, top square, list items, stats container, calendar header, and today's day number */
 .main-header, .top-square, .list-item, .stats-container, .calendar-header, .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number  {
     align-items: center;
 }
 
+/* Apply center text alignment for various elements */
 .top-square, .card, .stats-container, .weekday, .date, .weekdays-row{
     text-align: center;
 }
 
+/* Set size, padding, border, and transition effects for list items */
 .list-item {
     height: 105px;
     padding: 16px;
@@ -97,7 +118,7 @@ h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
 }
-
+/* Hover effect for list items, changes background, shadow, and border color */
 .list-item:hover {
     background-color: var(--green-color);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -105,10 +126,12 @@ h1 {
     border-color: var(--green-color);
 }
 
+/* Change label color to white when hovering over a list item */
 .list-item:hover .label {
     color: white;
 }
 
+/* Center the container with specific padding and width */
 .container {
     margin: 0 auto;
     padding: 40px 50px 0 0;
@@ -116,70 +139,85 @@ h1 {
     flex-wrap: wrap; 
 }
 
+/* Ensure box-sizing is applied correctly to list items and calendar container */
 .list-item, .calendar-container {
     box-sizing: border-box;
 }
 
+/* Set fixed width for column 1 and main header */
 .col-1, .main-header{
     width: 750px;
 }
 
+/* Set width and flex direction for the top column */
 .col-2-top {
     width: 465px;
     flex-direction: row;
 }
 
+/* Set flex direction for column 1 and column 2 */
 .col-1, .col-2 {
     flex-direction: column;
 }
 
+/* Style the menu with a larger font size and specific color */
 .menu {
     font-size: 30px;
     color: var(--label-color);
 }
 
+/* Apply left padding to bold text inside the menu */
 .menu b{
     padding-left: 25px;
 }
 
+/* Set font size for paragraph elements */
 p {
     font-size: 23px;
 }
 
+/* Add gap between rows, container, and other flex elements */
 .row, .container, .main-header, .col-2-top, .col-1, .col-2  {
     gap: 16px;
 }
 
+/* Set height and width for card elements */
 .card {
     height: 88px;
     width: 465px;
 }
 
+/* Style the text inside icons with padding and a smaller font size */
 .icons-text {
     padding-top: 10px;
     font-size: 18px;
 }
 
+/* Apply rounded corners, background color, and border to various elements */
 .main-header, .list-item, .top-square, .card {
     border-radius: 20px;
     background-color: var(--box-color);
     border: 1px solid var(--border-color);
 }
 
+/* Apply padding to the label text */
 .label {
     padding-left: 20px;
 }
 
+/* Style span text with a green color and text shadow */
 span {
     color: var(--green-color);
     text-shadow: 0px 0px 1px #265f2a; 
 }
 
+/* Set padding and flex direction for the stats container */
 .stats-container {
     padding: 5px;
     flex-direction: column;
 }
 
+/* Style the header in stats container with color, shadow, and margin */
 .stats-container h3 {
     color: var(--label-color);
     text-shadow: 0px 0px 1px #265f2a;
@@ -187,6 +225,7 @@ span {
     font-size: 1.1em;
 }
 
+/* Style paragraph in stats container with green color and bold text */
 .stats-container p {
     color: var(--green-color);
     font-size: 1.8em;
@@ -194,14 +233,16 @@ span {
     margin: 0;
 }
 
+/* Ensure stats container and calendar container take up full height */
 .stats-container, .calendar-container {
     height: 100%;
 }
-
+/* Styling for the calendar container with padding around the content */
 .calendar-container {
     padding: 20px 15px 0px 15px;
 }
 
+/* Styling for the calendar card, setting background, border, and size */
 .calendar-card {
     background-color: var(--box-color);
     border-radius: 20px;
@@ -210,10 +251,12 @@ span {
     border: 1px solid var(--border-color); 
 }
 
+/* Styling for the calendar header, adds margin below it */
 .calendar-header {
     margin-bottom: 10px;
 }
 
+/* Styling for buttons inside the calendar header, including background, border, and transition effect */
 .calendar-header button {
     background: var(--green-color);
     border: none;
@@ -224,12 +267,14 @@ span {
     transition: background-color 0.2s;
 }
 
+/* Styling for the calendar header title (h2), including margin and font size */
 .calendar-header h2 {
     margin: 0;
     font-size: 1.2em;
     color: var(--label-color);
 }
 
+/* Styling for the weekday labels in the calendar grid, including font weight and background */
 .weekday {
     font-weight: 600;
     font-size: 0.9em;
@@ -238,6 +283,7 @@ span {
     background-color: var(--box-color);
 }
 
+/* Styling for date cells in the calendar, with padding and background color */
 .date {
     padding: 5px;
     font-size: 0.9em;
@@ -247,20 +293,24 @@ span {
     color: var(--label-color);
 }
 
+/* Hide empty date cells in the calendar */
 .date.empty {
     visibility: hidden;
 }
 
+/* Styling for the current date, changes background color and text color */
 .date.current {
     background-color: var(--light-gray-color);
     color: var(--label-color);
 }
 
+/* Styling for completed and today's date, changes background to green and text to white */
 .date.completed, .date.completed-today {
     background-color: var(--green-color);
     color: white;
 }
 
+/* Grid layout for the calendar, setting 7 columns for the days of the week */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -268,50 +318,60 @@ span {
     margin-top: 5px;
 }
 
+/* Hover effect for date cells, changes background color slightly */
 .date:hover {
     background-color: rgba(22, 121, 171, 0.05);
 }
 
+/* Special styling for completed and current date, creating a gradient background */
 .date.completed.current {
     background: linear-gradient(45deg, var(--green-color) 50%, var(--blue-color) 50%);
     color: white;
 }
 
+/* Ensure empty date cells remain hidden */
 .date.empty {
     visibility: hidden;
 }
 
+/* Styling for the full calendar, ensuring full height and transparent background */
 .fc {
     height: 100%;
     background: transparent;
 }
 
+/* Margin below the toolbar in the full calendar */
 .fc .fc-toolbar.fc-header-toolbar {
     margin-bottom: 1em;
 }
 
+/* Styling for the toolbar title in the full calendar, adjusting font size and weight */
 .fc .fc-toolbar-title {
     font-size: 1.2em;
     color: var(--label-color);
     font-weight: 500;
 }
 
+/* Styling for the previous and next month buttons, applying green background color */
 #prevMonth, #nextMonth {
     background-color: var(--green-color);
 }
-
+/* Hover effect for previous and next month buttons, changing background color */
 #prevMonth:hover, #nextMonth:hover {
     background-color: var(--green-color);
 }
 
+/* Frame around each day in the day grid, providing internal padding */
 .fc .fc-daygrid-day-frame {
     padding: 4px;
 }
 
+/* Top section of each day cell in the calendar grid */
 .fc .fc-daygrid-day-top {
     padding-top: 4px;
 }
 
+/* Styling for the day number in each calendar cell */
 .fc .fc-daygrid-day-number {
     float: none;
     padding: 2px;
@@ -319,10 +379,12 @@ span {
     color: var(--label-color);
 }
 
+/* Removes the default background for today's date in the calendar grid */
 .fc .fc-daygrid-day.fc-day-today {
     background-color: transparent !important;
 }
 
+/* Circular highlight and color change for today's date number */
 .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
     background-color: var(--green-color);
     color: white;
@@ -331,11 +393,13 @@ span {
     height: 24px;
 }
 
+/* Header cells in the calendar grid with padding and transparent background */
 .fc .fc-col-header-cell {
     padding: 8px 0;
     background-color: transparent;
 }
 
+/* Content inside header cells with specific text color and weight */
 .fc .fc-col-header-cell-cushion {
     color: var(--label-color);
     font-weight: 500;
@@ -343,32 +407,39 @@ span {
     padding: 4px;
 }
 
+/* Table structure in the calendar with no borders */
 .fc table {
     border: none;
 }
 
+/* Borders applied to all table cells and headers in the calendar */
 .fc td, .fc th {
     border: 1px solid var(--border-color);
 }
 
+/* Scrollable grid for the calendar with rounded corners and a border */
 .fc .fc-scrollgrid {
     border: 1px solid var(--border-color);
     border-radius: 8px;
 }
 
+/* Background styling for events in the calendar with a semi-transparent green */
 .fc .fc-bg-event {
     background-color: rgba(76, 175, 80, 0.2) !important;
     opacity: 1;
 }
 
+/* Hides the event title for background events in the calendar */
 .fc .fc-bg-event .fc-event-title {
     display: none;
 }
 
+/* Hover effect on calendar days, applying a slight background change */
 .fc .fc-daygrid-day:hover {
     background-color: rgba(22, 121, 171, 0.05);
 }
 
+/* Grid layout for weekday labels with bold text and light background */
 .weekdays-row {
     display: grid;
     background-color: #f9f9f9;
@@ -376,11 +447,13 @@ span {
     font-weight: bold;
 }
 
+/* Styling for individual weekday cells with padding and light background */
 .weekday {
     padding: 10px;
     background-color: #f0f0f0;
 }
 
+/* Styling for completed dates with a green background and white text */
 .date.completed {
     background-color: var(--green-color); 
     color: white; 
@@ -520,9 +593,7 @@ span {
     }
 }
 
-/* Animations for Home Page */
-
-/* Animations for Home Page */
+/* Animations*/
 
 /* Global Animation Defaults */
 @keyframes fadeInSlide {
