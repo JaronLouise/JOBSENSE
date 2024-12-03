@@ -67,6 +67,7 @@ These instructions will guide you on setting up a local copy of **JOBSENSE** for
 To get started, ensure you have the following installed:
 
 - **Firebase**: For storing user information, streak, and quiz data.
+- **Live Server Extension**: Testing the web app using live server extension in visual studio code is highly suggested.
 ---
 
 ## :hammer_and_pick: Installation and Setup
@@ -90,11 +91,8 @@ Follow these steps to install and set up **JOBSENSE**:
      npm install
      
       
-  4. **Run the web application**
+  4. **Run the web application in live server**
      
-     ```bash
-     cd backend
-     npm start
      
 ---
 
