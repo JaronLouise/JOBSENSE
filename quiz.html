@@ -6,6 +6,13 @@
     <title>Job Sequencing Quiz</title>
     <link rel="icon" href="/assets/js_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/quiz.css">
+    <!-- Firebase and JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <!-- Quiz logic -->
+    <script src="/js/quiz.js" type="text/javascript"tpe="module"></script>
+    <script src="js/navbar.js" type="module"></script>
 </head>
 <body>
     <audio id="background-music" loop>
@@ -83,12 +90,5 @@
         <button class="restart-quiz" onclick="window.location.reload()">Restart Quiz</button>
         <button class="quit-button" onclick="window.location.href='home.html'">Quit</button>
     </div>
-    <!-- Firebase and JavaScript -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    <!-- Quiz logic -->
-    <script src="/js/quiz.js" type="text/javascript"tpe="module"></script>
-    <script src="js/navbar.js" type="module"></script>
 </body>
 </html>
